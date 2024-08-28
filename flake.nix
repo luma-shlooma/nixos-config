@@ -18,8 +18,9 @@
   {
     nixosConfigurations = {
       work = nixpkgs.lib.nixosSystem {
-	specialArgs = {inherit inputs;};
+	specialArgs = {inherit inputs self;};
 	modules = [
+	  ./hardware-configuration.nix
           ./hosts/work/configuration.nix
 	];
       };
