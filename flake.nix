@@ -16,12 +16,13 @@
     pkgs = nixpkgs.legacyPackages.${system};
   in
   {
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./configuration.nix
-        inputs.home-manager.nixosModules.default
-      ];
+    nixosConfigurations = {
+      work = nixpkgs.lib.nixosSystem {
+	specialArgs = {inherit inputs;};
+	modules = [
+          ./hosts/work/configuration.nix
+	];
+      };
     };
   };
 }

@@ -135,7 +135,7 @@
       shellAliases = {
         ll = "ls -lah";
 	configure = "nvim /etc/nixos/configuration.nix";
-	rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#default";
+	rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#work";
       };
       ohMyZsh = {
 	enable = true;
