@@ -14,15 +14,19 @@
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    # Reusable hardware config
+    commonHardware = hostModule: {
+      imports = [
+        "${self}/hardware-configuration.nix"
+	hostModule
+      ];
+    };
   in
   {
     nixosConfigurations = {
       work = nixpkgs.lib.nixosSystem {
-	specialArgs = {inherit inputs self;};
-	modules = [
-	  ./hardware-configuration.nix
-          ./hosts/work/configuration.nix
-	];
+	specialArgs = {inherit inputs;};
+	modules = [ commonHardware ./hosts/work/configuration.nix ];
       };
     };
   };
