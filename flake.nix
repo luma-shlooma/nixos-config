@@ -16,7 +16,7 @@
     pkgs = nixpkgs.legacyPackages.${system};
     includeHardware = hostModule: {
       imports = [
-        ./hardware/select.nix
+        ./hardware/t14.nix # CHANGE TO VARIABLE SOMEHOW
         hostModule
       ];
     };
