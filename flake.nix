@@ -14,12 +14,9 @@
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    machine-id = builtins.readFile "/etc/machine-id";
-
     includeHardware = hostModule: {
       imports = [
         ./hardware/select.nix
-	config.selectedHardware
         hostModule
       ];
     };
@@ -27,7 +24,7 @@
   {
     nixosConfigurations = {
       work = nixpkgs.lib.nixosSystem {
-	specialArgs = {inherit inputs;};
+	specialArgs = {inherit inputs self;};
 	modules = [ includeHardware ./hosts/work/configuration.nix ];
       };
     };
