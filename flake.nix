@@ -14,18 +14,21 @@
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    includeHardware = hostModule: {
-      imports = [
-        ./hardware/t14.nix # CHANGE TO VARIABLE SOMEHOW
-        hostModule
-      ];
-    };
+    #includeHardware = hostModule: {
+    #  imports = [
+    #    ./hardware/t14.nix # CHANGE TO VARIABLE SOMEHOW
+    #    hostModule
+    #  ];
+    #};
   in
   {
     nixosConfigurations = {
       work = nixpkgs.lib.nixosSystem {
 	specialArgs = {inherit inputs self;};
-	modules = [ includeHardware ./hosts/work/configuration.nix ];
+	modules = [
+	  ./hardware/t14.nix
+	  ./hosts/work/configuration.nix
+	];
       };
     };
   };
