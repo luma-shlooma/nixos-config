@@ -6,6 +6,13 @@
   home.username = "haydn";
   home.homeDirectory = "/home/haydn";
 
+  imports = [
+    # Modules
+    ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/alacritty.nix
+    ../../modules/home-manager/neovim.nix
+  ];
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
