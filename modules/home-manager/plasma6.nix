@@ -12,8 +12,8 @@
     enable = true;
     
     workspace = {
-      lookAndFeel = "org.kde.breezeDark.desktop";
-      wallpaperPlainColor = "0,0,0,256";
+      lookAndFeel = "org.kde.breezedark.desktop";
+      wallpaperPlainColor = "0,0,0";
     };
 
   };
