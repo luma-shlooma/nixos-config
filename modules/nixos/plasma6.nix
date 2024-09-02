@@ -1,10 +1,23 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
+  # Get SDDM theme
+  environment.systemPackages = [(
+    pkgs.catppuccin-sddm.override {
+      flavor = "mocha";
+    }
+  )];
   # Enable the KDE Plasma Desktop Environment.
+  services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = {
     enable = true;
-    # TODO: SDDM theme
+    theme = "catppuccin-mocha";
+    #package = pkgs.kdePackages.sddm;
   };
-  services.desktopManager.plasma6.enable = true;
+  # Remove plasma6 packages
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-browser-integration
+    konsole
+    oxygen
+  ];
 }

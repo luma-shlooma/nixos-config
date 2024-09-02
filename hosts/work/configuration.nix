@@ -18,6 +18,7 @@
       ../../modules/nixos/plasma6.nix
       ../../modules/nixos/sound.nix
       ../../modules/nixos/docker.nix
+      ../../modules/nixos/fprintd.nix
     ];
 
   # Bootloader.
@@ -49,6 +50,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    kitty
     wget
     git
     vim
