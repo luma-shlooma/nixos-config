@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports =
@@ -17,6 +17,7 @@
       ../../modules/nixos/bluetooth.nix
       ../../modules/nixos/plasma6.nix
       ../../modules/nixos/sound.nix
+      ../../modules/nixos/docker.nix
     ];
 
   # Bootloader.
