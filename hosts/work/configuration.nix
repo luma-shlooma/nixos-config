@@ -50,10 +50,18 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # System defaults
     kitty
     wget
     git
     vim
+    # Misc
+    ueberzugpp
+  ];
+
+  # Fonts
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = ["JetBrainsMono"]; })
   ];
 
   # This value determines the NixOS release from which the default

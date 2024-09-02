@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -8,9 +8,11 @@
 
   imports = [
     # Modules
+    ../../modules/home-manager/plasma6.nix
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/neovim.nix
+    ../../modules/home-manager/yazi.nix
   ];
 
   # This value determines the Home Manager release that your configuration is
