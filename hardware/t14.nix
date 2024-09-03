@@ -6,6 +6,8 @@
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
+      # Modules
+      ./modules/fprintf.nix 
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];

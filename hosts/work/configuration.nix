@@ -18,7 +18,6 @@
       ../../modules/nixos/plasma6.nix
       ../../modules/nixos/sound.nix
       ../../modules/nixos/docker.nix
-      ../../modules/nixos/fprintd.nix
     ];
 
   # Bootloader.
@@ -41,9 +40,6 @@
     };
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -55,6 +51,7 @@
     wget
     git
     vim
+    tmux
     # Misc
     ueberzugpp
   ];
@@ -63,6 +60,11 @@
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = ["JetBrainsMono"]; })
   ];
+
+  # Nixos Host Variable 
+  environment.sessionVariables = {
+    NIXOS_HOST = "work";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
