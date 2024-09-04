@@ -17,5 +17,8 @@ read
 
 # Git actions
 git add --all
+
 # TODO: Auto squashed commits on rebuild
 
+# Rebuild
+sudo nixos-rebuild switch --flake /etc/nixos/#${host}
