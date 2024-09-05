@@ -39,7 +39,7 @@ if [[ "$branch" == "main" ]]; then
   [ -z "$msg" ] || git commit -m "$msg"
 elif [[ "$branch" == "$WORKING" ]]; then
   # Working branch, commit msg or WIP
-  git commit -m "${msg:-$WIP}"
+  git commit -m "squash! ${msg:-$WIP}"
 else
   # Unknown, no commit
   echo "Unknown branch, wont commit"
