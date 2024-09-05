@@ -84,14 +84,21 @@
           formatting = {
             format = ''
               function(entry, vim_item)
-                local comment_patterns = { "^%s*--", "^%s*%*%*%*%s*" }
-                local line = vim.fn.getline('.')
+                local line = vim.fn.getline(vim.fn.line('.'))
                 local col = vim.fn.col('.')
-                local cursor_pos = vim.fn.col('.')
-                local current_char = line:sub(cursor_pos, cursor_pos)
+                local current_char = line:sub(col, col)
 
-                if vim.tbl_contains(comment_patterns, current_char) then
-                  return nil
+                local comment_patterns = {
+                  '^%s*--', -- Lua
+                  '^%s*#', -- Bash
+                  '^%s*/%*', -- Multi-line start
+                  '%*/%s*$' -- Multi-line end
+                }
+
+                for _, pattern in ipairs(comment_patterns) do
+                  if line:match(pattern) then
+                    return nil
+                  end
                 end
 
                 return vim_item
