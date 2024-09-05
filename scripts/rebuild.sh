@@ -1,6 +1,10 @@
 #! /usr/bin/env nix-shell
 #! nix-shell -i bash -p bash
 
+# Const
+WORKING="working"
+WIP="WIP"
+
 # Get host to rebuild
 host=${1:-${NIXOS_HOST:-""}}
 
@@ -12,13 +16,31 @@ echo "Changes made since rebuild..."
 git --no-pager diff --compact-summary /etc/nixos
 
 # Confirmation
-echo "Press ENTER to rebuild, CTRL+C to cancel"
-read
+branch=$(git branch --show-current)
+echo "Options..."
+echo "CTRL+C    | Cancel"
+echo "ENTER     | Default branch behavior (${branch})"
+echo "msg ENTER | Commit msg"
+read msg
 
 # Git actions
 git add --all
 
-# TODO: Auto squashed commits on rebuild
-
 # Rebuild
 sudo nixos-rebuild switch --flake /etc/nixos/#${host}
+
+# Exit on failure
+[ $? -ne 0 ] && echo "Rebuild failed, wont commit" && exit 1
+
+# Commit actions
+if [[ "$branch" == "main" ]] then
+  # Main, commit if msg
+  [ -z "$msg" ] || git commit -m "$msg"
+elif [[ "$branch" == "$WORKING" ]] then
+  # Working branch, commit msg or WIP
+  git commit -m "${msg:-$WIP}"
+else
+  # Unknown, no commit
+  echo "Unknown branch, wont commit"
+fi
+

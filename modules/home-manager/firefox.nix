@@ -54,8 +54,8 @@
       # Other Settings
       settings = {
         "extensions.autoDisableScopes" = 0;
-        "browser.download.dir" = "${config.home.homeDirectory}/downloads";
-        "browser.download.folderList" = 2;
+        #"browser.download.dir" = "${config.home.homeDirectory}/downloads";
+        #"browser.download.folderList" = 2;
       };
     };
   };
