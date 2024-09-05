@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! /nix-shell -i bash -p bach
+#! nix-shell -i bash -p bash
 
 # const
 WORKING="working"
@@ -16,7 +16,7 @@ read
 # Squash, Merge, Push
 git rebase -i main
 git checkout main
-git merge --ff-only $WORKING
+git merge --ff-only $WORKING -e
 git push origin main
 
 # Reset working
