@@ -22,7 +22,7 @@ read -r msg
 
 # Squash, Merge, Push
 git fetch origin main
-git rebase -i origin/main --autosquash --autostash --rebase-merges
+git rebase -i origin/main #--autosquash --autostash --rebase-merges
 git checkout main
 git merge --no-ff $WORKING -m "$msg"
 git push origin main
