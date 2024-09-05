@@ -23,7 +23,11 @@
         servers = {
           nil-ls.enable = true; # Nix
           bashls.enable = true; # Bash
-          rust-analyzer.enable = true; # Rust
+          rust-analyzer = { # Rust
+            enable = true;
+            installCargo = true;
+            installRustc = true;
+          };
           pylyzer.enable = true; # Python
         };
       };
