@@ -21,8 +21,10 @@
       lsp = {
         enable = true;
         servers = {
-          nil-ls.enable = true;
-          bashls.enable = true;
+          nil-ls.enable = true; # Nix
+          bashls.enable = true; # Bash
+          rust-analyzer.enable = true; # Rust
+          pylyzer.enable = true; # Python
         };
       };
 

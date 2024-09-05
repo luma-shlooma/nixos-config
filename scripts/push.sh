@@ -16,9 +16,7 @@ git --no-pager diff main..HEAD --compact-summary
 
 # confirmation
 echo "Enter to proceed, CTRL+C to cancel"
-read #-r msg
-
-#[ -z "$msg" ] && echo "Commit message cannot be empty" && exit 1
+read
 
 # Function editor
 auto_squash() {
