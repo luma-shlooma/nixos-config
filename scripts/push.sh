@@ -20,9 +20,16 @@ read -r msg
 
 [ -z "$msg" ] && echo "Commit message cannot be empty" && exit 1
 
+# Function replace all but first 'pick' with 'squash'
+auto_squash() {
+  sed -i '2,$s/^pick/squash/' "$1"
+}
+
+export GIT_SEQUENCE_EDITOR="auto_squash"
+
 # Squash, Merge, Push
 git fetch origin main
-git rebase -i origin/main --autosquash --autostash --rebase-merges
+git rebase -i origin/main
 git checkout main
 git merge --no-ff $WORKING -m "$msg"
 git push origin main
