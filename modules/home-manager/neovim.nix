@@ -80,6 +80,24 @@
             "<CR>" = "cmp.mapping.confirm({ select = true })";
             "<S-CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
           };
+
+          formatting = {
+            format = ''
+              function(entry, vim_item)
+                local comment_patterns = { "^%s*--", "^%s*%*%*%*%s*" }
+                local line = vim.fn.getline('.')
+                local col = vim.fn.col('.')
+                local cursor_pos = vim.fn.col('.')
+                local current_char = line:sub(cursor_pos, cursor_pos)
+
+                if vim.tbl_contains(comment_patterns, current_char) then
+                  return nil
+                end
+
+                return vim_item
+              end
+            '';
+          };
         };
       };
 
