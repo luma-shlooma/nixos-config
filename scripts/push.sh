@@ -4,19 +4,27 @@
 # const
 WORKING="working"
 
+# Use on working branch only
 branch=$(git branch --show-current)
 [[ "$branch" != "$WORKING" ]] && echo "Script for use on ${WORKING} branch" && exit 1
 
-# TODO: Some kind of diff display
+echo "=== NIXOS PUSH ==="
+echo " Squash and merge working branch"
+
+# Diff
+git --no-pager diff main..HEAD --compact-summary
 
 # confirmation
-echo "Enter to proceed, CTRL+C to cancel"
-read
+echo "Provide commit message to proceed, CTRL+C to cancel"
+read -r msg
+
+[ -z "$msg" ] && echo "Commit message cannot be empty" && exit 1
 
 # Squash, Merge, Push
-git rebase -i main
+git fetch origin main
+git rebase -i origin/main --autosquash --autostash --rebase-merges
 git checkout main
-git merge --ff-only $WORKING -e
+git merge --no-ff $WORKING -m "$msg"
 git push origin main
 
 # Reset working

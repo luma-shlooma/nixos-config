@@ -8,7 +8,8 @@ WIP="WIP"
 # Get host to rebuild
 host=${1:-${NIXOS_HOST:-""}}
 
-echo "===NIXOS REBUILD==="
+echo "=== NIXOS REBUILD ==="
+echo " Rebuild and commit changes to config"
 echo " (host: ${host:-"none"})"
 
 # Print git diff
@@ -21,7 +22,7 @@ echo "Options..."
 echo "CTRL+C    | Cancel"
 echo "ENTER     | Default branch behavior (${branch})"
 echo "msg ENTER | Commit msg"
-read msg
+read -r msg
 
 # Git actions
 git add --all
@@ -33,10 +34,10 @@ sudo nixos-rebuild switch --flake /etc/nixos/#${host}
 [ $? -ne 0 ] && echo "Rebuild failed, wont commit" && exit 1
 
 # Commit actions
-if [[ "$branch" == "main" ]] then
+if [[ "$branch" == "main" ]]; then
   # Main, commit if msg
   [ -z "$msg" ] || git commit -m "$msg"
-elif [[ "$branch" == "$WORKING" ]] then
+elif [[ "$branch" == "$WORKING" ]]; then
   # Working branch, commit msg or WIP
   git commit -m "${msg:-$WIP}"
 else
