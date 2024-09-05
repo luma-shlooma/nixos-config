@@ -24,6 +24,7 @@ echo "msg ENTER | Commit msg"
 read -r msg
 
 # Git actions
+hash="$(git rev-parse HEAD)"
 git add --all
 
 # Rebuild
@@ -39,7 +40,7 @@ if [[ "$branch" == "main" ]]; then
 elif [[ "$branch" == "$WORKING" ]]; then
   # Working branch, commit msg or hash
   if [ -z "${msg}" ]; then
-    git commit
+    git commit -m "$hash"
   else
     git commit -m "${msg}"
   fi

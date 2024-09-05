@@ -15,16 +15,26 @@ echo " Squash and merge working branch"
 git --no-pager diff main..HEAD --compact-summary
 
 # confirmation
-echo "Provide commit message to proceed, CTRL+C to cancel"
-read -r msg
+echo "Enter to proceed, CTRL+C to cancel"
+read #-r msg
 
-[ -z "$msg" ] && echo "Commit message cannot be empty" && exit 1
+#[ -z "$msg" ] && echo "Commit message cannot be empty" && exit 1
+
+# Function editor
+auto_squash() {
+  # Reword and rename
+  sed -i '0,/^pick/s//reword/' "$1"
+  # Squash rest
+  sed -i '1,$s/^pick/squash/' "$1"
+}
+
+export GIT_SEQUENCE_EDITOR="auto_squash"
 
 # Squash, Merge, Push
 git fetch origin main
-git rebase -i origin/main #--autosquash --autostash --rebase-merges
+git rebase -i origin/main
 git checkout main
-git merge --no-ff $WORKING -m "$msg"
+git merge --no-ff $WORKING
 git push origin main
 
 # Reset working
