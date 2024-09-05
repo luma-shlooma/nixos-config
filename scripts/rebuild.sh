@@ -3,7 +3,6 @@
 
 # Const
 WORKING="working"
-WIP="WIP"
 
 # Get host to rebuild
 host=${1:-${NIXOS_HOST:-""}}
@@ -28,7 +27,7 @@ read -r msg
 git add --all
 
 # Rebuild
-sudo nixos-rebuild switch --flake /etc/nixos/#${host}
+sudo nixos-rebuild switch --flake /etc/nixos/#"${host}"
 
 # Exit on failure
 [ $? -ne 0 ] && echo "Rebuild failed, wont commit" && exit 1
@@ -38,8 +37,12 @@ if [[ "$branch" == "main" ]]; then
   # Main, commit if msg
   [ -z "$msg" ] || git commit -m "$msg"
 elif [[ "$branch" == "$WORKING" ]]; then
-  # Working branch, commit msg or WIP
-  git commit -m "squash! ${msg:-$WIP}"
+  # Working branch, commit msg or hash
+  if [ -z "${msg}" ]; then
+    git commit
+  else
+    git commit -m "${msg}"
+  fi
 else
   # Unknown, no commit
   echo "Unknown branch, wont commit"
