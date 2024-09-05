@@ -4,8 +4,12 @@
 # const
 WORKING="working"
 
+# Use on working branch only
 branch=$(git branch --show-current)
 [[ "$branch" != "$WORKING" ]] && echo "Script for use on ${WORKING} branch" && exit 1
+
+echo "=== NIXOS PUSH ==="
+echo " Squash and merge working branch"
 
 # Diff
 git --no-pager diff main..HEAD --compact-summary

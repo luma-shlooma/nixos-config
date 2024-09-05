@@ -8,7 +8,8 @@ WIP="WIP"
 # Get host to rebuild
 host=${1:-${NIXOS_HOST:-""}}
 
-echo "===NIXOS REBUILD==="
+echo "=== NIXOS REBUILD ==="
+echo " Rebuild and commit changes to config"
 echo " (host: ${host:-"none"})"
 
 # Print git diff
