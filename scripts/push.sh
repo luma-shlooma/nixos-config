@@ -26,7 +26,8 @@ auto_squash() {
   sed -i '1,$s/^pick/squash/' "$1"
 }
 
-export GIT_SEQUENCE_EDITOR="auto_squash"
+export -f auto_squash
+export GIT_SEQUENCE_EDITOR="bash -c 'auto_squash'"
 
 # Squash, Merge, Push
 git fetch origin main
