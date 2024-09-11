@@ -11,9 +11,13 @@ echo "=== NIXOS REBUILD ==="
 echo " Rebuild and commit changes to config"
 echo " (host: ${host:-"none"})"
 
+# Git actions
+hash="$(git rev-parse HEAD)"
+git add --all
+
 # Print git diff
 echo "Changes made since rebuild..."
-git --no-pager diff --compact-summary /etc/nixos
+git --no-pager diff --compact-summary HEAD /etc/nixos
 
 # Confirmation
 branch=$(git branch --show-current)
@@ -23,9 +27,6 @@ echo "ENTER     | Default branch behavior (${branch})"
 echo "msg ENTER | Commit msg"
 read -r msg
 
-# Git actions
-hash="$(git rev-parse HEAD)"
-git add --all
 
 # Rebuild
 sudo nixos-rebuild switch --flake /etc/nixos/#"${host}"
