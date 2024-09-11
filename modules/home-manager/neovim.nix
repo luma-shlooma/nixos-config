@@ -47,19 +47,13 @@
           formatting = { fields = [ "kind" "abbr" "menu" ]; };
           sources = [
             { name = "nvim_lsp"; }
-            #{ name = "emoji"; }
             {
               name = "buffer"; # text within current buffer
               option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
               keywordLength = 3;
             }
-            # { name = "copilot"; } # enable/disable copilot
             {
               name = "path"; # file system paths
-              keywordLength = 3;
-            }
-            {
-              name = "luasnip"; # snippets
               keywordLength = 3;
             }
           ];
@@ -79,31 +73,6 @@
             "<C-Space>" = "cmp.mapping.complete()";
             "<CR>" = "cmp.mapping.confirm({ select = true })";
             "<S-CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
-          };
-
-          formatting = {
-            format = ''
-              function(entry, vim_item)
-                local line = vim.fn.getline(vim.fn.line('.'))
-                local col = vim.fn.col('.')
-                local current_char = line:sub(col, col)
-
-                local comment_patterns = {
-                  '^%s*--', -- Lua
-                  '^%s*#', -- Bash
-                  '^%s*/%*', -- Multi-line start
-                  '%*/%s*$' -- Multi-line end
-                }
-
-                for _, pattern in ipairs(comment_patterns) do
-                  if line:match(pattern) then
-                    return nil
-                  end
-                end
-
-                return vim_item
-              end
-            '';
           };
         };
       };

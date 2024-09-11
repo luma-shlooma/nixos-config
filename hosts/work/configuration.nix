@@ -52,6 +52,8 @@
     git
     vim
     tmux
+    # Not spported by HM
+    obsidian
     # Misc
     ueberzugpp
   ];
