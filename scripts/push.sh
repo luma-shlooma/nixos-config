@@ -33,7 +33,7 @@ export GIT_SEQUENCE_EDITOR="bash -c 'auto_squash \$1' --"
 git fetch origin main
 git rebase -i origin/main
 git checkout main
-git merge --no-ff $WORKING
+git merge --ff-only $WORKING
 git push origin main
 
 # Reset working
