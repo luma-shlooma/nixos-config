@@ -27,7 +27,7 @@ auto_squash() {
 }
 
 export -f auto_squash
-export GIT_SEQUENCE_EDITOR="bash -c 'auto_squash'"
+export GIT_SEQUENCE_EDITOR="bash -c 'auto_squash \$1' --"
 
 # Squash, Merge, Push
 git fetch origin main
