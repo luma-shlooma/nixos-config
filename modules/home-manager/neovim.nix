@@ -21,8 +21,14 @@
       lsp = {
         enable = true;
         servers = {
-          nil-ls.enable = true;
-          bashls.enable = true;
+          nil-ls.enable = true; # Nix
+          bashls.enable = true; # Bash
+          rust-analyzer = { # Rust
+            enable = true;
+            installCargo = true;
+            installRustc = true;
+          };
+          pylyzer.enable = true; # Python
         };
       };
 
@@ -41,19 +47,13 @@
           formatting = { fields = [ "kind" "abbr" "menu" ]; };
           sources = [
             { name = "nvim_lsp"; }
-            #{ name = "emoji"; }
             {
               name = "buffer"; # text within current buffer
               option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
               keywordLength = 3;
             }
-            # { name = "copilot"; } # enable/disable copilot
             {
               name = "path"; # file system paths
-              keywordLength = 3;
-            }
-            {
-              name = "luasnip"; # snippets
               keywordLength = 3;
             }
           ];
