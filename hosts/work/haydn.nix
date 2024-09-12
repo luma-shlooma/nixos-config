@@ -9,7 +9,7 @@
   imports = [
     # Modules
     ../../modules/home-manager/common.nix
-    ../../modules/home-manager/plasma6.nix
+    ../../modules/home-manager/sway.nix
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/neovim.nix

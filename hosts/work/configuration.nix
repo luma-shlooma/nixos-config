@@ -15,7 +15,7 @@
       ../../modules/nixos/time.nix
       ../../modules/nixos/network.nix
       ../../modules/nixos/bluetooth.nix
-      ../../modules/nixos/plasma6.nix
+      ../../modules/nixos/sway.nix
       ../../modules/nixos/sound.nix
       ../../modules/nixos/docker.nix
     ];
@@ -26,10 +26,12 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  #services.xserver.enable = true;
 
   # Enable CUPS to print documents.
   #services.printing.enable = true;
+
+  security.polkit.enable = true;
 
   # Home Manager
   home-manager = {
