@@ -46,6 +46,13 @@
 	        ./hosts/work/configuration.nix
 	      ];
       };
+      home = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs self;};
+        modules = [
+          ./hardware/pc.nix
+          ./hosts/home/configuration.nix
+        ];
+      };
     };
   };
 }

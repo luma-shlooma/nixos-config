@@ -39,7 +39,7 @@ in
     };
   };
 
-  # Wofi launch bar
+  # wofi launcher
   programs.wofi = {
     enable = true;
     #...

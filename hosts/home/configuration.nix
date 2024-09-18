@@ -4,22 +4,25 @@
 
 { pkgs, inputs, ... }:
 
+
 {
-  imports =
-    [
-      # Home Manager
-      inputs.home-manager.nixosModules.default
-      # NixOS modules
-      ../../modules/nixos/enable-flakes.nix
-      ../../modules/nixos/users.nix
-      ../../modules/nixos/time.nix
-      ../../modules/nixos/network.nix
-      ../../modules/nixos/bluetooth.nix
-      ../../modules/nixos/sway.nix
-      ../../modules/nixos/sound.nix
-      ../../modules/nixos/docker.nix
-      ../../modules/nixos/utilities.nix
-    ];
+  imports = [
+    # Home Manager
+    inputs.home-manager.nixosModules.default
+    # NixOS Modules
+    ../../modules/nixos/enable-flakes.nix
+    ../../modules/nixos/users.nix
+    ../../modules/nixos/network.nix
+    ../../modules/nixos/time.nix
+    ../../modules/nixos/hyprland.nix
+    ../../modules/nixos/sound.nix
+    ../../modules/nixos/bluetooth.nix
+    ../../modules/nixos/utilities.nix
+  ];
+
+  # Desktop portal
+  #xdg.portal.enable = true;
+  #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -31,8 +34,10 @@
 
   # Enable CUPS to print documents.
   #services.printing.enable = true;
-
   security.polkit.enable = true;
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # Home Manager
   home-manager = {
@@ -43,18 +48,11 @@
     };
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # pkgs
   environment.systemPackages = with pkgs; [
-    # Not spported by HM
-    obsidian
-    # Misc
-    ueberzugpp
+    # ...
   ];
-
+  
   # Fonts
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = ["JetBrainsMono"]; })
@@ -62,8 +60,27 @@
 
   # Nixos Host Variable 
   environment.sessionVariables = {
-    NIXOS_HOST = "work";
+    NIXOS_HOST = "home";
   };
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  # services.openssh.enable = true;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -71,6 +88,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
 }

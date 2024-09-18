@@ -1,6 +1,9 @@
 #! /usr/bin/env nix-shell
 #! nix-shell -i bash -p bash
 
+# exit on error
+set -e
+
 # const
 WORKING="working"
 

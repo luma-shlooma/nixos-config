@@ -24,12 +24,13 @@
     ];
   };
 
-  # Greeter
+  # tuigreet
   services.greetd = {
     enable = true;
+    restart = false;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd sway";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --user-menu --time --cmd sway";
         user = "haydn";
       };
     };
