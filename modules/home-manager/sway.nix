@@ -3,8 +3,6 @@
 let
   # Get custom palette
   palette = import ../../assets/colours.nix;
-  # Sway key (windows key)
-  mod = "Mod4";
   # Options for custom lock-screen visuals
   lock_options = "--screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color ${palette.dark.white} --key-hl-color ${palette.dark.white} --line-color ${palette.dark.black} --inside-color ${palette.grey}88 --text-color ${palette.white} --separator-color ${palette.dark.black} --ring-ver-color ${palette.dark.white} --inside-ver-color ${palette.grey}88 --text-ver-color ${palette.white}";
   lock_options_quick = "${lock_options} --grace 0 --fade-in 0";
@@ -41,13 +39,31 @@ in
     };
   };
 
+  # Wofi launch bar
+  programs.wofi = {
+    enable = true;
+    #...
+    settings = {
+      prompt = "Launch: ";
+      drun-print_command = true;
+    };
+  };
+
   # Sway
-  wayland.windowManager.sway = {
+  wayland.windowManager.sway = 
+  let
+    mod = "Mod4";
+    term = "alacritty";
+    need_wrap = "nvim|yazi";
+  in
+  {
     enable = true;
     config = {
       modifier = mod;
       defaultWorkspace = "workspace number 1";
-      terminal = "alacritty";
+      terminal = term;
+      # wofi menu with terminal wrapper
+      menu = "${pkgs.wofi}/bin/wofi -S drun | xargs bash -c 'case \"$0\" in ${need_wrap}) echo \"${term} -e $0\";; *) echo \"$0\";; esac' | ${pkgs.findutils}/bin/xargs swaymsg exec --";
       input = {
         # UK keyboard
         "*".xkb_layout = "gb";

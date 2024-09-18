@@ -9,6 +9,7 @@
     enable = true;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
+      dmenu
       # Screenshots
       grim
       slurp
