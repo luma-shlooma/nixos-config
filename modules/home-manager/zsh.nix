@@ -9,10 +9,14 @@
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       initExtra = ''
-       rebuild () {
-         [[ -z "$1" ]] && echo "Missing host (arg 1)" && return
-	       eval "sudo nixos-rebuild switch --flake /etc/nixos#$1"
-       }
+        function y() {
+	        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	        yazi "$@" --cwd-file="$tmp"
+	        if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		        builtin cd -- "$cwd"
+	        fi
+	        rm -f -- "$tmp"
+        }
       '';
       shellAliases = {
         ll = "ls -lah";

@@ -4,6 +4,9 @@
 # Trim all profiles
 # A little crude
 
-/etc/nixos/scripts/trim.sh 5 3 user
-/etc/nixos/scripts/trim.sh 5 3 home-manager
-sudo /etc/nixos/scripts/trim.sh 5 3 system
+gens=5
+days=2
+
+/etc/nixos/scripts/trim.sh $gens $days user
+/etc/nixos/scripts/trim.sh $gens $days home-manager
+sudo /etc/nixos/scripts/trim.sh $gens $days system
