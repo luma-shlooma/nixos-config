@@ -33,6 +33,10 @@
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --user-menu --time --cmd sway";
         user = "haydn";
       };
+      Unit.After = "multi-user.target";
+      Service.Type = "idle";
     };
+    # Fix systemd overwrite
+    vt = 2;
   };
 }
