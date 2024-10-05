@@ -22,7 +22,10 @@
       env = [
         "XCURSOR_SIZE, 24"
         "HYPRCURSOR_SIZE, 24"
+        # Dark theme
         "GTK_THEME, Adawaita-dark"
+        "QT_QPA_PLATFORMTHEME, qt5ct"
+        "QT_STYLE_OVERRIDE, kvantum-dark"
       ];
       input = {
         # UK keyboard
@@ -71,7 +74,20 @@
         "SUPER_SHIFT, Right, movewindow, r"
         "SUPER_SHIFT, Down, movewindow, d"        
       ];
-
+      
     };
   };
+
+  # Dark theme for apps
+  xdg.configFile."gtk-3.0/settings.ini".text = ''
+    [Settings]
+    gtk-application-prefer-dark-theme=1
+    gtk-theme-name=Adwaita-dark  # Use your preferred dark theme here
+  '';
+
+  xdg.configFile."gtk-4.0/settings.ini".text = ''
+    [Settings]
+    gtk-application-prefer-dark-theme=1
+    gtk-theme-name=Adwaita-dark  # Dark theme for GTK4 apps
+  '';
 }

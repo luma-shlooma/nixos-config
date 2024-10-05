@@ -7,6 +7,9 @@
     xwayland.enable = true;
   };
 
+  # Allow app query XDG
+  xdg.portal.enable = true;
+
   # extraPackages
   environment.systemPackages = with pkgs; [
     grim          # Screenshots

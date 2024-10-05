@@ -17,6 +17,8 @@
     ../../modules/nixos/hyprland.nix
     ../../modules/nixos/sound.nix
     ../../modules/nixos/bluetooth.nix
+    ../../modules/nixos/docker.nix
+    ../../modules/nixos/arduino.nix
     ../../modules/nixos/utilities.nix
   ];
 
