@@ -40,7 +40,11 @@
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --user-menu --time --cmd hyprland";
         user = "haydn";
       };
+    # Following 3 attributes to fix systemd clash
+      Unit.After = "multi-user.target";
+      Service.Type = "idle";
     };
+    vt = 2;
   };
  
 }
