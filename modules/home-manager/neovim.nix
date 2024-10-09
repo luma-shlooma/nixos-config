@@ -22,9 +22,9 @@
       lsp = {
         enable = true;
         servers = {
-          nil-ls.enable = true; # Nix
+          nil_ls.enable = true; # Nix
           bashls.enable = true; # Bash
-          rust-analyzer = {     # Rust
+          rust_analyzer = {     # Rust
             enable = true;
             installCargo = true;
             installRustc = true;

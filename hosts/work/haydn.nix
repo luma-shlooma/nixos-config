@@ -15,6 +15,7 @@
     ../../modules/home-manager/neovim.nix
     ../../modules/home-manager/yazi.nix
     ../../modules/home-manager/firefox.nix
+    ../../modules/home-manager/kanshi.nix
   ];
 
   # This value determines the Home Manager release that your configuration is
