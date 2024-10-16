@@ -18,7 +18,7 @@
       ../../modules/nixos/sway.nix
       ../../modules/nixos/sound.nix
       ../../modules/nixos/docker.nix
-      #../../modules/nixos/lxc.nix
+      ../../modules/nixos/lxc.nix
       #../../modules/nixos/k3s.nix
       ../../modules/nixos/arduino.nix
       ../../modules/nixos/utilities.nix
