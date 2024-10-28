@@ -12,7 +12,7 @@
     ../../modules/home-manager/sway.nix
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/alacritty.nix
-    ../../modules/home-manager/neovim.nix
+    ../../modules/home-manager/nixvim/default.nix
     ../../modules/home-manager/yazi.nix
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/kanshi.nix

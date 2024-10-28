@@ -10,6 +10,7 @@
     vim
     tmux
     htop
+    ripgrep
     # Fun
     cmatrix
   ];
