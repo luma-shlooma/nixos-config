@@ -13,6 +13,7 @@
       ../../modules/nixos/enable-flakes.nix
       ../../modules/nixos/users.nix
       ../../modules/nixos/time.nix
+      ../../modules/nixos/keyboard.nix
       ../../modules/nixos/network.nix
       ../../modules/nixos/bluetooth.nix
       ../../modules/nixos/sway.nix
