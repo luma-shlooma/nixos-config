@@ -11,6 +11,9 @@
     tmux
     htop
     ripgrep
+    # Networking
+    inetutils
+    nmap
     # Fun
     cmatrix
   ];

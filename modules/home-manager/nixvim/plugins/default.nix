@@ -3,7 +3,8 @@
     ./cmp.nix
     ./lsp.nix
     ./barbar.nix
-    ./autosave.nix
+    ./indent.nix
+    #./autosave.nix
     ./autopairs.nix
     ./telescope.nix
     ./treesitter.nix

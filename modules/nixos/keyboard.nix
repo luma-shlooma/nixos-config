@@ -2,7 +2,11 @@
 { ... }:
 
 {
-
+  # Import Kanata custom keyboard config
+  imports = [
+    ./kanata.nix
+  ];
+  
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "gb";
