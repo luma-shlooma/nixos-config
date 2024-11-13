@@ -16,6 +16,7 @@
     ../../modules/home-manager/yazi.nix
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/kanshi.nix
+    ../../modules/home-manager/toucher/default.nix
   ];
 
   # This value determines the Home Manager release that your configuration is

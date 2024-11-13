@@ -16,5 +16,6 @@
     nmap
     # Fun
     cmatrix
+    gtypist
   ];
 }

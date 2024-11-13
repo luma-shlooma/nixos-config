@@ -27,16 +27,16 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: 
-  let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-    #includeHardware = hostModule: {
-    #  imports = [
-    #    ./hardware/t14.nix # CHANGE TO VARIABLE SOMEHOW
-    #    hostModule
-    #  ];
-    #};
-  in
+  #let
+  #  system = "x86_64-linux";
+  #  pkgs = nixpkgs.legacyPackages.${system};
+  #  includeHardware = hostModule: {
+  #    imports = [
+  #      ./hardware/t14.nix # CHANGE TO VARIABLE SOMEHOW
+  #      hostModule
+  #    ];
+  #  };
+  #in
   {
     nixosConfigurations = {
       work = nixpkgs.lib.nixosSystem {
