@@ -54,7 +54,7 @@ in
   let
     mod = "Mod4";
     term = "alacritty";
-    need_wrap = "nvim|yazi";
+    need_wrap = "nvim|yazi|htop|vim";
   in
   {
     enable = true;

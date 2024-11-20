@@ -28,6 +28,7 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.sortKey = "z_nixos"; # Put nixos boots after windows
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable the X11 windowing system.
