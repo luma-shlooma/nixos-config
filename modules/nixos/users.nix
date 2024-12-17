@@ -5,7 +5,7 @@
   users.users.haydn = {
     isNormalUser = true;
     description = "Haydn";
-    extraGroups = [ "networkmanager" "wheel" "conf" "video" "audio" "docker" "lxc-user" ];
+    extraGroups = [ "networkmanager" "wheel" "conf" "video" "audio" "docker" "lxc-user" "wireshark" ];
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
   };

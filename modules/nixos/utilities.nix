@@ -6,6 +6,8 @@
     # Minimals
     kitty
     wget
+    file
+    gnumake
     git
     vim
     tmux

@@ -21,6 +21,7 @@
       ../../modules/nixos/docker.nix
       ../../modules/nixos/lxc.nix
       #../../modules/nixos/k3s.nix
+      ../../modules/nixos/wireshark.nix
       ../../modules/nixos/arduino.nix
       ../../modules/nixos/utilities.nix
     ];

@@ -9,6 +9,7 @@
   imports = [
     # Modules
     ../../modules/home-manager/common.nix
+    ../../modules/home-manager/unfree.nix
     ../../modules/home-manager/sway.nix
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/alacritty.nix

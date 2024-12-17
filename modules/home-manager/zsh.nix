@@ -20,6 +20,7 @@
       '';
       shellAliases = {
         ll = "ls -lah";
+        gdiff = "git --no-pager diff --compact-summary HEAD .";
       };
       oh-my-zsh = {
 	      enable = true;
