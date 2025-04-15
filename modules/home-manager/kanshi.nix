@@ -44,15 +44,13 @@ in
           laptop
           {
             criteria = benq.left;
-            position = "-1280,-1152"; # Top Left. 4/5 of -1600,-1440
+            position = "-1600,-1440";
             mode = benq.mode.fast;
-            scale = 1.25; # 5/4
           }
           {
             criteria = benq.right;
-            position = "768,-1152"; # Top Right. 4/5 of 960,-1440
+            position = "960,-1440";
             mode = benq.mode.fast;
-            scale = 1.25; # 5/4
           }
         ];
       }
