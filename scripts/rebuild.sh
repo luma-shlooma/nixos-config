@@ -1,6 +1,9 @@
 #! /usr/bin/env nix-shell
 #! nix-shell -i bash -p bash
 
+# Move to config
+cd /etc/nixos || exit
+
 # Const
 WORKING="working"
 

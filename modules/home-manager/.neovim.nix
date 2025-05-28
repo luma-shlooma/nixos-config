@@ -86,7 +86,7 @@
       cmp-path = {
         enable = true; # File paths
       };
-      
+
     };
   };
 

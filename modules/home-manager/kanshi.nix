@@ -11,11 +11,11 @@ let
     mode = "3440x1440@59.973Hz";
   };
   benq = {
-   left = "BNQ BenQ EW3270U VAR00152019";
-   right = "BNQ BenQ EW3270U VAR00148019";
+   left.criteria = "BNQ BenQ EW3270U VAR00152019";
+   right.criteria = "BNQ BenQ EW3270U VAR00148019";
    mode = {
     fast = "2560x1440@59.951Hz";
-    nice = "3840x2160@60.000Hz";
+    nice = "3840x2160@59.996Hz";
    };
   };
 in
@@ -23,14 +23,18 @@ in
   services.kanshi = {
     enable = true;
     settings = [
+
+      # Just the laptop
       {
         profile.name = "undocked";
         profile.outputs = [
           laptop
         ];
       }
+
+      # Laptop + widescreen
       {
-        profile.name = "docked";
+        profile.name = "widescreen";
         profile.outputs = [
           laptop
           (widescreen // {
@@ -38,44 +42,55 @@ in
           })
         ];
       }
+
+      # Orion 2 monitor setup
       {
         profile.name = "orion";
         profile.outputs = [
-          laptop
-          {
-            criteria = benq.left;
-            position = "-1600,-1440";
+          (laptop // {
+            position = "1600,1440";
+          })
+          (benq.left // {
             mode = benq.mode.fast;
-          }
-          {
-            criteria = benq.right;
-            position = "960,-1440";
+            position = "0,0";
+          })
+          (benq.right // {
             mode = benq.mode.fast;
-          }
+            position = "2560,0";
+          })
+        ];
+        # Execute swaymsg commands to re-order workspaces
+        profile.exec = [
+          "/etc/nixos/scripts/fix-orion-screens.sh"
+          # "swaymsg workspace 1; swaymsg move workspace to output \$(/etc/nixos/scripts/get-monitor.sh \"${laptop.criteria}\")"
+          # "swaymsg workspace 2; swaymsg move workspace to output \$(/etc/nixos/scripts/get-monitor.sh \"${benq.left.criteria}\")"
+          # "swaymsg workspace 3; swaymsg move workspace to output \$(/etc/nixos/scripts/get-monitor.sh \"${benq.right.criteria}\")"
         ];
       }
+
+      # Orion, just left monitor
       {
         profile.name = "orion-left";
         profile.outputs = [
           laptop
-          {
-            criteria = benq.left;
-            position = "-768,-1728"; # Above. 4/5 of -960,-2160
+          (benq.left // {
             mode = benq.mode.nice;
             scale = 1.25; # 5/4
-          }
+            position = "-768,-1728"; # Above. 4/5 of -960,-2160
+          })
         ];
       }
+
+      # Orion, just right monitor
       {
         profile.name = "orion-right";
         profile.outputs = [
           laptop
-          {
-            criteria = benq.right;
-            position = "-768,-1728"; # Above. 4/5 of -960,-2160
+          (benq.right // {
             mode = benq.mode.nice;
             scale = 1.25; # 5/4
-          }
+            position = "-768,-1728"; # Above. 4/5 of -960,-2160
+          })
         ];
       }
     ];

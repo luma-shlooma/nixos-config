@@ -4,6 +4,7 @@
     ./lsp.nix
     ./barbar.nix
     ./indent.nix
+    ./surround.nix
     #./autosave.nix
     ./autopairs.nix
     ./telescope.nix

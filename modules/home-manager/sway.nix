@@ -75,6 +75,11 @@ in
         };
       };
       keybindings = lib.mkOptionDefault {
+        # Move Workspaces
+        "${mod}+Control+Shift+Right" = "exec swaymsg move workspace to output right";
+        "${mod}+Control+Shift+Left"  = "exec swyamsg move workspace to output left";
+        "${mod}+Control+Shift+Down"  = "exec swaymsg move workspace to output down";
+        "${mod}+Control+Shift+Up"    = "exec swaymsg move workspace to output up";
         # Lockscreen
         "${mod}+grave" = "exec ${pkgs.swaylock-effects}/bin/swaylock ${lock_options_grace}";
         # Screenshots - All | Selection | Monitor
