@@ -23,6 +23,7 @@
       #../../modules/nixos/k3s.nix
       ../../modules/nixos/wireshark.nix
       ../../modules/nixos/arduino.nix
+      ../../modules/nixos/amazon-q.nix
       ../../modules/nixos/utilities.nix
     ];
 

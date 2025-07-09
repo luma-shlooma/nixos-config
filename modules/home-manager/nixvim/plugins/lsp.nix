@@ -21,9 +21,6 @@
         ];
         extraOptions.capabilities.textDocument.semanticTokens = {
           dynamicRegistration = false;
-          tokenTypes = {};
-          tokenModifiers = {};
-          formats = {};
         };
       };
     };

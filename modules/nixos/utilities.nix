@@ -13,11 +13,15 @@
     tmux
     htop
     ripgrep
+    tree
     # Networking
     inetutils
     nmap
+    # Hardware
+    usbutils
     # Fun
     cmatrix
     gtypist
+    gemini-cli
   ];
 }
