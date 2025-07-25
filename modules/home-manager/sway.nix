@@ -19,11 +19,14 @@ in
   services.swayidle = {
     enable = true;
     timeouts = [
-      { timeout = 300; command = "${pkgs.swaylock-effects}/bin/swaylock -f ${lock_options_grace}"; }
-      { timeout = 600; command = "${pkgs.systemd}/bin/systemctl suspend"; }
+      {
+        timeout = 900;
+        command = "${pkgs.systemd}/bin/systemctl suspend";
+        # resumeCommand = "${pkgs.swaylock-effects}/bin/swaylock -f ${lock_options_quick}";
+      }
     ];
     events = [
-      { event = "before-sleep"; command = "${pkgs.swaylock-effects}/bin/swaylock -f ${lock_options_quick}"; }
+      { event = "after-resume"; command = "${pkgs.swaylock-effects}/bin/swaylock -f ${lock_options_quick}"; }
     ];
   };
 
