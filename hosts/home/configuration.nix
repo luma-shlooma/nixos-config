@@ -27,8 +27,21 @@
   #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.sortKey = "z_nixos"; # Put nixos boots after windows
+  boot.loader.systemd-boot = {
+    enable = true;
+    editor = false;
+    windows = {
+      "11" = {
+        title = "Windows";
+        efiDeviceHandle = "HD1b";
+        sortKey = "a_windows"; # `a` to place first on list
+      };
+    };
+    configurationLimit = 16;
+    extraInstallCommands = ''
+      ${pkgs.gnused}/bin/sed -i 's/^default.*/default a_windows/' /boot/loader/loader.conf
+    '';
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable the X11 windowing system.
