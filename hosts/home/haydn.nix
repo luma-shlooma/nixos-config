@@ -9,10 +9,10 @@
   imports = [
     # Modules
     ../../modules/home-manager/common.nix
-    ../../modules/home-manager/hyprland.nix
+    ../../modules/home-manager/hyprland
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/alacritty.nix
-    ../../modules/home-manager/nixvim/default.nix
+    ../../modules/home-manager/nixvim
     ../../modules/home-manager/yazi.nix
     ../../modules/home-manager/firefox.nix
   ];

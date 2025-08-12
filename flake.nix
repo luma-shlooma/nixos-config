@@ -24,6 +24,8 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: 

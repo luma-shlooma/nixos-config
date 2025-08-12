@@ -14,6 +14,7 @@
       ../../modules/nixos/users.nix
       ../../modules/nixos/time.nix
       ../../modules/nixos/keyboard.nix
+      ../../modules/nixos/fonts.nix
       ../../modules/nixos/network.nix
       ../../modules/nixos/bluetooth.nix
       ../../modules/nixos/sway.nix
@@ -59,11 +60,6 @@
     obsidian
     # Misc
     ueberzugpp
-  ];
-
-  # Fonts
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
   ];
 
   # Nixos Host Variable 

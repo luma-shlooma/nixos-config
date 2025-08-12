@@ -14,6 +14,7 @@
     ../../modules/nixos/users.nix
     ../../modules/nixos/network.nix
     ../../modules/nixos/time.nix
+    ../../modules/nixos/fonts.nix
     ../../modules/nixos/hyprland.nix
     ../../modules/nixos/sound.nix
     ../../modules/nixos/bluetooth.nix
@@ -69,11 +70,6 @@
     # ...
   ];
   
-  # Fonts
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
-
   # Nixos Host Variable 
   environment.sessionVariables = {
     NIXOS_HOST = "home";

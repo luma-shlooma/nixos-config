@@ -11,14 +11,14 @@
     ../../modules/home-manager/common.nix
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/unfree.nix
-    ../../modules/home-manager/sway.nix
+    ../../modules/home-manager/sway
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/alacritty.nix
-    ../../modules/home-manager/nixvim/default.nix
+    ../../modules/home-manager/nixvim
     ../../modules/home-manager/yazi.nix
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/kanshi.nix
-    ../../modules/home-manager/toucher/default.nix
+    ../../modules/home-manager/toucher
   ];
 
   # This value determines the Home Manager release that your configuration is
