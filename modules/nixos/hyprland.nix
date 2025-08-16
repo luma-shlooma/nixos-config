@@ -15,10 +15,6 @@
     grim          # Screenshots
     slurp         # Screenshots (select)
     wl-clipboard  # Copy paste
-    mako          # Notifications
-    dunst         # Notif daemon
-    libnotify     # +
-    networkmanagerapplet # Waybar nm applet
   ];
 
   environment.sessionVariables = {
@@ -34,17 +30,19 @@
   # tuigreet
   services.greetd = {
     enable = true;
-    restart = false;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --user-menu --time --cmd hyprland";
+        command = "${pkgs.tuigreet}/bin/tuigreet --user-menu --time --cmd hyprland";
         user = "haydn";
       };
-    # Following 3 attributes to fix systemd clash
+      # Following attributes to fix systemd clash
       Unit.After = "multi-user.target";
-      Service.Type = "idle";
+      Service = {
+        Type = "idle";
+        ExecStartPre = "kill -SIGRTMIN+21 1";
+        ExecStopPost = "kill -SIGRTMIN+20 1";
+      };
     };
-    vt = 2;
   };
  
 }

@@ -10,8 +10,16 @@
         "SUPER, f, fullscreen, 0"
         "SUPER_SHIFT, q, killactive"
         "SUPER_SHIFT, e, exit"
+        # Hyprshell launcher
+        # Binds SUPER + D to the required SUPER + TAB binding from hyprshell using ydotool
+        # Configuration will therefore have to import ydotool.nix
+        # Wev identifies SUPER + TAB as codes 23 + 133, but ydotool seems to want different codes
+        # BROKEN, cannot get this to work, gunna stick with familiar keybind
+        # "SUPER, d, exec, ydotool key 125:1 15:1 15:0 125:0"
+        # Alternative launcher
         "SUPER, d, exec, rofi -show drun -show-icons"
-        "SUPER, code:49, exec, hyprlock" # ` key
+        # Lockscreen on SUPER + `
+        "SUPER, code:49, exec, hyprlock"
         # Special - think scratchpad
         "SUPER_SHIFT, code:20, movetoworkspacesilent, special" # - key
         "SUPER, code:20, togglespecialworkspace"

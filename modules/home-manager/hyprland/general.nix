@@ -7,6 +7,12 @@
       input = {
         kb_layout = "gb";
       };
+      device = [
+        {
+          name = "ydotoold-virtual-device";
+          kb_layout = "gb";
+        }
+      ];
       # 'General' settings
       general = {
         layout = "dwindle";
@@ -30,8 +36,6 @@
         new_window_takes_over_fullscreen = 2;
       };
       binds = {
-        # Move to current ws = move to previous
-        workspace_back_and_forth = true;
         hide_special_on_workspace_change = true;
       };
       # X11 compatability

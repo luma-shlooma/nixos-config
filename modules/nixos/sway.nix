@@ -27,7 +27,6 @@
   # tuigreet
   services.greetd = {
     enable = true;
-    restart = false;
     settings = {
       default_session = {
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --user-menu --time --cmd sway";
@@ -36,7 +35,5 @@
       Unit.After = "multi-user.target";
       Service.Type = "idle";
     };
-    # Fix systemd overwrite
-    vt = 2;
   };
 }

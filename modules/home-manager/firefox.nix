@@ -1,4 +1,4 @@
-{ config, inputs, ... }:
+{ inputs, ... }:
 
 {
   programs.firefox = {
@@ -13,6 +13,9 @@
         cookie-autodelete
         i-dont-care-about-cookies
         ublock-origin
+        darkreader
+        return-youtube-dislikes
+        sponsorblock
       ];
       # Bookmarks
       bookmarks = {
@@ -25,10 +28,12 @@
               {
                 name = "Packages";
                 url = "https://search.nixos.org/packages";
+                keyword = "packages";
               }
               {
                 name = "Home Manager";
                 url = "https://home-manager-options.extranix.com/release=master";
+                keyword = "home manager";
               }
             ];
           }
@@ -47,12 +52,13 @@
             ];
           }
           {
-            name = "Other";
+            name = "Media";
             toolbar = true;
             bookmarks = [
               {
-                name = "ChatGPT";
-                url = "https://chatgpt.com/";
+                name = "Youtube";
+                url = "https://youtube.com";
+                keyword = "youtube";
               }
             ];
           }

@@ -3,7 +3,7 @@
 {
   imports = [
     # Nixvim
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
     # Settings
     ./options.nix
     ./autocommands.nix

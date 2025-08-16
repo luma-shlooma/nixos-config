@@ -20,11 +20,11 @@ in
 
 
         modules-left = [
+          "privacy"
           "hyprland/workspaces"
         ];
         modules-center = [
           "clock"
-          "privacy"
         ];
         modules-right = [
           "pulseaudio"
@@ -34,6 +34,22 @@ in
         ];
 
         # Module config
+
+        "privacy" = {
+          icon-spacing = 4;
+          icon-size = 16;
+          transition-duration = 250;
+          modules = [
+            {
+              type = "screenshare";
+              tooltip = false;
+            }
+            {
+              type = "audio-in";
+              tooltip = false;
+            }
+          ];
+        };
 
         "hyprland/workspaces" = {
           active-only = false;
@@ -47,22 +63,6 @@ in
 
         "clock" = {
           tooltip = false;
-        };
-
-        "privacy" = {
-          icon-spacing = 4;
-          icon-size = 20;
-          transition-duration = 250;
-          modules = [
-            {
-              type = "screenshare";
-              tooltip = false;
-            }
-            {
-              type = "audio-in";
-              tooltip = false;
-            }
-          ];
         };
 
         "pulseaudio" = {
@@ -79,6 +79,7 @@ in
           scroll-step = "2.0";
           max-volume = 100;
           on-click = cli-popup "pulsemixer";
+          on-click-right = cli-popup "bluetuith";
         };
 
         "memory" = {
