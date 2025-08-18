@@ -35,6 +35,11 @@ in
         first_launch_animation = true;
         workspace_wraparound = false;
       };
+      # Generally, these make the default animations faster
+      animation = [
+        "windows, 1, 2, default"
+        "workspaces, 1, 2, default"
+      ];
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;

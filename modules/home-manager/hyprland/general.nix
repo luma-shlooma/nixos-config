@@ -7,12 +7,6 @@
       input = {
         kb_layout = "gb";
       };
-      device = [
-        {
-          name = "ydotoold-virtual-device";
-          kb_layout = "gb";
-        }
-      ];
       # 'General' settings
       general = {
         layout = "dwindle";

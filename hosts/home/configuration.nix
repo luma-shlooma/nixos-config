@@ -18,10 +18,14 @@
     ../../modules/nixos/hyprland.nix
     ../../modules/nixos/sound.nix
     ../../modules/nixos/bluetooth.nix
+    ../../modules/nixos/ddcutil.nix
     ../../modules/nixos/docker.nix
     ../../modules/nixos/arduino.nix
     ../../modules/nixos/discord.nix
     ../../modules/nixos/spotify.nix
+    ../../modules/nixos/stremio.nix
+    ../../modules/nixos/steam.nix
+    ../../modules/nixos/minecraft.nix
     ../../modules/nixos/utilities.nix
   ];
 
