@@ -27,22 +27,11 @@
   };
 
 
-  # tuigreet
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --user-menu --time --cmd hyprland";
-        user = "haydn";
-      };
-      # Following attributes to fix systemd clash
-      Unit.After = "multi-user.target";
-      Service = {
-        Type = "idle";
-        ExecStartPre = "kill -SIGRTMIN+21 1";
-        ExecStopPost = "kill -SIGRTMIN+20 1";
-      };
-    };
-  };
- 
+  # Launch through tuigreet
+  imports = [
+    (import ./tuigreet.nix {
+      inherit pkgs;
+      successfulLoginCommand = "hyprland";
+    })
+  ];
 }

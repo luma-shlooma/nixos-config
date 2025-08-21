@@ -12,7 +12,6 @@ in
     terminal = "${pkgs.alacritty}/bin/alacritty";
 
     # Theming
-    font = "JetBrains Mono";
     location = "center";
     theme = 
     let
@@ -20,7 +19,7 @@ in
     in {
       # Theme adapted from: https://github.com/newmanls/rofi-themes-collection/blob/master/themes/squared-nord.rasi
       "*" = {
-        font = "FiraCode Nerd Font Medium 12";
+        font = "JetBrainsMono Medium 12";
         bg0 = mkLiteral "#${palette.black}";
         bg1 = mkLiteral "#${palette.light.black}";
         fg0 = mkLiteral "#${palette.white}";

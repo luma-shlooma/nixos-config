@@ -7,6 +7,7 @@
     # Settings
     ./options.nix
     ./autocommands.nix
+    ./colorscheme.nix
     # Plugins
     ./plugins/default.nix
   ];

@@ -134,7 +134,7 @@ in
           "spotify"
         ];
         showActionsOnHover = true;
-        timeout = 5000;
+        timeout = 8000;
         autoDismiss = true;
       };
       # Theming for hyprpanel
@@ -465,7 +465,7 @@ in
           close_button.label = "#${palette.black}";
           enableShadow = false;
           label = theme.text;
-          text = theme.subtext;
+          text = theme.text;
           time = theme.subtext;
         };
         # Appearance of the volume bar that appears when volume is changed

@@ -13,7 +13,31 @@
 
   # nmtui uses newt which requires the following for colour
   environment.sessionVariables = {
-    NEWT_COLORS = "root=white,black:border=white,black:window=white,black:shadow=black,black:title=green,black:button=white,black:actbutton=black,green:checkbox=white,black:actcheckbox=black,green:entry=white,black:label=white,black:listbox=white,black:actlistbox=black,white:helpline=white,black:roottext=gray,black";
+    NEWT_COLORS = ''
+      root=lightgray,black
+      border=lightgray,black
+      window=lightgray,black
+      shadow=black,black
+      title=green,black
+      button=lightgray,black
+      actbutton=black,green
+      checkbox=lightgray,black
+      actcheckbox=black,green
+      entry=lightgray,black
+      label=lightgray,black
+      listbox=lightgray,black
+      actlistbox=lightgray,black
+      textbox=gray,lightgray
+      acttextbox=lightgray,gray
+      helpline=lightgray,black
+      roottext=gray,black
+      emptyscale=,black
+      fullscale=,black
+      disentry=grey,black
+      compactbutton=black,yellow
+      sellistbox=lightgray,black
+      actsellistbox=black,lightgray
+    '';
   };
 
   # Enable the OpenSSH daemon.

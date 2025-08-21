@@ -24,16 +24,10 @@
     ];
   };
 
-  # tuigreet
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --user-menu --time --cmd sway";
-        user = "haydn";
-      };
-      Unit.After = "multi-user.target";
-      Service.Type = "idle";
-    };
-  };
+  imports = [
+    (import ./tuigreet.nix {
+      inherit pkgs;
+      successfulLoginCommand = "sway";
+    })
+  ];
 }
