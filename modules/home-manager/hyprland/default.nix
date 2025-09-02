@@ -16,6 +16,7 @@
     # Alternative to hyprpanel
     # ./waybar.nix
     # ./dunst.nix
+    ./screenshot.nix
   ];
 
   wayland.windowManager.hyprland.enable = true;
