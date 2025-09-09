@@ -9,6 +9,7 @@ in
   # rofi launcher
   programs.rofi = {
     enable = true;
+    package = pkgs.rofi-wayland;
     terminal = "${pkgs.alacritty}/bin/alacritty";
 
     # Theming

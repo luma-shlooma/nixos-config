@@ -72,4 +72,9 @@ in
       ];
     };
   };
+
+  wayland.windowManager.hyprland.settings.bind = [
+    # Lockscreen on SUPER + `
+    "SUPER, code:49, exec, hyprlock"
+  ];
 }

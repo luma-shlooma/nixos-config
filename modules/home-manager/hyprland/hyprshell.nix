@@ -72,4 +72,13 @@
 
     '';
   };
+
+  wayland.windowManager.hyprland.settings.bind = [
+    # Hyprshell launcher
+    # Binds SUPER + D to the required SUPER + TAB binding from hyprshell using ydotool
+    # Configuration will therefore have to import ydotool.nix
+    # Wev identifies SUPER + TAB as codes 23 + 133, but ydotool seems to want different codes
+    # BROKEN, cannot get this to work, gunna stick with familiar keybind
+    "SUPER, d, exec, ydotool key 125:1 15:1 15:0 125:0"
+  ];
 }
