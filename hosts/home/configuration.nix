@@ -42,7 +42,7 @@
       "11" = {
         title = "Windows";
         efiDeviceHandle = "HD1b";
-        sortKey = "a_windows"; # `a` to place first on list
+        sortKey = "z_windows"; # `z` to place last on list
       };
     };
     configurationLimit = 16;
