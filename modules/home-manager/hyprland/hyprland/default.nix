@@ -4,7 +4,10 @@
 {
   imports = [
     # Configuration
-    ./configuration.nix
+    ./general.nix
+    ./bindings.nix
+    ./monitors.nix
+    ./screenshot.nix
     # Available themes
     ./theme/alpha.nix
   ];

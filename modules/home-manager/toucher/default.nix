@@ -1,8 +1,14 @@
-{ config, ... }:
+args @ { config, ... }:
 
 {
-  # Setup toucher on shell
+  # UNFINSIHED
+  assertions = 
+  let
+    assertLib = import ../../../lib/assertions ({module = "toucher";}//args);
+  in
+  [ assertLib.unfinished ];
 
+  # Setup toucher on shell
   programs.zsh = {
     sessionVariables = {
       TOUCHER_TEMPLATES = "${config.home.homeDirectory}/.config/toucher/";

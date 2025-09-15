@@ -1,7 +1,11 @@
+# Themed Program
 { ... }:
 
 {
   imports = [
-    ./sway.nix
+    # Configuration
+    ./configuration.nix
+    # Available themes
+    ./theme/alpha.nix
   ];
 }

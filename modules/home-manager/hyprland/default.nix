@@ -1,23 +1,20 @@
 { ... }:
 
 {
-  imports = [
-    # 
-    ./general.nix
-    ./bindings.nix
-    ./cursor.nix
-    ./theme.nix
-    ./monitors.nix
-    # ./hyprshell.nix
-    # Alternative to hyprshell
-    ./rofi.nix
-    ./hyprlock.nix
-    ./hyprpanel.nix
-    # Alternative to hyprpanel
-    # ./waybar.nix
-    # ./dunst.nix
-    ./screenshot.nix
-  ];
+  # A prefered profile of hyprland-centric configuration
+  imports = builtins.map import [
+    # Basic hyprland
+    ./hyprland
 
-  wayland.windowManager.hyprland.enable = true;
+    # Launcher
+    ./rofi
+    # ./hyprshell
+
+    # Lockscreen
+    ./hyprlock
+
+    # Status panel
+    ./hyprpanel
+    # ./waybar
+  ];
 }

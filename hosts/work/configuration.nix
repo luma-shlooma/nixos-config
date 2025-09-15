@@ -1,32 +1,39 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ pkgs, inputs, ... }:
+args @ { host, pkgs, inputs, ... }:
 
 {
-  imports =
-    [
-      # Home Manager
-      inputs.home-manager.nixosModules.default
-      # NixOS modules
-      ../../modules/nixos/enable-flakes.nix
-      ../../modules/nixos/users.nix
-      ../../modules/nixos/time.nix
-      ../../modules/nixos/keyboard.nix
-      ../../modules/nixos/fonts.nix
-      ../../modules/nixos/network.nix
-      ../../modules/nixos/bluetooth.nix
-      ../../modules/nixos/sway.nix
-      ../../modules/nixos/sound.nix
-      ../../modules/nixos/docker.nix
-      ../../modules/nixos/lxc.nix
-      #../../modules/nixos/k3s.nix
-      ../../modules/nixos/wireshark.nix
-      ../../modules/nixos/arduino.nix
-      ../../modules/nixos/amazon-q.nix
-      ../../modules/nixos/utilities.nix
-    ];
+  # Make sure this is being used with the "work" host
+  assertions =
+  let
+    assertLib = import ../../lib/assertions ({module = "work/configuration";}//args);
+  in
+  [ (assertLib.host "work") ];
+
+  imports = [
+    # Hardware
+    ../../hardware/t14.nix
+    # Home Manager
+    inputs.home-manager.nixosModules.default
+    # NixOS modules
+    ../../modules/nixos/enable-flakes.nix
+    ../../modules/nixos/users.nix
+    ../../modules/nixos/time.nix
+    ../../modules/nixos/keyboard.nix
+    ../../modules/nixos/fonts.nix
+    ../../modules/nixos/network.nix
+    ../../modules/nixos/bluetooth.nix
+    ../../modules/nixos/sway.nix
+    ../../modules/nixos/sound.nix
+    ../../modules/nixos/docker.nix
+    ../../modules/nixos/lxc.nix
+    #../../modules/nixos/k3s.nix
+    ../../modules/nixos/wireshark.nix
+    ../../modules/nixos/arduino.nix
+    ../../modules/nixos/amazon-q.nix
+    ../../modules/nixos/utilities.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -44,7 +51,7 @@
   # Home Manager
   home-manager = {
     backupFileExtension = "backup";
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit host inputs; };
     users = {
       "haydn" = import ./haydn.nix;
     };

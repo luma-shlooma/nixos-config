@@ -1,24 +1,33 @@
-{ ... }:
+args @ { ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
+  # Make sure this is being used with the "work" host
+  assertions =
+  let
+    assertLib = import ../../lib/assertions ({module = "work/haydn";}//args);
+  in
+  [ (assertLib.host "work") ];
+
   home.username = "haydn";
   home.homeDirectory = "/home/haydn";
 
-  imports = [
-    # Modules
+  imports = builtins.map import [
+    # Program Modules
     ../../modules/home-manager/common.nix
-    ../../modules/home-manager/bash.nix
-    ../../modules/home-manager/unfree.nix
+    ../../modules/home-manager/bash
     ../../modules/home-manager/sway
-    ../../modules/home-manager/zsh.nix
-    ../../modules/home-manager/alacritty.nix
+    ../../modules/home-manager/zsh
+    ../../modules/home-manager/alacritty
     ../../modules/home-manager/nixvim
-    ../../modules/home-manager/yazi.nix
-    ../../modules/home-manager/firefox.nix
-    ../../modules/home-manager/kanshi.nix
-    ../../modules/home-manager/toucher
+    ../../modules/home-manager/yazi
+    ../../modules/home-manager/firefox
+    ../../modules/home-manager/kanshi
+    # ../../modules/home-manager/toucher
+    # Option Modules
+    ../../options/theme/name.nix    
+    ../../options/theme/colours.nix
+    # Set Theme
+    ../../options/theme/presets/alpha.nix
   ];
 
   # This value determines the Home Manager release that your configuration is
@@ -29,62 +38,6 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
-
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/haydn/etc/profile.d/hm-session-vars.sh
-  #
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

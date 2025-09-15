@@ -10,6 +10,10 @@ in
     enable = true;
     restart = true;
     settings = {
+      initial_session = {
+        command = "${successfulLoginCommand}";
+        user = "haydn";
+      };
       default_session = {
         command = "${pkgs.tuigreet}/bin/tuigreet --user-menu --time --asterisks --cmd ${successfulLoginCommand} ${theming}";
         user = "haydn";

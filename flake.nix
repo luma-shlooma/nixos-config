@@ -42,16 +42,14 @@
   {
     nixosConfigurations = {
       work = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs self;};
+        specialArgs = { host = "work"; inherit inputs self; };
         modules = [
-          ./hardware/t14.nix
           ./hosts/work/configuration.nix
         ];
       };
       home = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs self;};
+        specialArgs = { host = "home"; inherit inputs self; };
         modules = [
-          ./hardware/pc.nix
           ./hosts/home/configuration.nix
         ];
       };

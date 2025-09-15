@@ -1,12 +1,19 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ pkgs, inputs, ... }:
-
+args @ { host, pkgs, inputs, ... }:
 
 {
+  # Make sure this is being used with the "home" host
+  assertions = 
+  let
+    assertLib = import ../../lib/assertions ({module = "home/configuration";}//args);
+  in
+  [ (assertLib.host "home") ];
+
   imports = [
+    # Hardware
+    ../../hardware/pc.nix
     # Home Manager
     inputs.home-manager.nixosModules.default
     # NixOS Modules
@@ -66,7 +73,7 @@
   # Home Manager
   home-manager = {
     backupFileExtension = "backup";
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit host inputs; };
     users = {
       "haydn" = import ./haydn.nix;
     };
@@ -85,5 +92,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }

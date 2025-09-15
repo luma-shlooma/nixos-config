@@ -1,3 +1,11 @@
+
+NOTE:
+
+My understanding of nix has improved a lot since, this currently SUCKS.
+If I every find myself actually wanting to use this, it needs to be completely rewritten.
+
+---
+
 This is a small script to "touch" new files with configuration for default data.  
 It consists of a shell script, a shell alias for the script, and a shell environment variable pointing to the local config directory.  
 The config directory should be at ~/.config/toucher.  
