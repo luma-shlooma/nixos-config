@@ -6,6 +6,10 @@
       nil_ls.enable = true;    # Nix
       bashls.enable = true;    # Bash
       clangd.enable = true;    # C++
+      hls = {                  # Haskell
+        enable = true;
+        installGhc = true;
+      };
       rust_analyzer = {        # Rust
         enable = true;
         installCargo = true;
