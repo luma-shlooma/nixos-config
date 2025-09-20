@@ -8,7 +8,7 @@ in
 lib.mkIf (config.theme.name == "alpha")
 {
   # Set swaylock theme option
-  modules.sway.swaylock.options = "--screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color ${colours.dark-white} --key-hl-color ${colours.dark-white} --line-color ${colours.dark-black} --inside-color ${colours.grey}88 --text-color ${colours.white} --separator-color ${colours.dark-black} --ring-ver-color ${colours.dark-white} --inside-ver-color ${colours.grey}88 --text-ver-color ${colours.white}";
+  theme.modules.swaylock.options = "--screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color ${colours.dark-white} --key-hl-color ${colours.dark-white} --line-color ${colours.dark-black} --inside-color ${colours.grey}88 --text-color ${colours.white} --separator-color ${colours.dark-black} --ring-ver-color ${colours.dark-white} --inside-ver-color ${colours.grey}88 --text-ver-color ${colours.white}";
 
   # Status bar colours
   programs.i3status = {

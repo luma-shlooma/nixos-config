@@ -2,7 +2,7 @@
 
 let
   # Options for custom lock-screen visuals
-  lock_options = config.modules.sway.swaylock.options;
+  lock_options = config.theme.modules.swaylock.options;
   lock_options_quick = "${lock_options} --grace 0 --fade-in 0";
   lock_options_grace = "${lock_options} --grace 5 --fade-in 5";
 in
