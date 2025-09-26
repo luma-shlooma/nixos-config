@@ -30,7 +30,8 @@ args @ { host, pkgs, inputs, ... }:
     ../../modules/nixos/arduino.nix
     ../../modules/nixos/discord.nix
     ../../modules/nixos/spotify.nix
-    ../../modules/nixos/stremio.nix
+    # ../../modules/nixos/stremio.nix
+    # ../../modules/nixos/stremio-ng.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/minecraft.nix
     ../../modules/nixos/vintage-story.nix

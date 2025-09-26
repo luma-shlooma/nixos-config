@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   wayland.windowManager.hyprland = {
@@ -10,6 +10,7 @@
         "SUPER, f, fullscreen, 0"
         "SUPER_SHIFT, q, killactive"
         "SUPER_SHIFT, e, exit"
+        "SUPER, d, exec, ${config.apps.launcher.launch}"
         # Special - think scratchpad
         "SUPER_SHIFT, code:20, movetoworkspacesilent, special" # - key
         "SUPER, code:20, togglespecialworkspace"
@@ -59,8 +60,8 @@
       bindc = [
         # Toggle float  - SUPER + RMB
         "SUPER, mouse:273, togglefloating"
-        # Kill window   - SUPER + MMB
-        "SUPER, mouse:274, killactive"
+        # Pin window   - SUPER + MMB
+        "SUPER, mouse:274, pin"
       ];
     };
   };

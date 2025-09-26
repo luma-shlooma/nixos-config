@@ -8,6 +8,7 @@
 
     # Launcher
     ./rofi
+    # ./walker
     # ./hyprshell
 
     # Lockscreen

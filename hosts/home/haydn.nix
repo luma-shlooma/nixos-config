@@ -22,8 +22,8 @@ args @ { ... }:
     ../../modules/home-manager/yazi
     ../../modules/home-manager/firefox
     # Option Modules
-    ../../options/theme/name.nix    
-    ../../options/theme/colours.nix
+    ../../options/theme/default.nix
+    ../../options/apps/default.nix
     # Set Theme
     ../../options/theme/presets/alpha.nix
   ];

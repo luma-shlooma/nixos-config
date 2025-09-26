@@ -24,8 +24,8 @@ args @ { ... }:
     ../../modules/home-manager/kanshi
     # ../../modules/home-manager/toucher
     # Option Modules
-    ../../options/theme/name.nix    
-    ../../options/theme/colours.nix
+    ../../options/theme/default.nix
+    ../../options/apps/default.nix
     # Set Theme
     ../../options/theme/presets/alpha.nix
   ];

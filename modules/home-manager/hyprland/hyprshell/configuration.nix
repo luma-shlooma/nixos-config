@@ -15,6 +15,8 @@ args @ { ... }:
     (assertLib.enabled "wayland.windowManager.hyprland.enable")
   ];
 
+  # TODO: If every picked up again, use config launcher options
+
   services.hyprshell = {
     enable = true;
 

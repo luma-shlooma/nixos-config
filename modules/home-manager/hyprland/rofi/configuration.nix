@@ -11,7 +11,7 @@ args @ { pkgs, ... }:
   # rofi launcher
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    package = pkgs.rofi;
     terminal = "${pkgs.alacritty}/bin/alacritty";
   };
   
@@ -19,10 +19,6 @@ args @ { pkgs, ... }:
     # Force focus on it - stray mouse movements wont unfocus it
     "windowrule" = [
       "stayfocused, class:(?i)^rofi$"
-    ];
-    # Set keybind
-    bind = [
-      "SUPER, d, exec, rofi -show drun -show-icons"
     ];
   };
 }

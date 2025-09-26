@@ -32,7 +32,6 @@ lib.mkIf (config.theme.name == "alpha")
       };
       animations = {
         enabled = true;
-        first_launch_animation = true;
         workspace_wraparound = false;
       };
       # Generally, these make the default animations faster

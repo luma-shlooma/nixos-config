@@ -1,4 +1,4 @@
-args @ { pkgs, ... }:
+args @ { config, pkgs, ... }:
 
 let
   # Monitor logic
@@ -18,36 +18,32 @@ let
   enable  = {id, mode, pos}: "${id}, ${mode}, ${pos}, 1";
   disable = {id, mode, pos}: "${id}, disable";
   mirror  = monitor: mirror_id: "${(enable monitor)}, mirror, ${mirror_id}";
+  # Options available to select from
+  op_monitor = "Monitor";
+  op_tv      = "TV";
+  op_extend  = "Extend";
+  op_mirror  = "Mirror";
+  options = "${op_monitor}\n${op_tv}\n${op_extend}\n${op_mirror}";
   # Script to make and action selection
   reconfigure = pkgs.writeShellScriptBin "monitors" ''
     #!/usr/bin/env bash
     set -e
 
-    # Options available
-    monitor="Monitor"
-    tv="TV"
-    extend="Extend"
-    mirror="Mirror"
-    OPTIONS="$monitor
-    $tv
-    $extend
-    $mirror"
-
-    CHOSEN=$(echo -e "$OPTIONS" | rofi -dmenu -lines 4 -p "Select Monitor Configuration")
+    CHOSEN=$(${config.apps.launcher.dmenu options "Select Monitor Configuration"})
     case "$CHOSEN" in
-      "$monitor")
+      "${op_monitor}")
         hyprctl -r keyword monitor "${(enable monitors.main)}"
         hyprctl -r keyword monitor "${(disable monitors.tv)}"
         ;;
-      "$tv")
+      "${op_tv}")
         hyprctl -r keyword monitor "${(disable monitors.main)}"
         hyprctl -r keyword monitor "${(enable monitors.tv)}"
         ;;
-      "$extend")
+      "${op_extend}")
         hyprctl -r keyword monitor "${(enable monitors.main)}"
         hyprctl -r keyword monitor "${(enable monitors.tv)}"
         ;;
-      "$mirror")
+      "${op_mirror}")
         hyprctl -r keyword monitor "${(enable monitors.main)}"
         hyprctl -r keyword monitor "${(mirror monitors.tv monitors.main.id)}"
         ;;
