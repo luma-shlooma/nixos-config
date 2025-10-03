@@ -52,16 +52,24 @@ lib.mkIf (config.theme.name == "alpha")
   ###
 
   ### HAVE APPS USE DARK THEME / MODE
-  ### Note: This only partially works, needs fixing
   # GTK settings
   gtk = {
     enable = true;
+    colorScheme = "dark";
     theme = {
       name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+      # name = "Orchis";
+      # package = (pkgs.orchis-theme.override { tweaks = ["black"]; });
     };
   };
-  # Freedesktop
   dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      "color-scheme" = "prefer-dark";
+      "gtk-theme" = "Adwaita-dark";
+      # "gtk-theme" = "Orchis";
+    };
+    # Freedesktop
     "org/freedesktop/appearance" = {
       "color-scheme" = "prefer-dark";
     };
@@ -69,14 +77,9 @@ lib.mkIf (config.theme.name == "alpha")
   # QT
   qt = {
     enable = true;
-    platformTheme.name = "gtk";
     style = {
-      name = "kvantum";
-      package = pkgs.pkgs.libsForQt5.qtstyleplugin-kvantum;
+      name = "adwaita-dark";
     };
   };
-  home.packages = [
-    pkgs.libsForQt5.qtstyleplugin-kvantum
-  ];
   ###
 }

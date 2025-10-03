@@ -21,6 +21,10 @@ git --no-pager diff main..HEAD --compact-summary
 echo "Enter to proceed, CTRL+C to cancel"
 read
 
+# Need the root nixos dir to be writable
+echo "Requires root to add write perms to /etc/nixos"
+sudo chmod g+w /etc/nixos
+
 # Function editor
 auto_squash() {
   # Reword and rename

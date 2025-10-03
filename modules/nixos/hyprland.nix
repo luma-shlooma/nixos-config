@@ -12,8 +12,6 @@
 
   # extraPackages
   environment.systemPackages = with pkgs; [
-    grim          # Screenshots
-    slurp         # Screenshots (select)
     hyprpicker    # Colour picker
     wl-clipboard  # Copy paste
     libnotify     # Send notifs

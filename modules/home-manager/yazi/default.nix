@@ -42,6 +42,7 @@ in
       enable = true;
       defaultApplications = {
         "inode/directory" = [
+          "thunar.desktop"  # Prefer thunar if installed
           "yazi-wrapper.desktop"
           "yazi.desktop"
         ];

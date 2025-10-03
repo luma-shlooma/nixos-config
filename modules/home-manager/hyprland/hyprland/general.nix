@@ -15,11 +15,11 @@
         extend_border_grab_area = 15;
         hover_icon_on_border = true;
         allow_tearing = false;
-        snap = {
-          enabled = true;
-          window_gap = 32;
-          monitor_gap = 64;
-        };
+        # snap = {
+        #   enabled = true;
+        #   window_gap = 32;
+        #   monitor_gap = 64;
+        # };
       };
       misc = {
         # Adaptibe sync on games

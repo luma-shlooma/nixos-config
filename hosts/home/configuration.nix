@@ -22,11 +22,14 @@ args @ { host, pkgs, inputs, ... }:
     ../../modules/nixos/network.nix
     ../../modules/nixos/time.nix
     ../../modules/nixos/fonts.nix
+    ../../modules/nixos/thunar.nix
     ../../modules/nixos/hyprland.nix
     ../../modules/nixos/sound.nix
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/ddcutil.nix
     # ../../modules/nixos/docker.nix
+    ../../modules/nixos/pinta.nix
+    ../../modules/nixos/vlc.nix
     ../../modules/nixos/arduino.nix
     ../../modules/nixos/discord.nix
     ../../modules/nixos/spotify.nix
