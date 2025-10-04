@@ -13,4 +13,10 @@
   home.sessionVariables = {
     NIXPKGS_ALLOW_UNFREE = 1;
   };
+
+  # Enable xdg
+  xdg = {
+    enable = true;
+    mimeApps.enable = true;
+  };
 }

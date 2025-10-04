@@ -28,7 +28,6 @@ in
 
   # Create xdg entry
   xdg = {
-    enable = true;
     desktopEntries."yazi-wrapper" = {
       name = "Yazi File Manager (wrapped)";
       exec = "launch-yazi %U";
@@ -39,7 +38,6 @@ in
     };
     # Set as default
     mimeApps = {
-      enable = true;
       defaultApplications = {
         "inode/directory" = [
           "thunar.desktop"  # Prefer thunar if installed
