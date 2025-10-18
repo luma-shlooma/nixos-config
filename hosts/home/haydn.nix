@@ -21,6 +21,7 @@ args @ { ... }:
     ../../modules/home-manager/nixvim
     ../../modules/home-manager/yazi
     ../../modules/home-manager/firefox
+    ../../modules/home-manager/homeassistant
     # Option Modules
     ../../options/theme/default.nix
     ../../options/apps/default.nix

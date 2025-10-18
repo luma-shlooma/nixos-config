@@ -9,6 +9,7 @@
     ./rules.nix
     ./monitors.nix
     ./screenshot.nix
+    ./hass.nix
     # Available themes
     ./theme/alpha.nix
   ];
