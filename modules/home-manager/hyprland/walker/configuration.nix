@@ -1,9 +1,6 @@
 # Config for 0.13.26
-args @ { pkgs, ... }:
+args @ { ... }:
 
-let
-  mkAllDefault = import ../../../../lib/funcs/mkAllDefault.nix args;
-in
 {
   # Can only be used in conjunction with hyprland
   assertions =
@@ -13,217 +10,194 @@ in
   [ (assertLib.enabled "wayland.windowManager.hyprland.enable") ];
 
   # Walker config
-  services.walker = {
+  programs.walker = {
     enable = true;
-    systemd.enable = false;
-    package = pkgs.walker;
-    settings = mkAllDefault true {
-      # General
-      as_window = false;
+    runAsService = true;
+    # https://github.com/abenz1267/walker/blob/master/resources/config.toml
+    config = {
+      force_keyboard_focus = false;
       close_when_open = true;
-      disable_click_to_close = false;
-      # disabled = [];
-      force_keyboard_focus = true;
-      hotreload_theme = true;
-      ignore_mouse = false;
-      # locale = "";
-      # monitor = "";
-      terminal = "alacritty"; # TODO: Config option?
-      # terminal_title_flag = "";
-      # theme_location = [];
-      # plugin_location = [];
-      theme = "default";
-      # theme_base = [];
-      timeout = 0;
-      # js_runtime = "";
-
-      # General keybinds
-      keys = {
-        accept_typeahead = ["ctrl tab"];
-        close = ["esc"];
-        next = ["down" "tab"];
-        previous = ["up"];
-        remove_from_history = ["shift backspace"];
-        resume_query = ["ctrl r"];
-        toggle_exact_search = [];
-        trigger_labels = "lalt";
-        activation_modifiers = {
-          keep_open = "shift";
-          alternate = "alt";
-        };
-        ai = {
-          clear_session = [];
-          copy_last_response = [];
-          resume_session = [];
-          run_last_response = [];
-        };
+      click_to_close = true;
+      selection_wrap = false;
+      global_argument_delimiter = "#";
+      exact_search_prefix = "'";
+      disable_mouse = false;
+      debug = false;
+      page_jump_items = 10;
+      hide_quick_activation = false;
+      shell = {
+        anchor_top = true;
+        anchor_bottom = true;
+        anchor_left = true;
+        anchor_right = true;
       };
-      # Hook events
-      events = {
-        on_activate = "";
-        on_selection = "";
-        on_exit = "";
-        on_launch = "";
-        on_query_change = "";
+      placeholders.default = {
+        input = "Search";
+        list = "No Results";
       };
-      # List config
-      list = {
-        cycle = false;
-        dynamic_sub = true;
-        keyboard_scroll_style = "emacs";
-        max_entries = 0;
-        show_initial_entries = true;
-        single_click = true;
-        visibility_threshold = 20;
-        placeholder = "No Results";
+      keybinds = {
+        close = ["Escape"];
+        next = ["Down" "Tab"];
+        previous = ["Up"];
+        toggle_exact = ["ctrl e"];
+        resume_last_query = ["ctrl r"];
+        quick_activate = [];
+        page_down = ["Page_Down"];
+        page_up = ["Page_Up"];
       };
-      # Search config
-      search = {
-        argument_delimiter = "#";
-        delay = 0;
-        resume_last_query = false;
-        placeholder = "Search...";
-      };
-      # The 'jkl;asdf' labels on items
-      activation_mode = {
-        disabled = true;
-        # labels = "jkl;asdf";
-        # use_f_keys = false;
-      };
-      # Builtins
-      "builtins" = {
-        # AI
-        ai.hidden = true;
-        # Applications
-        applications = {
-          name = "applications";
-          placeholder = "Applications";
-          prioritize_new = true;
-          hide_actions_with_empty_query = true;
-          context_aware = true;
-          refresh = true;
-          show_sub_when_single = true;
-          show_icon_when_single = true;
-          show_generic = true;
-          history = true;
-          icon = "applications-other";
-          actions = {
-            enabled = true;
-            hide_category = false;
-            hide_without_query = true;
-          };
-        };
-        # Bookmarks
-        bookmarks.hidden = true;
-        # Calculator
-        calc.hidden = true;
-        # Clipboard
-        clipboard = {
-          name = "clipboard";
-          placeholder = "Clipboard";
-          always_put_new_on_top = true;
-          exec = "wl-copy";
-          icon = "user-bookmarks";
-          avoid_line_breaks = true;
-          image_height = 300;
-          max_entries = 10;
-          switcher_only = true;
-        };
-        # Commands
-        commands.hidden = true;
-        # Custom commands
-        custom_commands.hidden = true;
-        # Hyprland keybinds
-        hyprland_keybinds.hidden = true;
-        # Dmenu
-        dmenu = {
-          hidden = true;
-          name = "dmenu";
-          placeholder = "Dmenu";
-          switcher_only = true;
-          show_icon_when_single = true;
-        };
-        # Emojis
-        emojis = {
-          name = "emojis";
-          placeholder = "Emojis";
-          exec = "wl-copy";
-          icon = "face-smile";
-          prefix = ".";
-          switcher_only = true;
-          history = true;
-          typeahead = true;
-          show_unqualified = false;
-        };
-        # Finder
-        finder = {
-          name = "finder";
-          placeholder = "Finder";
-          use_fd = false;
-          fd_flags = "--ignore-vcs --type file --type directory";
-          cmd_alt = "xdg-open \"$(dirname \"$HOME/%RESULT%\")\"";
-          icon = "folder";
-          prefix = "/";
-          switcher_only = true;
-          ignore_gitignore = true;
-          refresh = true;
-          concurrency = 8;
-          show_icon_when_single = true;
-          preview_images = false;
-        };
-        # Runner
-        runner = {
-          name = "runner";
-          placeholder = "Runner";
-          eager_loading = true;
-          icon = "utilities-terminal";
-          prefix = "$";
-          switcher_only = true;
-          typeahead = true;
-          history = true;
-          generic_entry = false;
-          refresh = true;
-          use_fd = false;
-        };
-        # SSH
-        ssh.hidden = true;
-        # Switcher
-        switcher = {
-          name = "switcher";
-          placeholder = "Switcher";
-          prefix = ";";
-          switcher_only = true;
-        };
-        # Symbols
-        symbols = {
-          name = "symbols";
-          placeholder = "Symbols";
-          exec = "wl-copy '%RESULT%'";
-          prefix = ",";
-          switcher_only = true;
-          history = true;
-          typeahead = true;
-        };
-        # Translation
-        translation.hidden = true;
-        # Websearch
-        websearch = {
-          name = "websearch";
-          placeholder = "Websearch";
-          keep_selection = true;
-          icon = "applications-internet";
-          prefix = "@";
-          entries = [
-            {
-              name = "DuckDuckGo";
-              url = "https://duckduckgo.com/?q=%TERM%";
-            }
+      providers = {
+        default = [
+          "desktopapplications"
+        ];
+        empty = ["desktopapplications"];
+        ignore_preview = [];
+        max_results = 50;
+        argument_delimiter.runner = " ";
+        sets = {};
+        max_results_provider = {};
+        prefixes = [
+          {
+            prefix = ";";
+            provider = "providerlist";
+          }
+          {
+            prefix = ">";
+            provider = "runner";
+          }
+          {
+            prefix = "/";
+            provider = "files";
+          }
+          {
+            prefix = ".";
+            provider = "symbols";
+          }
+          {
+            prefix = "!";
+            provider = "todo";
+          }
+          {
+            prefix = "%";
+            provider = "bookmarks";
+          }
+          {
+            prefix = "=";
+            provider = "calc";
+          }
+          {
+            prefix = "@";
+            provider = "websearch";
+          }
+          {
+            prefix = ":";
+            provider = "clipboard";
+          }
+          {
+            prefix = "$";
+            provider = "windows";
+          }
+        ];
+        clipboard.time_format = "%d.%m. - %H:%M";
+        actions = {
+          fallback = [
+            { action = "menus:open"; label = "open"; after = "Nothing"; }
+            { action = "menus:default"; label = "run"; after = "Close"; }
+            { action = "menus:parent"; label = "back"; bind = "Escape"; after = "Nothing"; }
+            { action = "erase_history"; label = "clear hist"; bind = "ctrl h"; after = "AsyncReload"; }
+          ];
+          dmenu = [
+            { action = "select"; default = true; bind = "Return"; }
+          ];
+          providerlist = [
+            { action = "activate"; default = true; bind = "Return"; after = "ClearReload"; }
+          ];
+          bluetooth = [
+            { action = "find"; bind = "ctrl f"; after = "AsyncClearReload"; }
+            { action = "remove"; bind = "ctrl d"; after = "AsyncReload"; }
+            { action = "trust"; bind = "ctrl t"; after = "AsyncReload"; }
+            { action = "untrust"; bind = "ctrl t"; after = "AsyncReload"; }
+            { action = "pair"; bind = "Return"; after = "AsyncReload"; }
+            { action = "connect"; default = true; bind = "Return"; after = "AsyncReload"; }
+            { action = "disconnect"; default = true; bind = "Return"; after = "AsyncReload"; }
+          ];
+          archlinuxpkgs = [
+            { action = "install"; bind = "Return"; default = true; }
+            { action = "remove"; bind = "Return"; }
+            { action = "show_all"; label = "show all"; bind = "ctrl i"; after = "AsyncClearReload"; }
+            { action = "show_installed"; label = "show installed"; bind = "ctrl i"; after = "AsyncClearReload"; }
+          ];
+          calc = [
+            { action = "copy"; default = true; bind = "Return"; }
+            { action = "delete"; bind = "ctrl d"; after = "AsyncReload"; }
+            { action = "save"; bind = "ctrl s"; after = "AsyncClearReload"; }
+          ];
+          websearch = [
+            { action = "search"; default = true; bind = "Return"; }
+          ];
+          desktopapplications = [
+            { action = "start"; default = true; bind = "Return"; }
+            { action = "start:keep"; label = "open+next"; bind = "shift Return"; after = "KeepOpen"; }
+            { action = "new_instance"; label = "new instance"; bind = "ctrl Return"; }
+            { action = "new_instance:keep"; label = "new+next"; bind = "ctrl alt Return"; after = "KeepOpen"; }
+            { action = "pin"; bind = "ctrl p"; after = "AsyncReload"; }
+            { action = "unpin"; bind = "ctrl p"; after = "AsyncReload"; }
+            { action = "pinup"; bind = "ctrl n"; after = "AsyncReload"; }
+            { action = "pindown"; bind = "ctrl m"; after = "AsyncReload"; }
+          ];
+          files = [
+            { action = "open"; default = true; bind = "Return"; }
+            { action = "opendir"; label = "open dir"; bind = "ctrl Return"; }
+            { action = "copypath"; label = "copy path"; bind = "ctrl shift c"; }
+            { action = "copyfile"; label = "copy file"; bind = "ctrl c"; }
+          ];
+          todo = [
+            { action = "save"; default = true; bind = "Return"; after = "AsyncClearReload"; }
+            { action = "save_next"; label = "save & new"; bind = "shift Return"; after = "AsyncClearReload"; }
+            { action = "delete"; bind = "ctrl d"; after = "AsyncClearReload"; }
+            { action = "active"; default = true; bind = "Return"; after = "Nothing"; }
+            { action = "inactive"; default = true; bind = "Return"; after = "Nothing"; }
+            { action = "done"; bind = "ctrl f"; after = "Nothing"; }
+            { action = "change_category"; bind = "ctrl y"; label = "change category"; after = "Nothing"; }
+            { action = "clear"; bind = "ctrl x"; after = "AsyncClearReload"; }
+            { action = "create"; bind = "ctrl a"; after = "AsyncClearReload"; }
+            { action = "search"; bind = "ctrl a"; after = "AsyncClearReload"; }
+          ];
+          runner = [
+            { action = "run"; default = true; bind = "Return"; }
+            { action = "runterminal"; label = "run in terminal"; bind = "shift Return"; }
+          ];
+          symbols = [
+            { action = "run_cmd"; label = "select"; default = true; bind = "Return"; }
+          ];
+          unicode = [
+            { action = "run_cmd"; label = "select"; default = true; bind = "Return"; }
+          ];
+          nirisessions = [
+            { action = "start"; label = "start"; default = true; bind = "Return"; }
+            { action = "start_new"; label = "start blank"; bind = "ctrl Return"; }
+          ];
+          clipboard = [
+            { action = "copy"; default = true; bind = "Return"; }
+            { action = "remove"; bind = "ctrl d"; after = "AsyncClearReload"; }
+            { action = "remove_all"; label = "clear"; bind = "ctrl shift d"; after = "AsyncClearReload"; }
+            { action = "show_images_only"; label = "only images"; bind = "ctrl i"; after = "AsyncClearReload"; }
+            { action = "show_text_only"; label = "only text"; bind = "ctrl i"; after = "AsyncClearReload"; }
+            { action = "show_combined"; label = "show all"; bind = "ctrl i"; after = "AsyncClearReload"; }
+            { action = "pause"; bind = "ctrl p"; }
+            { action = "unpause"; bind = "ctrl p"; }
+            { action = "edit"; bind = "ctrl o"; }
+          ];
+          bookmarks = [
+            { action = "save"; bind = "Return"; after = "AsyncClearReload"; }
+            { action = "open"; default = true; bind = "Return"; }
+            { action = "delete"; bind = "ctrl d"; after = "AsyncClearReload"; }
+            { action = "change_category"; label = "Change category"; bind = "ctrl y"; after = "Nothing"; }
+            { action = "change_browser"; label = "Change browser"; bind = "ctrl b"; after = "Nothing"; }
+            { action = "import"; label = "Import"; bind = "ctrl i"; after = "AsyncClearReload"; }
+            { action = "create"; bind = "ctrl a"; after = "AsyncClearReload"; }
+            { action = "search"; bind = "ctrl a"; after = "AsyncClearReload"; }
           ];
         };
-        # Windows
-        windows.hidden = true;
-        # xdph picker
-        xdph_picker.hidden = true;
       };
     };
   };

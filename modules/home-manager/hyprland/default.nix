@@ -7,8 +7,8 @@
     ./hyprland
 
     # Launcher
-    ./rofi
-    # ./walker
+    # ./rofi
+    ./walker
     # ./hyprshell
 
     # Lockscreen

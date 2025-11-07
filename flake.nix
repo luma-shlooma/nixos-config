@@ -28,6 +28,12 @@
     hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
+
+    elephant.url = "github:abenz1267/elephant";
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: 
