@@ -3,6 +3,7 @@
 {
   imports = [
     ./option.nix
+    ./heartbeat.nix
   ];
   
   # Add home assistant cli tool
