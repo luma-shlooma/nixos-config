@@ -20,7 +20,7 @@
 
   # ProtonGE
   environment.systemPackages = with pkgs; [
-    protonup
+    protonup-ng
   ];
   # Required for protonup
   environment.sessionVariables = {
