@@ -12,12 +12,12 @@ in
   in
   [ (assertLib.enabled "wayland.windowManager.hyprland.enable") ];
 
-  # Autostart
-  wayland.windowManager.hyprland.settings = {
-    "exec-once" = [
-      "hyprpanel"
-    ];
-  };
+  # Autostart - done by systemd intergration
+  # wayland.windowManager.hyprland.settings = {
+  #   "exec-once" = [
+  #     "hyprpanel"
+  #   ];
+  # };
 
   # Icons that would otherwise be missing
   home.packages = with pkgs; [
@@ -51,5 +51,6 @@ in
         autoDismiss = true;
       };
     };
+    systemd.enable = true;
   };
 }

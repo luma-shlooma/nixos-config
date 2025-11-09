@@ -8,23 +8,25 @@ let
     #!/usr/bin/env bash
     hyprctl dispatch -- exec "[workspace empty]" xdg-open "$@"
    '';
+   # Where to save screenshots
+   screenshots = "${config.home.homeDirectory}/Pictures/Screenshots";
 in
 {
   # Use hyprshot
   programs.hyprshot = {
     enable = true;
-    saveLocation = "${config.home.homeDirectory}/Pictures/Screenshots";
+    saveLocation = screenshots;
   };
 
   # Set screenshot keybinds
   wayland.windowManager.hyprland.settings = {
     bind = [
       # Win+S : Capture full screen w/ editor (best for games)
-      "SUPER, s, exec, [workspace +1] hyprshot --mode active --mode output -- ${editimg}/bin/editimg"
+      "SUPER, s, exec, [workspace +1] hyprshot -o ${screenshots} --mode active --mode output -- ${editimg}/bin/editimg"
       # Win+Ctrl+S : Capture window
-      "SUPER_CTRL, s, exec, hyprshot --mode window"
+      "SUPER_CTRL, s, exec, hyprshot -o ${screenshots} --mode window"
       # Win+Shift+S : Capture region
-      "SUPER_SHIFT, s, exec, hyprshot --mode region"
+      "SUPER_SHIFT, s, exec, hyprshot -o ${screenshots} --mode region"
       # Win+Ctrl+Shift+S : Colour picker
       "SUPER_CTRL_SHIFT, s, exec, hyprpicker -an"
     ];
