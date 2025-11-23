@@ -35,6 +35,7 @@ in
             (mkBookmark "Github" "https://github.com")
             (mkBookmark "Nerd Fonts" "https://nerdfonts.com")
             (mkBookmark "Regex101" "https://regex101.com")
+            (mkBookmark "Desmos" "https://www.desmos.com/calculator")
           ])
           (mkFolder "Media" [
             (mkBookmark "Youtube" "https://youtube.com")
@@ -44,16 +45,20 @@ in
           ])
           (mkFolder "Games" [
             (mkFolder "Wikis+" [
+              (mkBookmark "Arcane Odyssey" "https://roblox-arcane-odyssey.fandom.com/wiki/Arcane_Odyssey_Wiki")
+              (mkBookmark "Baldur's Gate 3" "https://bg3.wiki")
               (mkBookmark "Deltarune" "https://deltarune.wiki")
+              (mkBookmark "Silksong Map" "https://game8.co/games/Hollow-Knight-Silksong/archives/547822#hl_1")
+              (mkBookmark "Vintage Story" "https://wiki.vintagestory.at")
               (mkBookmark "Warframe" "https://wiki.warframe.com")
               (mkBookmark "Warframe Market" "https://warframe.market")
-              (mkBookmark "Vintage Story" "https://wiki.vintagestory.at")
-              (mkBookmark "Silksong Map" "https://game8.co/games/Hollow-Knight-Silksong/archives/547822#hl_1")
+              (mkBookmark "Warframe Overframe" "https://overframe.gg")
             ])
             (mkBookmark "Itch" "https://itch.io")
             (mkBookmark "What's a Mook?" "https://whatsamook.games")
             (mkBookmark "Out of Context!" "https://www.outofcontext.party")
             (mkBookmark "Neal.fun" "https://neal.fun")
+            (mkBookmark "Board Game Geek" "https://boardgamegeek.com")
           ])
         ];
       }

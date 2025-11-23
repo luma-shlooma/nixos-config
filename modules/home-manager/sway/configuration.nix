@@ -24,7 +24,7 @@ in
     timeouts = [
       {
         timeout = 900;
-        command = "${pkgs.systemd}/bin/systemctl suspend";
+        command = "${pkgs.stdenv.hostPlatform.system}/bin/systemctl suspend";
         # resumeCommand = "${pkgs.swaylock-effects}/bin/swaylock -f ${lock_options_quick}";
       }
     ];

@@ -2,7 +2,7 @@
 
 {
   # Install VLC
-  environment.systemPackages = [
-    pkgs.vlc
+  environment.systemPackages = with pkgs; [
+    vlc
   ];
 }

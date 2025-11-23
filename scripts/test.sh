@@ -20,13 +20,12 @@ git --no-pager diff --compact-summary HEAD /etc/nixos
 
 # Confirmation
 echo "Options..."
-echo "CTRL+C    | Cancel"
-echo "ENTER     | Evaluate"
+echo "CTRL+C  | Cancel"
+echo "ENTER   | Evaluate"
 read -r
 
-
 # Dry build
-cmd="sudo nixos-rebuild dry-build --flake /etc/nixos/#${host} --show-trace --no-build-output"
+cmd="sudo nixos-rebuild dry-build --flake /etc/nixos/#${host} --option abort-on-warn true --show-trace --no-build-output"
 
 # Exit on failure
 if eval "$cmd"; then
