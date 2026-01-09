@@ -14,14 +14,14 @@ lib.mkIf (config.theme.name == "alpha")
       general = {
         # These are mostly default values
         border_size = 1;
-        no_border_on_floating = false;
-        gaps_in = 5;
-        gaps_out = 10;
+        gaps_in = 4;
+        gaps_out = 8;
         "col.inactive_border" = rgb colours.black;
         "col.active_border" = rgb colours.white;
       };
       decoration = {
-        rounding = 0;
+        rounding = 4;
+        rounding_power = 4.0;
         active_opacity = "1.0";
         inactive_opacity = "1.0";
         fullscreen_opacity = "1.0";

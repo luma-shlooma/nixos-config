@@ -28,7 +28,6 @@
         enable_swallow = true;
         swallow_regex = "^(Alacritty)$";
         close_special_on_empty = true;
-        new_window_takes_over_fullscreen = 2;
       };
       binds = {
         hide_special_on_workspace_change = true;

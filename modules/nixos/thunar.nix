@@ -2,7 +2,7 @@
 
 {
   # Thunar file explorer
-  environment.systemPackages = [
-    pkgs.xfce.thunar
+  environment.systemPackages = with pkgs; [
+    thunar
   ];
 }

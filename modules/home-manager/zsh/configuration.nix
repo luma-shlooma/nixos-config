@@ -8,6 +8,8 @@
       enableCompletion = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
+      # Use new dot directory
+      dotDir = "${config.xdg.configHome}/zsh";
       initContent = ''
         function y() {
 	        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

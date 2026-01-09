@@ -5,28 +5,29 @@
     settings = {
       windowrule = [
         ## Video
-        "content video, title:Picture-in-Picture"
+        "match:title Picture-in-Picture, content video"
         
         # PiP
-        "tag +pip, title:Picture-in-Picture"
+        "match:title Picture-in-Picture, tag +pip"
         # Static
-        "float, title:Picture-in-Picture"
-        "size 25% 25%, title:Picture-in-Picture"
-        "move 100%-w-20 50%, title:Picture-in-Picture"
-        "pin, title:Picture-in-Picture"
+        "match:title Picture-in-Picture, float on"
+        "match:title Picture-in-Picture, size 25% 25%"
+        "match:title Picture-in-Picture, move 100%-w-20 50%"
+        "match:title Picture-in-Picture, pin on"
         # Dynamic
-        "keepaspectratio, tag:pip"
-        "noborder, tag:pip"
-        "nofollowmouse, tag:pip"
+        "match:tag pip, keep_aspect_ratio on"
+        "match:tag pin, border_size 0"
+        "match:tag pin, no_follow_mouse on"
 
         ## Games
-        "content game, class:steam_app_.+"
+        "match:class steam_app_.+, content game"
 
         # Steam
-        "tag +game, class:steam_app_.+"
+        "match:class steam_app_.+, tag +game"
         # Static
-        "fullscreen, class:steam_app_.+"
-        "stayfocused, class:steam_app_.+"
+        "match:class steam_app_.+, fullscreen on"
+        # Dynamic
+        "match:class steam_app_.+, stay_focused on"
       ];
     };
   };

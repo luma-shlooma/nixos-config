@@ -40,7 +40,6 @@ lib.mkIf (config.theme.name == "alpha")
             "clock"
           ];
           right = [
-            "media"
             "volume"
             "bluetooth"
             "network"
