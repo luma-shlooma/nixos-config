@@ -6,6 +6,7 @@
     # Configuration
     ./general.nix
     ./bindings.nix
+    ./sound.nix
     ./rules.nix
     ./monitors.nix
     ./screenshot.nix

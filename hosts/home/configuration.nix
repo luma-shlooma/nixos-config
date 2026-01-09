@@ -21,10 +21,13 @@ args @ { host, pkgs, inputs, ... }:
     ../../modules/nixos/users.nix
     ../../modules/nixos/network.nix
     ../../modules/nixos/time.nix
+    ../../modules/nixos/dconf.nix
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/thunar.nix
     ../../modules/nixos/hyprland.nix
     ../../modules/nixos/sound.nix
+    ../../modules/nixos/coppwr.nix
+    ../../modules/nixos/audacity.nix
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/ddcutil.nix
     # ../../modules/nixos/docker.nix

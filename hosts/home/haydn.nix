@@ -22,6 +22,7 @@ args @ { ... }:
     ../../modules/home-manager/yazi
     ../../modules/home-manager/firefox
     ../../modules/home-manager/homeassistant
+    ../../modules/home-manager/easyeffects
     # Option Modules
     ../../options/theme/default.nix
     ../../options/apps/default.nix

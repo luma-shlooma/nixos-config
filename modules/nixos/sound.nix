@@ -17,5 +17,6 @@
   environment.systemPackages = with pkgs; [
     # cli tui tool for audio
     pulsemixer
+    playerctl
   ];
 }

@@ -29,7 +29,7 @@
   imports = [
     (import ./tuigreet.nix {
       inherit pkgs;
-      successfulLoginCommand = "hyprland";
+      successfulLoginCommand = "start-hyprland";
     })
   ];
 }

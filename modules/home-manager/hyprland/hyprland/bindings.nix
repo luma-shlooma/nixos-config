@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   wayland.windowManager.hyprland = {
@@ -44,7 +44,7 @@
         "SUPER_SHIFT, Up, movewindow, u"
         "SUPER_SHIFT, Left, movewindow, l"
         "SUPER_SHIFT, Right, movewindow, r"
-        "SUPER_SHIFT, Down, movewindow, d"        
+        "SUPER_SHIFT, Down, movewindow, d"
       ];
       binds = {
         # Allow for click binds
