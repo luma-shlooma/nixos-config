@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   programs.niri.settings.binds = {
@@ -6,7 +6,7 @@
     "Mod+Shift+E".action.quit.skip-confirmation = false;
     # Spawners
     "Mod+Return".action.spawn = "alacritty";
-    "Mod+D".action.spawn = "${config.apps.launcher.launch}";
+    "Mod+D".action.spawn = lib.splitString " " "${config.apps.launcher.launch}";
     "Mod+Shift+Q".action.close-window = {};
     # Workspaces
     "Mod+1".action.focus-workspace = 1;
@@ -32,8 +32,8 @@
     # Window manipulation
     "Mod+Left" .action.focus-column-or-monitor-left = {};
     "Mod+Right".action.focus-column-or-monitor-right = {};
-    "Mod+Up"   .action.focus-window-or-monitor-up = {};
-    "Mod+Down" .action.focus-window-or-monitor-down = {};
+    "Mod+Up"   .action.focus-window-or-workspace-up = {};
+    "Mod+Down" .action.focus-window-or-workspace-down = {};
     "Mod+Shift+Left" .action.swap-window-left = {};
     "Mod+Shift+Right".action.swap-window-right = {};
     "Mod+Shift+Up"   .action.move-window-up-or-to-workspace-up = {};
@@ -53,5 +53,11 @@
     "Mod+S".action.screenshot-screen.show-pointer = true;
     "Mod+Ctrl+S".action.screenshot-window = {};
     "Mod+Shift+S".action.screenshot = {};
+    # Special keys
+    "XF86MonBrightnessDown".action.spawn = [ "brightnessctl" "set" "5-%" ];
+    "XF86MonBrightnessUp"  .action.spawn = [ "brightnessctl" "set" "+5%" ];
+    "XF86AudioLowerVolume".action.spawn = [ "pamixer" "--decrease" "5" ];
+    "XF86AudioRaiseVolume".action.spawn = [ "pamixer" "--increase" "5" ];
+    "XF86AudioMute".action.spawn = [ "pamixer" "--toggle-mute" ];
   };
 }

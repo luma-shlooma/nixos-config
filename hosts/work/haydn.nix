@@ -22,7 +22,7 @@ args @ { ... }:
     ../../modules/home-manager/nixvim
     ../../modules/home-manager/yazi
     ../../modules/home-manager/firefox
-    ../../modules/home-manager/kanshi
+    # ../../modules/home-manager/kanshi
     # ../../modules/home-manager/toucher
     # Option Modules
     ../../options/theme/default.nix

@@ -3,20 +3,23 @@ args @ { ... }:
 let
   laptop = {
     criteria = "Chimei Innolux Corporation 0x143C Unknown";
-    position = "0,0";
     mode = "1920x1200@60.003Hz";
+    position = "0,0";
+    scale = 1.0;
   };
   widescreen = {
     criteria = "Dell Inc. DELL P3421W 7G4PJ53";
     mode = "3440x1440@59.973Hz";
+    scale = 1.0;
   };
   benq = {
-   left.criteria = "BNQ BenQ EW3270U VAR00152019";
-   right.criteria = "BNQ BenQ EW3270U VAR00148019";
-   mode = {
-    fast = "2560x1440@59.951Hz";
-    nice = "3840x2160@59.996Hz";
-   };
+    left.criteria = "PNP(BNQ) BenQ EW3270U VAR00152019";
+    right.criteria = "PNP(BNQ) BenQ EW3270U VAR00148019";
+    mode = {
+      fast = "2560x1440@59.951Hz";
+      nice = "3840x2160@59.996Hz";
+    };
+    scale = 1.0;
   };
 in
 {
@@ -65,13 +68,6 @@ in
             mode = benq.mode.fast;
             position = "2560,0";
           })
-        ];
-        # Execute swaymsg commands to re-order workspaces
-        profile.exec = [
-          "/etc/nixos/scripts/fix-orion-screens.sh"
-          # "swaymsg workspace 1; swaymsg move workspace to output \$(/etc/nixos/scripts/get-monitor.sh \"${laptop.criteria}\")"
-          # "swaymsg workspace 2; swaymsg move workspace to output \$(/etc/nixos/scripts/get-monitor.sh \"${benq.left.criteria}\")"
-          # "swaymsg workspace 3; swaymsg move workspace to output \$(/etc/nixos/scripts/get-monitor.sh \"${benq.right.criteria}\")"
         ];
       }
 
