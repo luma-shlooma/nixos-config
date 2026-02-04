@@ -1,8 +1,11 @@
-{ pkgs, successfulLoginCommand, defaultTheme ? false }:
+{ pkgs, successfulLoginCommand, initialPrompt ? true, defaultTheme ? false }:
 
 let
   # Use theme if set
   theming = if defaultTheme then "" else "--theme text=white;container=black;border=grey;prompt=green;input=white;action=white;button=yellow";
+
+  # Tuigreet command
+  command = "${pkgs.tuigreet}/bin/tuigreet --user-menu --time --asterisks --cmd ${successfulLoginCommand} ${theming}";
 in
 {
   # tuigreet
@@ -11,11 +14,11 @@ in
     restart = true;
     settings = {
       initial_session = {
-        command = "${successfulLoginCommand}";
+        command = if initialPrompt then "${command}" else "${successfulLoginCommand}";
         user = "haydn";
       };
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --user-menu --time --asterisks --cmd ${successfulLoginCommand} ${theming}";
+        command = "${command}";
         user = "haydn";
       };
     };

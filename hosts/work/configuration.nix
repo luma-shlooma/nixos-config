@@ -24,7 +24,8 @@ args @ { host, pkgs, inputs, ... }:
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/network.nix
     ../../modules/nixos/bluetooth.nix
-    ../../modules/nixos/sway.nix
+    ../../modules/nixos/niri.nix
+    # ../../modules/nixos/sway.nix
     ../../modules/nixos/sound.nix
     ../../modules/nixos/docker.nix
     ../../modules/nixos/lxc.nix

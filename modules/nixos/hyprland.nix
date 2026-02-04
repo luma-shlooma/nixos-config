@@ -30,6 +30,7 @@
     (import ./tuigreet.nix {
       inherit pkgs;
       successfulLoginCommand = "start-hyprland";
+      initialPrompt = false;
     })
   ];
 }

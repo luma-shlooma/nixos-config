@@ -1,14 +1,7 @@
 # Config for 0.13.26
-args @ { ... }:
+{ ... }:
 
 {
-  # Can only be used in conjunction with hyprland
-  assertions =
-  let
-    assertLib = import ../../../../lib/assertions ({module = "hyprland/walker";}//args);
-  in
-  [ (assertLib.enabled "wayland.windowManager.hyprland.enable") ];
-
   # Walker config
   programs.walker = {
     enable = true;

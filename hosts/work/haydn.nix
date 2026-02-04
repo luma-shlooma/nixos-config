@@ -15,7 +15,8 @@ args @ { ... }:
     # Program Modules
     ../../modules/home-manager/common.nix
     ../../modules/home-manager/bash
-    ../../modules/home-manager/sway
+    ../../modules/home-manager/niri
+    # ../../modules/home-manager/sway
     ../../modules/home-manager/zsh
     ../../modules/home-manager/alacritty
     ../../modules/home-manager/nixvim

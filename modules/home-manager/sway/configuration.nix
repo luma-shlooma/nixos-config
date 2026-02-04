@@ -28,9 +28,9 @@ in
         # resumeCommand = "${pkgs.swaylock-effects}/bin/swaylock -f ${lock_options_quick}";
       }
     ];
-    events = [
-      { event = "after-resume"; command = "${pkgs.swaylock-effects}/bin/swaylock -f ${lock_options_quick}"; }
-    ];
+    events = {
+      "after-resume" = "${pkgs.swaylock-effects}/bin/swaylock -f ${lock_options_quick}";
+    };
   };
 
   # i3status for swaybar
