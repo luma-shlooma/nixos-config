@@ -11,11 +11,13 @@
     ../walker
     # ./hyprshell
 
+    # NOTE: The following are currently being implemented by noctalia
+
     # Lockscreen
-    ./hyprlock
+    # ./hyprlock
 
     # Status panel
-    ./hyprpanel
+    # ./hyprpanel
     # ./waybar
   ];
 }

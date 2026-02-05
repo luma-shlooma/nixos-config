@@ -1,6 +1,5 @@
 { inputs, pkgs, ... }:
 
-# TODO: Theming pattern
 {
   programs.niri = {
     settings = {

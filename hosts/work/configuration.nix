@@ -24,8 +24,10 @@ args @ { host, pkgs, inputs, ... }:
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/network.nix
     ../../modules/nixos/bluetooth.nix
+    ../../modules/nixos/power.nix
     ../../modules/nixos/niri.nix
     # ../../modules/nixos/sway.nix
+    ../../modules/nixos/noctalia.nix
     ../../modules/nixos/sound.nix
     ../../modules/nixos/docker.nix
     ../../modules/nixos/lxc.nix
@@ -33,6 +35,7 @@ args @ { host, pkgs, inputs, ... }:
     ../../modules/nixos/wireshark.nix
     ../../modules/nixos/arduino.nix
     ../../modules/nixos/amazon-q.nix
+    ../../modules/nixos/libreoffice.nix
     ../../modules/nixos/utilities.nix
   ];
 

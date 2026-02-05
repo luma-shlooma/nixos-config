@@ -6,6 +6,7 @@
     ./configuration.nix
     ./bindings.nix
     ./monitors.nix
+    ./bar.nix
 
     # walker launcher
     ../walker

@@ -16,6 +16,8 @@ args @ { ... }:
     ../../modules/home-manager/common.nix
     ../../modules/home-manager/mpris
     ../../modules/home-manager/hyprland
+    ../../modules/home-manager/noctalia/default.nix
+    ../../modules/home-manager/noctalia/home.nix
     ../../modules/home-manager/zsh
     ../../modules/home-manager/alacritty
     ../../modules/home-manager/nixvim

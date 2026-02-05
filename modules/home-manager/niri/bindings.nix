@@ -1,5 +1,9 @@
 { config, lib, ... }:
 
+let
+  # Build noctalia ipc calls
+  noctalia-call = cmd: [ "noctalia-shell" "ipc" "call" ] ++ (lib.splitString " " cmd);
+in
 {
   programs.niri.settings.binds = {
     # Exit niri (logout)
@@ -53,11 +57,25 @@
     "Mod+S".action.screenshot-screen.show-pointer = true;
     "Mod+Ctrl+S".action.screenshot-window = {};
     "Mod+Shift+S".action.screenshot = {};
-    # Special keys
-    "XF86MonBrightnessDown".action.spawn = [ "brightnessctl" "set" "5-%" ];
-    "XF86MonBrightnessUp"  .action.spawn = [ "brightnessctl" "set" "+5%" ];
-    "XF86AudioLowerVolume".action.spawn = [ "pamixer" "--decrease" "5" ];
-    "XF86AudioRaiseVolume".action.spawn = [ "pamixer" "--increase" "5" ];
-    "XF86AudioMute".action.spawn = [ "pamixer" "--toggle-mute" ];
+    # Special keys (function keys on t14)
+    # "XF86AudioMute".action.spawn = [ "pamixer" "--toggle-mute" ];
+    # "XF86AudioLowerVolume".action.spawn = [ "pamixer" "--decrease" "5" ];
+    # "XF86AudioRaiseVolume".action.spawn = [ "pamixer" "--increase" "5" ];
+    # "XF86MonBrightnessDown".action.spawn = [ "brightnessctl" "set" "5-%" ];
+    # "XF86MonBrightnessUp"  .action.spawn = [ "brightnessctl" "set" "+5%" ];
+    # NOTE: Now with noctalia ipc calls
+    # Session Menu
+    "Mod+Grave".action.spawn = noctalia-call "sessionMenu toggle";
+    # Audio
+    "XF86AudioMute"       .action.spawn = noctalia-call "volume muteOutput";
+    "XF86AudioLowerVolume".action.spawn = noctalia-call "volume decrease";
+    "XF86AudioRaiseVolume".action.spawn = noctalia-call "volume increase";
+    "XF86AudioMicMute"    .action.spawn = noctalia-call "volume muteInput";
+    # Brightness
+    "XF86MonBrightnessDown".action.spawn = noctalia-call "brightness decrease";
+    "XF86MonBrightnessUp"  .action.spawn = noctalia-call "brightness increase";
+    "XF86Display"          .action.spawn = noctalia-call "nightLight toggle";
+    # Network
+    "XF86WLAN".action.spawn = noctalia-call "wifi toggle";
   };
 }
