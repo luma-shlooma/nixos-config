@@ -12,6 +12,7 @@
     # ./hyprshell
 
     # NOTE: The following are currently being implemented by noctalia
+    ./start-noctalia.nix
 
     # Lockscreen
     # ./hyprlock

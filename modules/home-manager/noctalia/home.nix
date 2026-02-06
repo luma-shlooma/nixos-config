@@ -11,7 +11,6 @@
     # Notifs
     notifications.location = "top_right";
     notifications.sounds.enable = true;
-    notifications.enableMediaToast = true;
 
     # OSD
     osd.location = "right";
@@ -56,7 +55,7 @@
           compactShowVisualizer = false;
           hideMode = "hidden";
           hideWhenIdle = false;
-          maxWidth = 120;
+          maxWidth = 400;
           panelShowAlbumArt = true;
           panelShowVisualizer = true;
           scrollingMode = "hover";
@@ -95,7 +94,7 @@
           id = "AudioVisualizer";
           colorName = "primary";
           hideWhenIdle = true;
-          width = 120;
+          width = 400;
         }
         {
           id = "Spacer";
