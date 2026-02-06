@@ -42,6 +42,7 @@ args @ { host, pkgs, inputs, ... }:
     ../../modules/nixos/stremio-service.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/wootility.nix
+    # ../../modules/nixos/mullvad.nix
     ../../modules/nixos/minecraft.nix
     ../../modules/nixos/vintage-story.nix
     ../../modules/nixos/roblox.nix
@@ -56,13 +57,13 @@ args @ { host, pkgs, inputs, ... }:
   boot.loader.systemd-boot = {
     enable = true;
     editor = false;
-    windows = {
-      "11" = {
-        title = "Windows";
-        efiDeviceHandle = "HD1b";
-        sortKey = "z_windows"; # `z` to place last on list
-      };
-    };
+    # windows = {
+    #   "11" = {
+    #     title = "Windows";
+    #     efiDeviceHandle = "HD1b";
+    #     sortKey = "z_windows"; # `z` to place last on list
+    #   };
+    # };
     configurationLimit = 16;
     extraInstallCommands = ''
       ${pkgs.gnused}/bin/sed -i 's/^default.*/default a_windows/' /boot/loader/loader.conf

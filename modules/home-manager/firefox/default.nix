@@ -11,7 +11,7 @@
       extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
         bitwarden
         cookie-autodelete
-        i-dont-care-about-cookies
+        istilldontcareaboutcookies
         ublock-origin
         darkreader
         return-youtube-dislikes

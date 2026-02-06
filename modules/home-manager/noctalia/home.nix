@@ -6,6 +6,7 @@
     # Top-sittng bar
     bar.density = "default";
     bar.position = "top";
+    bar.useSeparateOpacity = true;
     bar.backgroundOpacity = 0;
 
     # Notifs

@@ -29,4 +29,22 @@
 
   # Xbox One gamepad driver
   hardware.xpadneo.enable = true;
+  # Attempted fix
+  services.udev.packages = [
+    (pkgs.writeTextFile {
+        name = "60-xpadneo";
+        text = ''
+            ACTION=="bind", SUBSYSTEM=="hid", DRIVER!="xpadneo", KERNEL=="0005:045E:*", KERNEL=="*:02FD.*|*:02E0.*|*:0B05.*|*:0B13.*|*:0B20.*|*:0B22.*", ATTR{driver/unbind}="%k", ATTR{[drivers/hid:xpadneo]bind}="%k"
+            ACTION!="remove", DRIVERS=="xpadneo", SUBSYSTEM=="input", TAG+="uaccess"
+        '';
+        destination = "/etc/udev/rules.d/60-xpadneo.rules";
+    })
+    (pkgs.writeTextFile {
+        name = "70-xpadneo-disable-hidraw";
+        text = ''
+            ACTION!="remove", DRIVERS=="xpadneo", SUBSYSTEM=="hidraw", MODE:="0000", TAG-="uaccess"
+        '';
+        destination = "/etc/udev/rules.d/70-xpadneo-disable-hidraw.rules";
+    })
+  ];
 }
