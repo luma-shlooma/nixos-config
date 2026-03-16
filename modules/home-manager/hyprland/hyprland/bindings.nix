@@ -45,6 +45,8 @@
         "SUPER_SHIFT, Left, movewindow, l"
         "SUPER_SHIFT, Right, movewindow, r"
         "SUPER_SHIFT, Down, movewindow, d"
+        # NOCTALIA ONLY - Session Menu
+        "SUPER, Escape, exec, noctalia-shell ipc call sessionMenu toggle"
       ];
       binds = {
         # Allow for click binds

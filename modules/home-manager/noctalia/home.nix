@@ -33,9 +33,20 @@
           useDistroLogo = true;
         }
         {
+          id = "Spacer";
+          width = 6;
+        }
+        {
           id = "Network";
           displayMode = "onhover";
         }
+        # VPN Client in favour of home networked VPN
+        # {
+        #   id = "VPN";
+        #   displayMode = "onhover";
+        #   iconColor = "none";
+        #   textColor = "none";
+        # }
         {
           id = "Buetooth";
           displayMode = "onhover";
@@ -56,7 +67,7 @@
           compactShowVisualizer = false;
           hideMode = "hidden";
           hideWhenIdle = false;
-          maxWidth = 400;
+          maxWidth = 480;
           panelShowAlbumArt = true;
           panelShowVisualizer = true;
           scrollingMode = "hover";
