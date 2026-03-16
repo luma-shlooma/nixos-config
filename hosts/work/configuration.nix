@@ -23,6 +23,7 @@ args @ { host, pkgs, inputs, ... }:
     ../../modules/nixos/keyboard.nix
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/network.nix
+    ../../modules/nixos/wireguard.nix
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/power.nix
     ../../modules/nixos/niri.nix

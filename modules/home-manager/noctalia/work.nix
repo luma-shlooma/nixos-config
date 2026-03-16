@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 
 {
   # Then work-specific overrides
@@ -7,6 +7,7 @@
     bar.monitors = [ "eDP-1" ];
     osd.monitors = [ "eDP-1" ];
     notifications.monitors = [ "eDP-1" ];
+    general.lockScreenMonitors = [ "eDP-1" ];
 
     # Bar modules
     bar.widgets = {
@@ -27,6 +28,14 @@
         {
           id = "Network";
           displayMode = "onhover";
+        }
+        {
+          id = "plugin:network-manager-vpn";
+          defaultSettings = {
+            connectedColor = "primary";
+            disconnectedColor = "none";
+            displayMode = "onhover";
+          };
         }
         {
           id = "Buetooth";
@@ -65,6 +74,20 @@
         }
       ];
       right = [
+        {
+          id = "plugin:network-indicator";
+          defaultSettings = {
+            arrowType = "caret";
+            byteThresholdActive = 1024;
+            fontSizeModifier = 1;
+            forceMegabytes = false;
+            iconSizeModifier = 1;
+            minWidth = 0;
+            showNumbers = true;
+            spacingInbetween = 0;
+            useCustomColors = false;
+          };
+        }
         {
           id = "Battery";
           deviceNativePath = "__default__";

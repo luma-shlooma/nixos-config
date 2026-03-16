@@ -1,6 +1,7 @@
 { ... } :
 
 {
+  # For laptop keyboard - wooting can sort itself out
   services.kanata = {
     enable = true;
     keyboards."default".config = ''
@@ -13,14 +14,16 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret
   caps a    s    d    f    g    h    j    k    l    ;    '    hash
   lsft \    z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc                 ralt rmet rctl 
+  lctl lmet lalt           spc                 ralt rmet rctl pgup up   pgdn
+                                                              lft  down rght
 )
 (deflayer custom
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc 
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret
   esc  a    s    d    f    g    h    j    k    l    ;    '    hash
   lsft \    z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc                 ralt rmet rctl 
+  lctl lmet lalt           spc                 ralt rmet rctl lft  up   rght
+                                                              lft  down rght
 )
     '';
   };

@@ -363,6 +363,8 @@ in
       };
     });
     plugins = {
+      autoUpdate = true;
+      notifyUpdates = true;
       sources = [
         {
           enabled = true;
@@ -370,7 +372,17 @@ in
           url = "https://github.com/noctalia-dev/noctalia-plugins";
         }
       ];
-      version = 1;
+      states = {
+        network-manager-vpn = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        network-indicator = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+      };
+      version = 2;
     };
   };
 }
