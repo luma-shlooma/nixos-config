@@ -46,7 +46,10 @@
         "SUPER_SHIFT, Right, movewindow, r"
         "SUPER_SHIFT, Down, movewindow, d"
         # NOCTALIA ONLY - Session Menu
-        "SUPER, Escape, exec, noctalia-shell ipc call sessionMenu toggle"
+        "SUPER, Escape, exec, noctalia msg panel-toggle session"
+        # Do not have the following on the 60% keyboard, but is available through mouse gestures
+        ", XF86AudioRaiseVolume, exec, noctalia msg volume-up 5"
+        ", XF86AudioLowerVolume, exec, noctalia msg volume-down 5"
       ];
       binds = {
         # Allow for click binds

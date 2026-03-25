@@ -25,20 +25,24 @@ args @ { host, pkgs, inputs, ... }:
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/thunar.nix
     ../../modules/nixos/hyprland.nix
+    ../../modules/nixos/logiops.nix
     ../../modules/nixos/sound.nix
     ../../modules/nixos/coppwr.nix
+    ../../modules/nixos/soundux.nix
     ../../modules/nixos/audacity.nix
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/ddcutil.nix
     # ../../modules/nixos/docker.nix
     ../../modules/nixos/pinta.nix
+    ../../modules/nixos/obsidian.nix
     ../../modules/nixos/vlc.nix
     ../../modules/nixos/arduino.nix
     ../../modules/nixos/discord.nix
+    ../../modules/nixos/obs.nix
     ../../modules/nixos/spotify.nix
     ../../modules/nixos/flatpak.nix
     # ../../modules/nixos/stremio.nix
-    # ../../modules/nixos/stremio-linux.nix
+    ../../modules/nixos/stremio-linux.nix
     ../../modules/nixos/stremio-service.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/wootility.nix
@@ -46,6 +50,7 @@ args @ { host, pkgs, inputs, ... }:
     ../../modules/nixos/minecraft.nix
     ../../modules/nixos/vintage-story.nix
     ../../modules/nixos/roblox.nix
+    ../../modules/nixos/wine.nix
     ../../modules/nixos/utilities.nix
   ];
 

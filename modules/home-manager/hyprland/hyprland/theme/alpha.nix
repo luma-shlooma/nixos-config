@@ -62,6 +62,7 @@ lib.mkIf (config.theme.name == "alpha")
       # name = "Orchis";
       # package = (pkgs.orchis-theme.override { tweaks = ["black"]; });
     };
+    gtk4.theme = config.gtk.theme;
   };
   dconf.settings = {
     "org/gnome/desktop/interface" = {

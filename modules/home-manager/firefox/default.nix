@@ -1,12 +1,23 @@
-{ inputs, ... }:
+{ inputs, config, lib, ... }:
 
 {
+  imports = [
+    inputs.betterfox.modules.homeManager.betterfox
+    ./bookmarks.nix
+  ];
+
   programs.firefox = {
     enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
+    # programs.firefox.configPath = ".mozilla/firefox";
+    betterfox = {
+      enable = true;
+      profiles.default = {
+        enableAllSections = true;
+      };
+    };
     profiles.default = {
       isDefault = true;
-      # Better Firefox
-      extraConfig = (builtins.readFile ./betterfirefox.js);
       # Extensions
       extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
         bitwarden
@@ -20,11 +31,14 @@
       # Other Settings
       settings = {
         "extensions.autoDisableScopes" = 0;
+        "browser.formfill.enable" = false;
+        "browser.link.open_external" = 2;
+        "signon.rememberSignons" = false;
       };
+      search.default = "ddg";
+      search.privateDefault = "ddg";
     };
   };
-  # Separate bookmarks file
-  imports = [
-    ./bookmarks.nix
-  ];
+  # Fix clobbering
+  home.file."${config.programs.firefox.configPath}/default/search.json.mozlz4".force = lib.mkForce true;
 }

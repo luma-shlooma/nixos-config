@@ -11,6 +11,25 @@
       alsa.support32Bit = true;
       pulse.enable = true;
       wireplumber.enable = true;
+      wireplumber.extraConfig = {
+        "10-disable-camera-mic" = {
+          "monitor.alsa.rules" = [
+            {
+              matches = [
+                {
+                  # Match the webcam mic
+                  "node.name" = "~alsa_input.usb-046d_HD_Pro_Webcam_C920.*";
+                }
+              ];
+              actions = {
+                update-props = {
+                  "node.disabled" = true;
+                };
+              };
+            }
+          ];
+        };
+      };
     };
   };
 

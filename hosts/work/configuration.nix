@@ -36,6 +36,7 @@ args @ { host, pkgs, inputs, ... }:
     ../../modules/nixos/wireshark.nix
     ../../modules/nixos/arduino.nix
     ../../modules/nixos/amazon-q.nix
+    ../../modules/nixos/obsidian.nix
     ../../modules/nixos/libreoffice.nix
     ../../modules/nixos/utilities.nix
   ];
@@ -68,8 +69,6 @@ args @ { host, pkgs, inputs, ... }:
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # Not spported by HM
-    obsidian
     # Misc
     ueberzugpp
   ];

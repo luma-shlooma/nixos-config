@@ -12,7 +12,7 @@ args @ { ... }:
   # Start on launch
   wayland.windowManager.hyprland.settings = {
     "exec-once" = [
-      "noctalia-shell"
+      "noctalia"
     ];
   };
   

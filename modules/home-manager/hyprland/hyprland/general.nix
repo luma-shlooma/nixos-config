@@ -3,6 +3,7 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "hyprlang";
     settings = {
       # UK keyboard
       input = {
@@ -25,8 +26,9 @@
         # Adaptibe sync on games
         vrr = 3;
         # Window swallowing (term opens gui app)
-        enable_swallow = true;
-        swallow_regex = "^(Alacritty)$";
+        # Disabled bc of annoying cases like wev
+        # enable_swallow = true;
+        # swallow_regex = "^(Alacritty)$";
         close_special_on_empty = true;
       };
       binds = {

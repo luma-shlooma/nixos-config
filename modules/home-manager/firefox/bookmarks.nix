@@ -17,7 +17,7 @@ in
         bookmarks = [
           (mkFolder "Nix Resources" [
             (mkBookmark "Packages" "https://search.nixos.org/packages")
-            (mkBookmark "Home Manager" "https://home-manager-options.extranix.com/release=master")
+            (mkBookmark "Home Manager" "https://home-manager-options.extranix.com")
             (mkBookmark "builtins & lib" "https://teu5us.github.io/nix-lib.html")
           ])
           (mkFolder "Tool Resources" [
@@ -30,8 +30,8 @@ in
             (mkBookmark "Pinta" "https://www.pinta-project.com/user-guide")
           ])
           (mkFolder "Web Tools" [
-            (mkBookmark "Home Assistant" "http://homeassistant:8123")
             (mkBookmark "Gmail" "https://mail.google.com")
+            (mkBookmark "Google Drive" "https://drive.google.com/drive/my-drive")
             (mkBookmark "Github" "https://github.com")
             (mkBookmark "Nerd Fonts" "https://nerdfonts.com")
             (mkBookmark "Regex101" "https://regex101.com")
@@ -48,17 +48,28 @@ in
               (mkBookmark "Arcane Odyssey" "https://roblox-arcane-odyssey.fandom.com/wiki/Arcane_Odyssey_Wiki")
               (mkBookmark "Baldur's Gate 3" "https://bg3.wiki")
               (mkBookmark "Deltarune" "https://deltarune.wiki")
+              (mkBookmark "Minecraft" "https://minecraft.wiki")
               (mkBookmark "Silksong Map" "https://game8.co/games/Hollow-Knight-Silksong/archives/547822#hl_1")
               (mkBookmark "Vintage Story" "https://wiki.vintagestory.at")
               (mkBookmark "Warframe" "https://wiki.warframe.com")
               (mkBookmark "Warframe Market" "https://warframe.market")
               (mkBookmark "Warframe Overframe" "https://overframe.gg")
             ])
+            (mkBookmark "Roll20" "https://app.roll20.net/editor")
             (mkBookmark "Itch" "https://itch.io")
             (mkBookmark "What's a Mook?" "https://whatsamook.games")
             (mkBookmark "Out of Context!" "https://www.outofcontext.party")
             (mkBookmark "Neal.fun" "https://neal.fun")
+            (mkBookmark "Powerscradle" "https://powerscadle.com")
             (mkBookmark "Board Game Geek" "https://boardgamegeek.com")
+            (mkBookmark "Nexus" "https://www.nexusmods.com")
+          ])
+          (mkFolder "Homelab" [
+            (mkBookmark "Luci" "https://192.168.8.1:8443/cgi-bin/luci")
+            (mkBookmark "Dozzle" "http://dozzle.shlooma.net")
+            (mkBookmark "Home Assistant" "http://homeassistant.lan:8123")
+            (mkBookmark "Pi-hole" "http://pihole.shlooma.net/admin")
+            (mkBookmark "Cloudflare" "https://dash.cloudflare.com")
           ])
         ];
       }

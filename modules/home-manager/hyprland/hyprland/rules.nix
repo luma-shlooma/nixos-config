@@ -27,7 +27,7 @@
         # Static
         "match:class steam_app_.+, fullscreen on"
         # Dynamic
-        "match:class steam_app_.+, stay_focused on"
+        # "match:class steam_app_.+, stay_focused on"
       ];
     };
   };

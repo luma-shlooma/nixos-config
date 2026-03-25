@@ -14,6 +14,7 @@
     htop
     ripgrep
     tree
+    swayimg
     # Networking
     inetutils
     nmap
