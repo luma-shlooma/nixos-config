@@ -28,7 +28,7 @@ lib.mkIf (config.theme.name == "alpha")
         display = dec colours.dark-black;
       };
       always-center-single-column = true;
-      center-focused-column = "never";
+      center-focused-column = "always";
       tab-indicator.enable = false;
       gaps = 6;
       struts.left = 2;
@@ -48,6 +48,7 @@ lib.mkIf (config.theme.name == "alpha")
       # name = "Orchis";
       # package = (pkgs.orchis-theme.override { tweaks = ["black"]; });
     };
+    gtk4.theme = config.gtk.theme;
   };
   dconf.settings = {
     "org/gnome/desktop/interface" = {

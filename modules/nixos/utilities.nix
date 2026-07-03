@@ -23,6 +23,6 @@
     # Fun
     cmatrix
     gtypist
-    gemini-cli
+    antigravity-cli
   ];
 }

@@ -33,7 +33,7 @@ read -r msg
 
 # Rebuild
 sudo nixos-rebuild switch --flake /etc/nixos/#"${host}"
-# sudo nixos-rebuild boot --flake /etc/nixos/#"${host}"
+#sudo nixos-rebuild boot --flake /etc/nixos/#"${host}"
 
 # Exit on failure
 [ $? -ne 0 ] && echo "Rebuild failed, wont commit" && exit 1

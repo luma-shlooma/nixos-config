@@ -61,17 +61,17 @@
     # "XF86MonBrightnessUp"  .action.spawn = [ "brightnessctl" "set" "+5%" ];
     # NOTE: Now with noctalia ipc calls
     # Session Menu
-    "Mod+Grave".action.spawn = "noctalia msg panel-toggle session";
+    "Mod+Grave".action.spawn-sh = "noctalia msg panel-toggle session";
     # Audio
-    "XF86AudioMute"       .action.spawn = "noctalia msg volume-mute";
-    "XF86AudioLowerVolume".action.spawn = "noctalia msg volume-down 5";
-    "XF86AudioRaiseVolume".action.spawn = "noctalia msg volume-up 5";
-    "XF86AudioMicMute"    .action.spawn = "noctalia msg mic-mute";
+    "XF86AudioMute"       .action.spawn-sh = "noctalia msg volume-mute";
+    "XF86AudioLowerVolume".action.spawn-sh = "noctalia msg volume-down 5";
+    "XF86AudioRaiseVolume".action.spawn-sh = "noctalia msg volume-up 5";
+    "XF86AudioMicMute"    .action.spawn-sh = "noctalia msg mic-mute";
     # Brightness
-    "XF86MonBrightnessDown".action.spawn = "noctalia msg brightness-down eDP-1 5";
-    "XF86MonBrightnessUp"  .action.spawn = "noctalia msg brightness-up eDP-1 5";
-    "XF86Display"          .action.spawn = "noctalia msg nightlight-force-toggle";
+    "XF86MonBrightnessDown".action.spawn-sh = "noctalia msg brightness-down eDP-1 5";
+    "XF86MonBrightnessUp"  .action.spawn-sh = "noctalia msg brightness-up eDP-1 5";
+    "XF86Display"          .action.spawn-sh = "noctalia msg nightlight-force-toggle";
     # Network
-    "XF86WLAN".action.spawn = "noctalia msg wifi-toggle";
+    "XF86WLAN".action.spawn-sh = "noctalia msg wifi-toggle";
   };
 }
