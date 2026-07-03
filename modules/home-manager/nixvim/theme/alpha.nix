@@ -7,6 +7,7 @@ in
 lib.mkIf (config.theme.name == "alpha")
 {
   programs.nixvim = {
+    opts.termguicolors = true;
     colorschemes = {
       base16 = {
         enable = true;
@@ -31,6 +32,5 @@ lib.mkIf (config.theme.name == "alpha")
         };
       };
     };
-    opts.termguicolors = true;
   };
 }

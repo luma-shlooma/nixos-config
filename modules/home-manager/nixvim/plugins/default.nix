@@ -1,18 +1,12 @@
 {
-  imports = [
-    ./cmp.nix
-    ./lsp.nix
-    # ./barbar.nix
-    ./indent.nix
-    ./surround.nix
-    #./autosave.nix
+  # Plugins
+  programs.nixvim.imports = [
     ./autopairs.nix
-    # ./telescope.nix
-    ./treesitter.nix
+    ./blink/default.nix
+    ./icons.nix
+    ./lsp.nix
+    ./surround.nix
+    ./telescope.nix
+    ./yazi.nix
   ];
-  
-  # Plugin dependancies
-  programs.nixvim.plugins = {
-    web-devicons.enable = true;
-  };
 }
