@@ -31,6 +31,7 @@ lib.mkIf (config.theme.name == "alpha")
           base0F = "#${colours.light-red}";
         };
       };
+      # oxocarbon.enable = true;
     };
   };
 }

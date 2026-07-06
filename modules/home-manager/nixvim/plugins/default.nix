@@ -7,6 +7,7 @@
     ./lsp.nix
     ./surround.nix
     ./telescope.nix
+    ./treesitter.nix
     ./yazi.nix
   ];
 }
