@@ -9,7 +9,11 @@
         skip-at-startup = true;
       };
       input = {
-        focus-follows-mouse.enable = true;
+        # Mouse control - switch monitors but not scroll windows
+        focus-follows-mouse = {
+          enable = true;
+          max-scroll-amount = "0%";
+        };
         keyboard.xkb.layout = "gb";
         touchpad.scroll-factor = 0.25;
         power-key-handling.enable = false;

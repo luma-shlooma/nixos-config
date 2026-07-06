@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   # Enable Hyprland
@@ -32,5 +32,10 @@
       successfulLoginCommand = "start-hyprland";
       initialPrompt = false;
     })
+    # TODO: Switch to noctalia-greeter when matured
+    # (import ./noctalia-greeter.nix {
+    #   inherit inputs pkgs;
+    #   session = "start-hyprland";
+    # })
   ];
 }

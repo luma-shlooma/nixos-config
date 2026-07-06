@@ -2,6 +2,7 @@
   # Plugins
   programs.nixvim.imports = [
     ./autopairs.nix
+    ./colorful-menu.nix
     ./blink/default.nix
     ./icons.nix
     ./lsp.nix

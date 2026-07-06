@@ -18,5 +18,11 @@
       inherit pkgs;
       successfulLoginCommand = "niri";
     })
+    # TODO: Switch to noctalia-greeter when matured
+    # (import ./noctalia-greeter.nix {
+    #   inherit inputs pkgs;
+    #   session = "niri";
+    #   monitor = "eDP-1"; # TODO: Untie from work-specific monitor - make config val
+    # })
   ];
 }

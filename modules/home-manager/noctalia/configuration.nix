@@ -30,6 +30,11 @@ in
         clipboard_auto_paste = "auto";
         clipboard_image_action_command = "";
         shared_gl_context = true;
+        # Greeter settings
+        greeter_sync = {
+          auto_sync = true;
+          privilege_command = "alacritty -e run0";
+        };
 
         panel = {
           launcher_placement = "centered";

@@ -2,6 +2,7 @@
   opts = {
     # Mouse
     mouse = "a";
+    mousemodel = "popup";
     # Line numbers
     number = true;
     relativenumber = true;

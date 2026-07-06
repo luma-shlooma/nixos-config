@@ -29,5 +29,9 @@
     };
 
     # TODO: Lockscreen on eDP-1 only?
+    lockscreen = {
+      enabled = true;
+      monitors = [ "eDP-1" ];
+    };
   };
 }

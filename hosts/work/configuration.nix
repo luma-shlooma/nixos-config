@@ -24,6 +24,7 @@ args @ { host, pkgs, inputs, ... }:
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/network.nix
     ../../modules/nixos/wireguard.nix
+    ../../modules/nixos/mullvad.nix
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/power.nix
     ../../modules/nixos/niri.nix

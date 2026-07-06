@@ -7,8 +7,8 @@
       scope = {
         highlights = [ "BlinkIndent" ];
         underline = {
-          enabled = true;
-          highlights = [ "BlinkIndentBlueUnderline" ];
+          enabled = false;
+          # highlights = [ "BlinkIndentBlueUnderline" ];
         };
       };
     };
