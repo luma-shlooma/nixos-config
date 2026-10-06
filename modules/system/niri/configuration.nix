@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, inputs, lib, ... }:
 with lib;
 let
   # The configured user
