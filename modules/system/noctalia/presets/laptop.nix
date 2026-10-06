@@ -3,12 +3,14 @@ with lib;
 let
   # The configured user
   user = config.settings.system.user;
+  # Form factor of host
+  form = config.settings.hardware.form;
   # This module's config options
   cfg = config.modules.noctalia;
 in
 {
   # Config
-  config = mkIf (cfg.enable && (cfg.preset == "laptop")) {
+  config = mkIf (cfg.enable && (form == "laptop")) {
 
     # Require home-manager to be enabled
     modules.homeManager.enable = true;

@@ -8,14 +8,7 @@ let
 in
 {
   # Options
-  options.modules.noctalia = {
-    enable = mkEnableOption "Noctalia Shell";
-    preset = mkOption {
-      type = types.nullOr (types.enum [ "desktop" "laptop" ]);
-      default = null;
-      description = "Which preset deviation in shell configuration to use, if any.";
-    };
-  };
+  options.modules.noctalia.enable = mkEnableOption "Noctalia Shell";
 
   # Config
   config = mkIf cfg.enable {
