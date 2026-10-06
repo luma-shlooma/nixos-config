@@ -17,13 +17,13 @@ The three files required are:
 : This is the untouched hardware file auto-generated on installation of nixos.
 
 **host/home-manager.nix**
-: This contains just the untouched `home.stateVersion` created on initialisation 
-for this machine. It is imported at the home-manager level.
+: This only has to specify the untouched `home.stateVersion`. It could also be 
+used to set small home-manager attributes without a module.
 
 
 ### Notes:
 
-`system.stateVersion` should be set and untouched in both `configuration.nix` and 
+`system.stateVersion` must be set and untouched in both `configuration.nix` and 
 `home-manager.nix`.
 
 `home-manager.nix` is imported as a home-manager file (see `modules/system/home-manager.nix`).
@@ -31,7 +31,8 @@ for this machine. It is imported at the home-manager level.
 These files **should not** import each other.
 
 Sometimes it is not appropriate to create a custom module, so both `configuration.nix` 
-and `home-manager.nix` is welcome to set configuration directly.
+and `home-manager.nix` is welcome to set configuration directly. This includes the 
+bootloader options which remain inside of `configuration.nix`.
 
 There is no default `hardware.nix` file on main as this should be an exact copy of 
 what is generated.
