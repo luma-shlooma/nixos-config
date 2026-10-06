@@ -1,0 +1,60 @@
+{ config, inputs, lib, ... }:
+with lib;
+let
+  # The configured user
+  user = config.settings.user;
+  # This module's config options
+  cfg = config.modules.homeManager;
+in
+{
+  # Options
+  options.modules.homeManager.enable = mkEnableOption "Home Manager";
+
+  # Config
+  config = mkIf cfg.enable {
+
+    # Import home-manager
+    imports = [
+      inputs.home-manager.nixosModules.default
+    ];
+
+    # Uses XDG
+    modules.xdg.enable = true;
+
+    # Home Manager
+    home-manager = {
+      backupFileExtension = "backup";
+      extraSpecialArgs = { inherit host inputs; };
+      # Import the host-specific base home-manager config
+      users."${user}" = {
+        # Import the host configuration
+        imports = [
+          ../../host/home-manager.nix
+        ];
+        # Common config
+
+        # Add nixos config scripts to session path
+        home.sessionPath = [
+          "/etc/nixos/scripts/"
+        ];
+
+        # Unfree software
+        # For Home-Manager programs
+        nixpkgs.config.allowUnfree = true;
+        # Catch for manual `nix-shell` installation
+        home.sessionVariables = {
+          NIXPKGS_ALLOW_UNFREE = 1;
+        };
+
+        # Enable XDG
+        xdg = {
+          enable = true;
+          mimeApps.enable = true;
+          configFile."mimeapps.list".force = true;
+        };
+
+      };
+    };
+
+  };
+}

@@ -2,72 +2,95 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+    # Nix package collection - unstable channel
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      # inputs.nixpkgs.follows = "nixpkgs";
+    # Firefox userChrome tweaks for better performance/behaviour
+    betterfox = {
+      url = "github:HeitorAugustoLN/betterfox-nix";
     };
 
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
+    # Dependency of walker, declared explicitly to allow follows
+    elephant = {
+      url = "github:abenz1267/elephant";
     };
 
-    betterfox.url = "github:HeitorAugustoLN/betterfox-nix";
-
+    # Firefox extension packages from NUR
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
-
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
-
-    elephant.url = "github:abenz1267/elephant";
-    walker = {
-      url = "github:abenz1267/walker";
-      inputs.elephant.follows = "elephant";
+    # Home environment and dotfile manager
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Phinger cursor theme for Hyprland
+    hyprcursor-phinger = {
+      url = "github:jappie3/hyprcursor-phinger";
+    };
+
+    # Niri scrollable-tiling Wayland compositor
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Declarative Flatpak management
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
+    };
+
+    # Neovim configured via Nix modules
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Noctalia desktop shell
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Noctalia greeter
     noctalia-greeter = {
       url = "github:noctalia-dev/noctalia-greeter";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Application launcher
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: 
+  let
+    # Custom lib functions
+    funcs = {
+      mkAllDefault = (import ./lib/mkAllDefault.nix) nixpkgs.lib;
+    };
+  in
   {
-    nixosConfigurations = {
-      work = nixpkgs.lib.nixosSystem {
-        specialArgs = { host = "work"; inherit inputs self; };
-        modules = [
-          ./hosts/work/configuration.nix
-        ];
-      };
-      home = nixpkgs.lib.nixosSystem {
-        specialArgs = { host = "home"; inherit inputs self; };
-        modules = [
-          ./hosts/home/configuration.nix
-        ];
-      };
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs funcs self; };
+      modules = [
+        # The machine-specific declaration files.
+        # These should be present on the chosen build branch.
+        ./host/configuration.nix
+        ./host/home-manager.nix
+        ./host/hardware.nix
+        # Import all settings
+        ./settings/default.nix
+        # Import all modules
+        ./modules/default.nix
+      ];
     };
   };
 }

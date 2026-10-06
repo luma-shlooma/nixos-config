@@ -1,0 +1,26 @@
+{ config, lib, pkgs, ... }:
+with lib;
+let
+  # This module's config options
+  cfg = config.modules.wireshark;
+in
+{
+  # Options
+  options.modules.wireshark.enable = mkEnableOption "Wireshark";
+
+  # Config
+  config = mkIf cfg.enable {
+
+    # Wireshark
+    programs.wireshark.enable = true;
+    
+    # Termshark
+    environment.systemPackages = with pkgs; [
+      wireshark # Seemingly not added in enable
+      termshark
+    ];
+
+    # Requires user added to wireshark group
+
+  };
+}
