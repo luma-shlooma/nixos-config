@@ -6,12 +6,6 @@ cd /etc/nixos || exit
 branch=$(git symbolic-ref --short HEAD)
 
 run_rebuild() {
-  git add --all
-
-  echo ":: Changes since last rebuild:"
-  git --no-pager diff --compact-summary HEAD /etc/nixos
-  echo ""
-
   behind=$(git rev-list --count HEAD..main)
   if [ "$behind" -gt 0 ]; then
     echo ":: Warning: this branch is $behind commit(s) behind main."
@@ -20,7 +14,7 @@ run_rebuild() {
   read -rp ":: Press ENTER to rebuild or CTRL+C to cancel: "
 
   echo ":: Rebuilding..."
-  sudo nixos-rebuild switch --flake .#nixos
+  sudo nixos-rebuild switch --flake .#nixos --no-update-lock-file
 }
 
 if [ "$branch" = "main" ]; then

@@ -6,12 +6,6 @@ cd /etc/nixos || exit
 branch=$(git symbolic-ref --short HEAD)
 
 run_test() {
-  git add --all
-
-  echo ":: Changes since last rebuild:"
-  git --no-pager diff --compact-summary HEAD /etc/nixos
-  echo ""
-
   behind=$(git rev-list --count HEAD..main)
   if [ "$behind" -gt 0 ]; then
     echo ":: Warning: this branch is $behind commit(s) behind main."
@@ -20,7 +14,7 @@ run_test() {
   read -rp ":: Press ENTER to evaluate or CTRL+C to cancel: "
 
   echo ":: Evaluating..."
-  if sudo nixos-rebuild dry-build --flake .#nixos --option abort-on-warn true --show-trace --no-build-output; then
+  if sudo nixos-rebuild dry-build --flake .#nixos --no-update-lock-file --option abort-on-warn true --show-trace --no-build-output; then
     echo ":: Evaluation succeeded."
   else
     echo ":: Evaluation failed."
