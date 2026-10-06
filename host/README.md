@@ -17,7 +17,8 @@ The three files required are:
 : This is the untouched hardware file auto-generated on installation of nixos.
 
 **host/home-manager.nix**
-: Similar to `configuration.nix`, but enables desired home-manager modules.
+: This contains just the untouched `home.stateVersion` created on initialisation 
+for this machine. It is imported at the home-manager level.
 
 
 ### Notes:

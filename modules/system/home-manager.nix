@@ -27,11 +27,18 @@ in
       extraSpecialArgs = { inherit host inputs; };
       # Import the host-specific base home-manager config
       users."${user}" = {
+
         # Import the host configuration
         imports = [
           ../../host/home-manager.nix
         ];
+
         # Common config
+
+        home.username = "${user}";
+        home.homeDirectory = "/home/${user}";
+        # Let Home Manager install and manage itself.
+        programs.home-manager.enable = true;
 
         # Add nixos config scripts to session path
         home.sessionPath = [

@@ -83,8 +83,8 @@
       modules = [
         # The machine-specific declaration files.
         # These should be present on the chosen build branch.
+        # NOTE: ./host/home-manager.nix is imported by the home-manager module.
         ./host/configuration.nix
-        ./host/home-manager.nix
         ./host/hardware.nix
         # Import all settings
         ./settings/default.nix
