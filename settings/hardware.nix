@@ -20,7 +20,7 @@ in
       example = "laptop";
     };
     monitorPreset = mkOption {
-      type = types.nullOr (types.enum [ "orion" ]);
+      type = types.nullOr (types.enum [ "home" "orion" ]);
       default = null;
       description = "The enabled monitor preset for this machine. Some modules will use this to implement specific monitor workspace layouts.";
       example = "orion";

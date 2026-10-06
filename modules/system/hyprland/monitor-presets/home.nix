@@ -5,11 +5,12 @@ let
   user = config.settings.user;
   # Controlled by the shared window-manager settings
   cfg = config.settings.windowManager;
+  preset = config.settings.hardware.monitorPreset;
   kanshi = config.modules.kanshi;
 in
 {
   # Config
-  config = mkIf (cfg.enable && (cfg.selected == "hyprland") && (cfg.preset == "home") && !kanshi.enable) {
+  config = mkIf (cfg.enable && (cfg.selected == "hyprland") && (preset == "home") && !kanshi.enable) {
 
     # The home-manager config
     home-manager.users."${user}" = 
