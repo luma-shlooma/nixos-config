@@ -1,4 +1,4 @@
-{ config, funcs, inputs, lib, ... }:
+{ config, funcs, inputs, lib, pkgs, ... }:
 with lib;
 let
   # The configured user
@@ -17,12 +17,13 @@ in
     };
   };
 
+  # Import input package
+  imports = [
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
+
   # Config
   config = mkIf cfg.enable {
-
-    imports = [
-      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    ];
 
     # Run on start-up
     settings.windowManager.onStartUp = [

@@ -28,13 +28,13 @@ in
     };
   };
 
+  # Import the nix-flatpak module
+  imports = [
+    inputs.nix-flatpak.nixosModules.nix-flatpak
+  ];
+
   # Config
   config = mkIf cfg.enable {
-
-    # Import the nix-flatpak module
-    imports = [
-      inputs.nix-flatpak.nixosModules.nix-flatpak
-    ];
 
     # Enable the flatpak service
     services.flatpak = {

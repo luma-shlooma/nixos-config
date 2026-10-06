@@ -7,6 +7,12 @@ let
   cfg = config.settings.launcher;
 in
 {
+
+  # Import module
+  imports = [
+    inputs.walker.homeManagerModules.default
+  ];
+
   # TODO:
   #       For all modules currently enabled like below by settings,
   #       Change to a separate module enable option which defaults 
@@ -33,10 +39,6 @@ in
     
     # The home-manager config
     home-manager.users.${user} = {
-
-      imports = [
-        inputs.walker.homeManagerModules.default
-      ];
 
       # Walker config for 0.13.26
       programs.walker = {

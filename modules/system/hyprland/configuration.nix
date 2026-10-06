@@ -87,8 +87,7 @@ in
       };
 
       ### CURSOR
-      # This used to be in theme, but `imports` is not supported
-      # Phisch Phinger theme
+      # Phisch Phinger cursor
       imports = [
         inputs.hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
       ];

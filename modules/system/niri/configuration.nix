@@ -7,13 +7,14 @@ let
   cfg = config.settings.windowManager;
 in
 {
+
+  # Import the nixos modules from flake
+  imports = [
+    inputs.niri.nixosModules.niri
+  ];
+
   # Config
   config = mkIf (cfg.enable && (cfg.selected == "niri")) {
-
-    # Import the nixos modules from flake
-    imports = [
-      inputs.niri.nixosModules.niri
-    ];
 
     # Use overlay from flake
     nixpkgs.overlays = [ inputs.niri.overlays.niri ];
