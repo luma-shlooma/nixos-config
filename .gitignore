@@ -1,4 +1,0 @@
-
-# Ignore flake.lock
-# Only machine branches should be evaluating
-flake.lock
