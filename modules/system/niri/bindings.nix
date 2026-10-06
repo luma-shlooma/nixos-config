@@ -21,7 +21,7 @@ in
         # Exit niri (logout)
         "Mod+Shift+E".action.quit.skip-confirmation = false;
         # Spawners
-        "Mod+Return".action.spawn = "${terminal}";
+        "Mod+Return".action.spawn = "${terminal.launch}";
         "Mod+D".action.spawn = lib.splitString " " "${launcher.launch}";
         "Mod+Shift+Q".action.close-window = {};
         # Workspaces

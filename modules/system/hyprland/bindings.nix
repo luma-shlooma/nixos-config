@@ -22,7 +22,7 @@ in
           # Keybindings - copy sway
           bind = [
             # Basic
-            "SUPER, Return, exec, ${terminal}"
+            "SUPER, Return, exec, ${terminal.launch}"
             "SUPER, f, fullscreen, 0"
             "SUPER_SHIFT, q, killactive"
             "SUPER_SHIFT, e, exit"
