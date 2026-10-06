@@ -54,7 +54,7 @@ in
     };
 
     # Enable xdg
-    config.modules.xdg.enable = true;
+    modules.xdg.enable = true;
 
     # Maybe needed?
     security.rtkit.enable = true;
