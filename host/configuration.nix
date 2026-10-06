@@ -83,7 +83,6 @@
   # Bootloader config
   boot.loader.systemd-boot = {
     enable = true;
-    efi.canTouchEfiVariables = true;
     # TODO: Modularise?
     editor = false;
     # windows = {
@@ -98,6 +97,7 @@
       ${pkgs.gnused}/bin/sed -i 's/^default.*/default a_windows/' /boot/loader/loader.conf
     '';
   };
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable polkit
   security.polkit.enable = true;
