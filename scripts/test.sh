@@ -4,12 +4,8 @@
 # Move to config
 cd /etc/nixos || exit
 
-# Get host to rebuild
-host=${1:-${NIXOS_HOST:-""}}
-
 echo "=== NIXOS TEST ==="
 echo " Evaluate NixOS but do not build or switch"
-echo " (host: ${host:-"none"})"
 
 # Add new files
 git add --all
@@ -25,7 +21,7 @@ echo "ENTER   | Evaluate"
 read -r
 
 # Dry build
-cmd="sudo nixos-rebuild dry-build --flake /etc/nixos/#${host} --option abort-on-warn true --show-trace --no-build-output"
+cmd="sudo nixos-rebuild dry-build --flake /etc/nixos/#nixos --option abort-on-warn true --show-trace --no-build-output"
 
 # Exit on failure
 if eval "$cmd"; then
