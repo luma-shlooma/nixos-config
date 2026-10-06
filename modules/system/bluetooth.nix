@@ -2,11 +2,11 @@
 with lib;
 let
   # This module's config options
-  cfg = config.modules.buetooth;
+  cfg = config.modules.bluetooth;
 in
 {
   # Options
-  options.modules.buetooth.enable = mkEnableOption "Bluetooth";
+  options.modules.bluetooth.enable = mkEnableOption "Bluetooth";
 
   # Config
   config = mkIf cfg.enable {
