@@ -10,8 +10,8 @@
     ./apps/flatpak.nix
     ./apps/libreoffice.nix
     ./apps/minecraft.nix
-    ./apps/obsidian.nix
     ./apps/obs.nix
+    ./apps/obsidian.nix
     ./apps/pinta.nix
     ./apps/roblox.nix
     ./apps/spotify.nix
@@ -46,7 +46,6 @@
     ./system/noctalia-greeter.nix
     ./system/power.nix
     ./system/sound.nix
-    ./system/sway.nix
     ./system/tuigreet.nix
     ./system/walker
     ./system/xdg.nix
