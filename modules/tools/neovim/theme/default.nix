@@ -2,7 +2,7 @@
 with lib;
 let
   # Configured user
-  user = config.settings.user;
+  user = config.settings.system.user;
   # Theme options
   theme = config.settings.theme.selected;
   colours = config.settings.theme.colours;

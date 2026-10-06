@@ -2,7 +2,7 @@
 with lib;
 let
   # The configured user
-  user = config.settings.user;
+  user = config.settings.system.user;
   # Controlled by the shared window-manager settings
   wm = config.settings.windowManager;
   preset = config.settings.hardware.monitorPreset;

@@ -2,7 +2,7 @@
 with lib;
 let
   # The configured user
-  user = config.settings.user;
+  user = config.settings.system.user;
   # This module's config options
   cfg = config.modules.firefox;
 
