@@ -52,8 +52,6 @@ in
         map buildFlathubBeta cfg.packages.flathub-beta
       ];
     };
-    
-    services.flatpak.
 
     # Enable xdg
     config.modules.xdg.enable = true;
