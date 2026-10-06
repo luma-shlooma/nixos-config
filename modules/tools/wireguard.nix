@@ -11,9 +11,6 @@ in
   # Config
   config = mkIf cfg.enable {
 
-    # TODO: Standardise inter-module relations (when and where)
-    modules.networking.enable = true;
-
     # wg-tools
     environment.systemPackages = with pkgs; [
       wireguard-tools
