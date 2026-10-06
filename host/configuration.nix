@@ -59,7 +59,7 @@
     steam.enable = true;
     stremio.enable = true;
     thunar.enable = true;
-    vintage-story.enable = true;
+    vintageStory.enable = true;
     vlc.enable = true;
     # System
     bluetooth.enable = true;
