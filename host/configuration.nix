@@ -58,7 +58,7 @@
     sound.enable = true;
     # Tools
     alacritty.enable = true;
-    amazon-q.enable = true;
+    amazonQ.enable = true;
     antigravity.enable = true;
     docker.enable = true;
     lxc.enable = true;
