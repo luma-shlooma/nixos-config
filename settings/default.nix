@@ -11,5 +11,5 @@
     ./window-manager.nix
     # Theme colours
     ./theme-colours/default.nix
-  ]
+  ];
 }
