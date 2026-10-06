@@ -47,10 +47,9 @@ in
         location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
       }];
       # Install packages from flathub and flathub-beta
-      packages = [
-        map buildFlathub cfg.packages.flathub
-        map buildFlathubBeta cfg.packages.flathub-beta
-      ];
+      packages =
+        (map buildFlathub cfg.packages.flathub) ++
+        (map buildFlathubBeta cfg.packages.flathub-beta);
     };
 
     # Enable xdg
