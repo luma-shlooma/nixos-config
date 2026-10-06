@@ -3,6 +3,12 @@
 
 cd /etc/nixos || exit
 
+branch=$(git symbolic-ref --short HEAD)
+if [ "$branch" != "main" ]; then
+  echo ":: Error: updates must be run from main."
+  exit 1
+fi
+
 # List all inputs from flake.lock
 inputs=$(jq -r '.nodes.root.inputs | keys[]' flake.lock)
 
