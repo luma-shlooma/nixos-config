@@ -5,11 +5,11 @@
 
 {
   # Config settings
-  config.settings = {
+  settings = {
     # ...
   };
   # Config modules
-  config.modules = {
+  modules = {
     # Apps
     # System
     # Tools
