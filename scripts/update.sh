@@ -1,0 +1,28 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p bash git jq fzf
+
+cd /etc/nixos || exit
+
+# List all inputs from flake.lock
+inputs=$(jq -r '.nodes.root.inputs | keys[]' flake.lock)
+
+echo ":: Select inputs to update (TAB to multi-select, CTRL+A for all, ENTER to confirm):"
+selected=$(echo "$inputs" | fzf --multi --height=40% --bind ctrl-a:select-all)
+
+if [ -z "$selected" ]; then
+  echo ":: No inputs selected."
+  exit 0
+fi
+
+echo ""
+echo ":: Updating:"
+echo "$selected"
+echo ""
+read -rp ":: Press ENTER to update or CTRL+C to cancel: "
+
+while IFS= read -r input; do
+  echo ":: Updating $input..."
+  nix flake lock --update-input "$input"
+done <<< "$selected"
+
+echo ":: Done."
