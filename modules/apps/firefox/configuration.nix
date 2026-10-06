@@ -55,8 +55,9 @@ in
           search.privateDefault = "ddg";
         };
       };
+
       # Fix clobbering
-      home.file."${config.programs.firefox.configPath}/default/search.json.mozlz4".force = lib.mkForce true;
+      home.file."${config.settings.system.configDir}/mozilla/firefox/default/search.json.mozlz4".force = lib.mkForce true;
 
     };
 
