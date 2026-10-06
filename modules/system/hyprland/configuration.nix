@@ -95,6 +95,7 @@ in
       programs.hyprcursor-phinger.enable = true;
       # XCursor backup when hyprcursor fails
       home.pointerCursor = {
+        enable = true;
         name = "phinger-cursors-light";
         package = pkgs.phinger-cursors;
         x11.enable = true;

@@ -12,21 +12,24 @@ in
 {
   config = mkIf (cfg.enable && (theme == "default")) {
     
+    # Uses custom font
+    fonts.packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+    ];
+
     # home-manager config theming
     home-manager.users.${user} = {
 
       # Alacritty theming
       programs.alacritty = {
         settings = {
-          # NOTE: the following doesn't even set until I change scale.
-          #       also, I kinda prefer the default anyway.
-          # font = {
-          #   normal = {
-          #     family = "JetBrainsMono Nerd Font";
-          #     style = "Medium";
-          #   };
-          #   size = 11;
-          # };
+          font = {
+            normal = {
+              family = "JetBrainsMono Nerd Font";
+              style = "Medium";
+            };
+            size = 11;
+          };
         };
       };
 

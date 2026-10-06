@@ -15,6 +15,11 @@ in
 {
   config = mkIf (cfg.enable && (cfg.selected == "hyprland") && (theme == "default")) {
     
+    # Uses custom font
+    fonts.packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+    ];
+
     # home-manager config theming
     home-manager.users.${user} = {
 
