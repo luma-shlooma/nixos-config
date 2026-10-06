@@ -4,7 +4,7 @@ let
   # Configured user
   user = config.settings.system.user;
   # Home-manager config
-  home = config.home-manager.users.${user};
+  home = config."home-manager".users.${user};
   # Theme options
   theme = config.settings.theme.selected;
   colours = config.settings.theme.colours;

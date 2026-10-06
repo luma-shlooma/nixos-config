@@ -4,7 +4,7 @@ let
   # The configured user
   user = config.settings.system.user;
   # Home-manager config
-  home = config.home-manager.users.${user};
+  home = config."home-manager".users.${user};
   # This module's config options
   cfg = config.modules.alacritty;
 in

@@ -2,11 +2,11 @@
 with lib;
 let
   # This module's config options
-  cfg = config.modules.amazon-q;
+  cfg = config.modules.amazonQ;
 in
 {
   # Options
-  options.modules.amazon-q.enable = mkEnableOption "Amazon Q";
+  options.modules.amazonQ.enable = mkEnableOption "Amazon Q";
 
   # Config
   config = mkIf cfg.enable {

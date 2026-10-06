@@ -2,11 +2,11 @@
 with lib;
 let
   # This module's config options
-  cfg = config.modules.vintage-story;
+  cfg = config.modules.vintageStory;
 in
 {
   # Options
-  options.modules.vintage-story.enable = mkEnableOption "Vintage Story";
+  options.modules.vintageStory.enable = mkEnableOption "Vintage Story";
 
   # Config
   config = mkIf cfg.enable {
