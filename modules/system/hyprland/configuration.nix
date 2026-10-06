@@ -34,7 +34,7 @@ in
     };
 
     # Set session if greeter is enabled
-    modules.greeter.session = "start-hyprland";
+    settings.greeter.session = "start-hyprland";
 
     # Requires home-manager
     modules.homeManager.enable = true;
