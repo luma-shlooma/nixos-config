@@ -32,3 +32,6 @@ These files **should not** import each other.
 
 Sometimes it is not appropriate to create a custom module, so both `configuration.nix` 
 and `home-manager.nix` is welcome to set configuration directly.
+
+There is no default `hardware.nix` file on main as this should be an exact copy of 
+what is generated.
