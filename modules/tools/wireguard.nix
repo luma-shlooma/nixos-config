@@ -11,8 +11,8 @@ in
   # Config
   config = mkIf cfg.enable {
 
-    # TODO: Standardise inter-module relations
-    config.modules.network.enable = true;
+    # TODO: Standardise inter-module relations (when and where)
+    modules.network.enable = true;
 
     # wg-tools
     environment.systemPackages = with pkgs; [
