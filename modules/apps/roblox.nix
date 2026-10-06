@@ -12,7 +12,7 @@ in
   config = mkIf cfg.enable {
 
     # Install Sober via flatpak
-    config.modules.flatpak = {
+    modules.flatpak = {
       enable = true;
       packages = [ "com.vinegarhq.Sober" ];
     };

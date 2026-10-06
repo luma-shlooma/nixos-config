@@ -16,8 +16,5 @@ in
       spotify
     ];
 
-    # Might need sound...
-    config.modules.sound.enable = true;
-
   };
 }

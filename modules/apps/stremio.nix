@@ -14,7 +14,7 @@ in
     # https://github.com/Stremio/stremio-linux-shell
 
     # Install Stremio + service via flatpak
-    config.modules.flatpak = {
+    modules.flatpak = {
       enable = true;
       packages.flathub = [ "com.stremio.Service" ];
       packages.flathub-beta = [ "com.stremio.Stremio" ];
