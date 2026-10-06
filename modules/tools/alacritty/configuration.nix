@@ -3,7 +3,8 @@ with lib;
 let
   # The configured user
   user = config.settings.system.user;
-
+  # Home-manager config
+  home = config.home-manager.users.${user};
   # This module's config options
   cfg = config.modules.alacritty;
 in
@@ -26,8 +27,7 @@ in
     };
 
     # Set package if preferre
-    settings.terminal.app.package = mkIf (config.settings.terminal.app.selected == "alacritty")
-      config.home-manager.users."${user}".programs.alacritty.package;
+    settings.terminal.app.package = mkIf (config.settings.terminal.app.selected == "alacritty") home.programs.alacritty.package;
 
   };
 }

@@ -3,6 +3,8 @@ with lib;
 let
   # The configured user
   user = config.settings.system.user;
+  # Home-manager config
+  home = config.home-manager.users.${user};
   # Controlled by the shared window-manager settings
   cfg = config.settings.windowManager;
 in
@@ -21,7 +23,7 @@ in
         hyprctl dispatch -- exec "[workspace empty]" xdg-open "$@"
        '';
        # Where to save screenshots
-       screenshots = "${config.home.homeDirectory}/Pictures/Screenshots";
+       screenshots = "${home.home.homeDirectory}/Pictures/Screenshots";
     in
     {
 

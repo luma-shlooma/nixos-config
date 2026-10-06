@@ -3,6 +3,8 @@ with lib;
 let
   # The configured user
   user = config.settings.system.user;
+  # Home-manager config
+  home = config.home-manager.users.${user};
   # Controlled by the shared window-manager settings
   cfg = config.settings.windowManager;
   ha = config.modules.homeAssistant;
@@ -15,7 +17,7 @@ in
     home-manager.users."${user}" =
     let
       # Vars
-      vars = config.home-manager.users."${user}".home.sessionVariables;
+      vars = home.home.sessionVariables;
       # Command to toggle lamp
       # Should all hass commands be an option set?
       toggle-lamp = "\"$(${pkgs.home-assistant-cli}/bin/hass-cli service call switch.toggle --arguments entity_id=switch.lamp)\"";

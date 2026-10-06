@@ -3,6 +3,8 @@ with lib;
 let
   # Configured user
   user = config.settings.system.user;
+  # Home-manager config
+  home = config.home-manager.users.${user};
   # Theme options
   theme = config.settings.theme.selected;
   colours = config.settings.theme.colours;
@@ -56,7 +58,7 @@ in
           # name = "Orchis";
           # package = (pkgs.orchis-theme.override { tweaks = ["black"]; });
         };
-        gtk4.theme = config.gtk.theme;
+        gtk4.theme = home.gtk.theme;
       };
       dconf.settings = {
         "org/gnome/desktop/interface" = {

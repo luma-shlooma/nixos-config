@@ -3,6 +3,8 @@ with lib;
 let
   # The configured user
   user = config.settings.system.user;
+  # Home-manager config
+  home = config.home-manager.users.${user};
   # This module's config options
   cfg = config.modules.zsh;
 in
@@ -27,7 +29,7 @@ in
           autosuggestion.enable = true;
           syntaxHighlighting.enable = true;
           # Use new dot directory
-          dotDir = "${config.xdg.configHome}/zsh";
+          dotDir = "${home.xdg.configHome}/zsh";
           initContent = ''
             function y() {
               local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -83,8 +85,7 @@ in
     };
 
     # Set package if preferred
-    settings.terminal.shell.package = mkIf (config.settings.terminal.shell.selected == "zsh")
-      config.home-manager.users."${user}".programs.zsh.package;
+    settings.terminal.shell.package = mkIf (config.settings.terminal.shell.selected == "zsh") home.programs.zsh.package;
 
   };
 }

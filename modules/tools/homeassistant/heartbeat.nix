@@ -3,6 +3,8 @@ with lib;
 let
   # The configured user
   user = config.settings.system.user;
+  # Home-manager config
+  home = config.home-manager.users.${user};
   # This module's config options
   cfg = config.modules.homeAssistant;
 in
@@ -35,7 +37,7 @@ in
           done
         '';
         # Access session variables set in configuration.nix
-        vars = config.home-manager.users."${user}".home.sessionVariables;
+        vars = home.home.sessionVariables;
       in
       {
         Unit.Description = "Home Assistant PC Heartbeat Service";
