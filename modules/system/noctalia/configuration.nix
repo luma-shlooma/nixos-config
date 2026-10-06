@@ -17,11 +17,6 @@ in
     };
   };
 
-  # Import input package
-  imports = [
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-  ];
-
   # Config
   config = mkIf cfg.enable {
 
@@ -133,8 +128,10 @@ in
 
     };
 
-    # The nixos-level config
-    # ...
+    # Install noctalia package from flake
+    environment.systemPackages = [
+      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    ];
 
   };
 }
