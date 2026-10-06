@@ -38,7 +38,6 @@
     # System
     #$ ls system/ | sed 's|^|./system/|'
     ./system/bluetooth.nix
-    ./system/greeter.nix
     ./system/home-manager.nix
     ./system/hyprland
     ./system/niri
