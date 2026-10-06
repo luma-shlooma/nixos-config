@@ -69,7 +69,7 @@
     antigravity.enable = true;
     docker.enable = true;
     easyeffects.enable = true;
-    homeassistant.enable = true;
+    homeAssistant.enable = true;
     logiops.enable = true;
     mpris.enable = true;
     neovim.enable = true;
