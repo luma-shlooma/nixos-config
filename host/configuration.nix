@@ -6,13 +6,65 @@
 {
   # Config settings
   settings = {
-    # ...
+    # Greeter
+    greeter = {
+      enable = true;
+      selected = "tuigreet";
+      onBoot = true;
+    };
+    # Hardware
+    hardware = {
+      device = "thinkpad-t14";
+      monitorPreset = "orion";
+    };
+    # Launcher
+    launcher = {
+      enable = true;
+      selected = "walker";
+    };
+    # System
+    system = {
+      host = "nixos";
+      user = "haydn";
+    };
+    # Terminal
+    terminal = {
+      app.selected = "alacritty";
+      shell.selected = "zsh";
+    };
+    # Theme
+    theme = {
+      selected = "default";
+    };
+    # Window Manager
+    windowManager = {
+      enable = true;
+      selected = "niri";
+    };
   };
   # Config modules
   modules = {
     # Apps
+    firefox.enable = true;
+    libreoffice.enable = true;
+    obsidian.enable = true;
+    thunar.enable = true;
+    vlc.enable = true;
     # System
+    bluetooth.enable = true;
+    homeManager.enable = true;
+    noctalia.enable = true;
+    power.enable = true;
+    sound.enable = true;
     # Tools
+    alacritty.enable = true;
+    amazon-q.enable = true;
+    antigravity.enable = true;
+    docker.enable = true;
+    lxc.enable = true;
+    neovim.enable = true;
+    wireshark.enable = true;
+    yazi.enable = true;
   };
 
   # === Misc Config ===
@@ -33,6 +85,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = ""; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
