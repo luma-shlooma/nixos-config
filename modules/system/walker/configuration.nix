@@ -7,6 +7,11 @@ let
   cfg = config.settings.launcher;
 in
 {
+  # TODO:
+  #       For all modules currently enabled like below by settings,
+  #       Change to a separate module enable option which defaults 
+  #       true if selected. This allows modules not preferred to still
+  #       be installed and mends the broken pattern.
 
   # Config
   config = mkIf (cfg.enable && (cfg.selected == "walker")) {
@@ -16,6 +21,7 @@ in
 
     # Set the launch and dmenu commands for walker
     settings.launcher = {
+      # TODO: Use package instead of rely on path?
       launch = "walker";
       dmenu = opts: prompt: "echo -e \"${opts}\" | walker --dmenu -n --minheight 1";
     };
