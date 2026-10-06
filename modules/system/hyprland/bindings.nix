@@ -5,7 +5,7 @@ let
   user = config.settings.system.user;
   # Controlled by the shared window-manager settings
   cfg = config.settings.windowManager;
-  terminal = config.settings.terminal;
+  terminal = config.settings.terminal.app;
   launcher = config.settings.launcher;
   noctalia = config.modules.noctalia;
 in
