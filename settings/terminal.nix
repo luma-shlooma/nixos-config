@@ -41,10 +41,10 @@ in
 
   # Enable corresponding modules if preferred
   # Terminals
-  config.modules.alacritty = mkIf (cfg.app.selected == "alacritty") { enable = true; };
+  config.modules.alacritty.enable = mkIf (cfg.app.selected == "alacritty") true;
   # Shells
   # NOTE: bash always enabled
-  config.modules.zsh = mkIf (cfg.shell.selected == "zsh") { enable = true; };
+  config.modules.zsh.enable = mkIf (cfg.shell.selected == "zsh") true;
 
   # Generate run commands
   config.settings.terminal.app.run = "${cfg.app.package}/bin/${cfg.app.selected}";
