@@ -11,8 +11,6 @@ run_test() {
     echo ":: Warning: this branch is $behind commit(s) behind main."
   fi
 
-  read -rp ":: Press ENTER to evaluate or CTRL+C to cancel: "
-
   echo ":: Evaluating..."
   if sudo nixos-rebuild dry-build --flake .#nixos --no-update-lock-file --option abort-on-warn true --show-trace --no-build-output; then
     echo ":: Evaluation succeeded."

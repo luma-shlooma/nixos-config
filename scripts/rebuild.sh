@@ -11,8 +11,6 @@ run_rebuild() {
     echo ":: Warning: this branch is $behind commit(s) behind main."
   fi
 
-  read -rp ":: Press ENTER to rebuild or CTRL+C to cancel: "
-
   echo ":: Rebuilding..."
   sudo nixos-rebuild switch --flake .#nixos --no-update-lock-file
 }
