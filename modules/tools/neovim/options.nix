@@ -1,4 +1,5 @@
 {
+  # Vim options
   opts = {
     # Mouse
     mouse = "a";
