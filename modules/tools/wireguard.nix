@@ -12,7 +12,7 @@ in
   config = mkIf cfg.enable {
 
     # TODO: Standardise inter-module relations (when and where)
-    modules.network.enable = true;
+    modules.networking.enable = true;
 
     # wg-tools
     environment.systemPackages = with pkgs; [
