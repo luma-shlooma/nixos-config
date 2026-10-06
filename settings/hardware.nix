@@ -40,7 +40,7 @@ in
   ];
 
   # Set forms based on devices
-  config.settings.form = if cfg.device == "home-pc" then "desktop"
-                    else if cfg.device == "thinkpad-t14" then "laptop"
-                    else null; # NOTE: This might clash with a manual assignment
+  config.settings.hardware.form = if cfg.device == "home-pc" then "desktop"
+    else if cfg.device == "thinkpad-t14" then "laptop"
+    else null; # NOTE: This might clash with a manual assignment
 }
