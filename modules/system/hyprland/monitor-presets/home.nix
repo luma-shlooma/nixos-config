@@ -12,6 +12,9 @@ in
   # Config
   config = mkIf (cfg.enable && (cfg.selected == "hyprland") && (preset == "home") && !kanshi.enable) {
 
+    # Enable ddcutil (I forget exactly how this is used)
+    modules.ddcutil.enable = true;
+
     # The home-manager config
     home-manager.users."${user}" = 
     let
