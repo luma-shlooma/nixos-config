@@ -28,7 +28,7 @@ read -rp ":: Press ENTER to update or CTRL+C to cancel: "
 
 while IFS= read -r input; do
   echo ":: Updating $input..."
-  nix flake lock --update-input "$input"
+  nix flake update "$input"
 done <<< "$selected"
 
 echo ":: Done."
