@@ -7,7 +7,7 @@ in
 {
 
   # Set default theme colours
-  config.settings.colours = mkIf (cfg.selected == "default") {
+  config.settings.theme.colours = mkIf (cfg.selected == "default") {
     # From Alacritty default theme
     black   = "181818";
     red     = "ac4242";
