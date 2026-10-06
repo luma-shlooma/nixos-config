@@ -17,7 +17,7 @@ in
         type = types.package;
         description = "The package corresponding to the selected terminal application.";
       };
-      run = mkOption {
+      launch = mkOption {
         type = types.str;
         description = "Command to run the terminal application. Generated using supplied settings.";
       };
@@ -32,7 +32,7 @@ in
         type = types.package;
         description = "The package corresponding to the selected terminal shell.";
       };
-      run = mkOption {
+      launch = mkOption {
         type = types.str;
         description = "Command to run the shell application. Generated using supplied settings.";
       };
@@ -47,6 +47,6 @@ in
   config.modules.zsh.enable = mkIf (cfg.shell.selected == "zsh") true;
 
   # Generate run commands
-  config.settings.terminal.app.run = "${cfg.app.package}/bin/${cfg.app.selected}";
-  config.settings.terminal.shell.run = "${cfg.shell.package}/bin/${cfg.shell.selected}";
+  config.settings.terminal.app.launch = "${cfg.app.package}/bin/${cfg.app.selected}";
+  config.settings.terminal.shell.launch = "${cfg.shell.package}/bin/${cfg.shell.selected}";
 }
