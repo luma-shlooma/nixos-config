@@ -25,7 +25,7 @@ in
     };
 
     # Set session if greeter is enabled
-    config.modules.greeter.session = "niri";
+    modules.greeter.session = "niri";
 
     # Require home-manager to be enabled
     modules.homeManager.enable = true;
