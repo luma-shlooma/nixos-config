@@ -4,11 +4,11 @@ let
   # The configured user
   user = config.settings.system.user;
   # This module's config options
-  cfg = config.modules.ydotools;
+  cfg = config.modules.ydotool;
 in
 {
   # Options
-  options.modules.ydotool.enable = mkEnableOption "ydotools";
+  options.modules.ydotool.enable = mkEnableOption "ydotool";
 
   # Config
   config = mkIf cfg.enable {
