@@ -1,56 +1,47 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash -p bash
+#! nix-shell -i bash -p bash git
 
-# Move to config
 cd /etc/nixos || exit
 
-# Const
-WORKING="working"
+branch=$(git symbolic-ref --short HEAD)
 
-# Get host to rebuild
-host=${1:-${NIXOS_HOST:-""}}
+run_rebuild() {
+  git add --all
 
-echo "=== NIXOS REBUILD ==="
-echo " Rebuild and commit changes to config"
-echo " (host: ${host:-"none"})"
+  echo ":: Changes since last rebuild:"
+  git --no-pager diff --compact-summary HEAD /etc/nixos
+  echo ""
 
-# Git actions
-hash="$(git rev-parse HEAD)"
-git add --all
-
-# Print git diff
-echo "Changes made since rebuild..."
-git --no-pager diff --compact-summary HEAD /etc/nixos
-
-# Confirmation
-branch=$(git branch --show-current)
-echo "Options..."
-echo "CTRL+C    | Cancel"
-echo "ENTER     | Default branch behavior (${branch})"
-echo "msg ENTER | Commit msg"
-read -r msg
-
-
-# Rebuild
-sudo nixos-rebuild switch --flake /etc/nixos/#"${host}"
-#sudo nixos-rebuild boot --flake /etc/nixos/#"${host}"
-
-# Exit on failure
-[ $? -ne 0 ] && echo "Rebuild failed, wont commit" && exit 1
-
-# Commit actions
-if [[ "$branch" == "main" ]]; then
-  # Main, commit if msg
-  [ -z "$msg" ] || git commit -m "$msg"
-elif [[ "$branch" == "$WORKING" ]]; then
-  # Working branch, commit msg or hash
-  if [ -z "${msg}" ]; then
-    git commit -m "$hash"
-  else
-    git commit -m "${msg}"
+  behind=$(git rev-list --count HEAD..main)
+  if [ "$behind" -gt 0 ]; then
+    echo ":: Warning: this branch is $behind commit(s) behind main."
   fi
-else
-  # Unknown, no commit
-  echo "Unknown branch, wont commit"
-fi
 
+  read -rp ":: Press ENTER to rebuild or CTRL+C to cancel: "
+
+  echo ":: Rebuilding..."
+  sudo nixos-rebuild switch --flake .#nixos
+}
+
+if [ "$branch" = "main" ]; then
+  branches=$(git branch --format="%(refname:short)" | grep -v "^main$")
+  echo ":: Available branches:"
+  echo "$branches"
+  echo ""
+  read -rp ":: Branch to build: " target
+
+  if ! echo "$branches" | grep -qx "$target"; then
+    echo ":: Error: branch '$target' not found."
+    exit 1
+  fi
+
+  trap 'echo ":: Returning to main..."; git checkout main' EXIT
+
+  echo ":: Checking out $target..."
+  git checkout "$target"
+
+  run_rebuild
+else
+  echo ":: Rebuilding on branch '$branch'..."
+  run_rebuild
+fi

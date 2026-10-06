@@ -1,32 +1,52 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash -p bash
+#! nix-shell -i bash -p bash git
 
-# Move to config
 cd /etc/nixos || exit
 
-echo "=== NIXOS TEST ==="
-echo " Evaluate NixOS but do not build or switch"
+branch=$(git symbolic-ref --short HEAD)
 
-# Add new files
-git add --all
+run_test() {
+  git add --all
 
-# Print git diff
-echo "Changes made since rebuild..."
-git --no-pager diff --compact-summary HEAD /etc/nixos
+  echo ":: Changes since last rebuild:"
+  git --no-pager diff --compact-summary HEAD /etc/nixos
+  echo ""
 
-# Confirmation
-echo "Options..."
-echo "CTRL+C  | Cancel"
-echo "ENTER   | Evaluate"
-read -r
+  behind=$(git rev-list --count HEAD..main)
+  if [ "$behind" -gt 0 ]; then
+    echo ":: Warning: this branch is $behind commit(s) behind main."
+  fi
 
-# Dry build
-cmd="sudo nixos-rebuild dry-build --flake /etc/nixos/#nixos --option abort-on-warn true --show-trace --no-build-output"
+  read -rp ":: Press ENTER to evaluate or CTRL+C to cancel: "
 
-# Exit on failure
-if eval "$cmd"; then
-  echo "Evaluation succeeded"
+  echo ":: Evaluating..."
+  if sudo nixos-rebuild dry-build --flake .#nixos --option abort-on-warn true --show-trace --no-build-output; then
+    echo ":: Evaluation succeeded."
+  else
+    echo ":: Evaluation failed."
+    exit 1
+  fi
+}
+
+if [ "$branch" = "main" ]; then
+  branches=$(git branch --format="%(refname:short)" | grep -v "^main$")
+  echo ":: Available branches:"
+  echo "$branches"
+  echo ""
+  read -rp ":: Branch to test: " target
+
+  if ! echo "$branches" | grep -qx "$target"; then
+    echo ":: Error: branch '$target' not found."
+    exit 1
+  fi
+
+  trap 'echo ":: Returning to main..."; git checkout main' EXIT
+
+  echo ":: Checking out $target..."
+  git checkout "$target"
+
+  run_test
 else
-  echo "Evaluation failed" && exit 1
+  echo ":: Testing on branch '$branch'..."
+  run_test
 fi
-

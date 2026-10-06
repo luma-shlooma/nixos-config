@@ -1,5 +1,4 @@
-#! /usr/bin/env nix-shell
-#! nix-shell -i bash -p bash
+##!/usr/bin/env bash
 set -euo pipefail
 
 ## Defaults
@@ -8,7 +7,7 @@ keepGens=$keepGensDef; keepDays=$keepDaysDef
 
 ## Usage
 usage () {
-    printf "Usage:\n\t ./trim-generations.sh <keep-gernerations> <keep-days> <profile> \n\n
+    printf "Usage:\n\t ./trim-generations.sh <keep-generations> <keep-days> <profile> \n\n
 (defaults are: Keep-Gens=$keepGensDef Keep-Days=$keepDaysDef Profile=user)\n\n"
     printf "If you enter any parameters, you must enter all three, or none to use defaults.\n"
     printf "Example:\n\t trim-generations.sh 15 10 home-manager\n"
@@ -154,7 +153,7 @@ choose () {
 
     case "$answer" in
         [yY1] ) #printf "answered yes!\n"
-             nix-env --delete-generations -p $profile ${!gens[@]}
+             nix-env --delete-generations -p $profile "${!gens[@]}"
             exit 0
             ;;
         [nN0] ) printf "Ok doing nothing exiting..\n"
@@ -241,5 +240,4 @@ else
     done
     printf "\n"
     choose "y" "Do you want to delete these? [Y/n]: "
-fi
-
+fi! /usr/bin/env nix-shell
