@@ -13,7 +13,7 @@ in
   config = mkIf (wm.enable && !kanshi.enable && (wm.selected == "niri") && (preset == "orion")) {
     
     # The home-manager config
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       # A replacement for kanshi if it isn't working
       programs.niri.settings.outputs = 

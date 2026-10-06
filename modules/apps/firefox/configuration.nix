@@ -17,7 +17,7 @@ in
     modules.homeManager.enable = true;
     
     # The home-manager config
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       imports = [
         inputs.betterfox.modules.homeManager.betterfox

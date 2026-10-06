@@ -4,7 +4,7 @@ let
   # The configured user
   user = config.settings.system.user;
   # Home-manager config
-  home = config."home-manager".users.${user};
+  home = config.home-manager.users.${user};
   # Controlled by the shared window-manager settings
   cfg = config.settings.windowManager;
 in
@@ -13,7 +13,7 @@ in
   config = mkIf (cfg.enable && (cfg.selected == "hyprland")) {
 
     # The home-manager config
-    home-manager.users."${user}" = 
+    home-manager.users.${user} = 
     let
       # Script to open editor in next free workspace
       # Only a separate script since `hyprshot` wants a single command

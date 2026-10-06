@@ -1,12 +1,11 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 with lib;
 let
   # The configured user
   user = config.settings.system.user;
-  # Home-manager config
-  home = config."home-manager".users.${user};
   # This module's config options
   cfg = config.modules.bash;
+  pkg = pkgs.bash;
 in
 {
   # Options
@@ -24,7 +23,7 @@ in
     modules.homeManager.enable = true;
     
     # The home-manager config
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       # Enable bash
       programs.bash = {
@@ -45,7 +44,7 @@ function y() {
     };
 
     # Set package if preferred
-    settings.terminal.shell.package = mkIf (config.settings.terminal.shell.selected == "bash") home.programs.bash.package;
+    settings.terminal.shell.package = mkIf (config.settings.terminal.shell.selected == "bash") pkg;
 
   };
 }

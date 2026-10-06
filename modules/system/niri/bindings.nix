@@ -14,7 +14,7 @@ in
   config = mkIf (cfg.enable && (cfg.selected == "niri")) {
 
     # The home-manager config
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       # Keybinds
       programs.niri.settings.binds = {

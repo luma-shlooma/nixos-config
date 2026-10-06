@@ -1,12 +1,11 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 with lib;
 let
   # The configured user
   user = config.settings.system.user;
-  # Home-manager config
-  home = config."home-manager".users.${user};
   # This module's config options
   cfg = config.modules.alacritty;
+  pkg = pkgs.alacritty;
 in
 {
   # Options
@@ -19,15 +18,18 @@ in
     modules.homeManager.enable = true;
     
     # The home-manager config
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       # Enable alacritty
-      programs.alacritty.enable = true;
+      programs.alacritty = {
+        enable = true;
+        package = pkg;
+      };
 
     };
 
-    # Set package if preferre
-    settings.terminal.app.package = mkIf (config.settings.terminal.app.selected == "alacritty") home.programs.alacritty.package;
+    # Set package if preferred
+    settings.terminal.app.package = mkIf (config.settings.terminal.app.selected == "alacritty") pkg;
 
   };
 }

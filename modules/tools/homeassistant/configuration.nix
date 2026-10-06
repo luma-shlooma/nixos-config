@@ -17,7 +17,7 @@ in
     modules.homeManager.enable = true;
     
     # The home-manager config
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       # Add home assistant cli tool
       home.packages = with pkgs; [ home-assistant-cli ];

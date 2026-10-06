@@ -14,7 +14,7 @@ in
     modules.homeManager.enable = true;
     
     # The home-manager config
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       # Then laptop preset overrides
       programs.noctalia.settings = {

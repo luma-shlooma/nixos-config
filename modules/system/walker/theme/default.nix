@@ -13,7 +13,7 @@ in
   config = mkIf (cfg.enable && (cfg.selected == "walker") && (theme == "default")) {
     
     # home-manager config theming
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       # Theme walker
       programs.walker = {

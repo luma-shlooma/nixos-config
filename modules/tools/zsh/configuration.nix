@@ -1,12 +1,13 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 with lib;
 let
   # The configured user
   user = config.settings.system.user;
   # Home-manager config
-  home = config."home-manager".users.${user};
+  home = config.home-manager.users.${user};
   # This module's config options
   cfg = config.modules.zsh;
+  pkg = pkgs.zsh;
 in
 {
   # Options
@@ -19,12 +20,13 @@ in
     modules.homeManager.enable = true;
     
     # The home-manager config
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       # ZSH
       programs = {
         zsh = {
           enable = true;
+          package = pkg;
           enableCompletion = true;
           autosuggestion.enable = true;
           syntaxHighlighting.enable = true;
@@ -85,7 +87,7 @@ in
     };
 
     # Set package if preferred
-    settings.terminal.shell.package = mkIf (config.settings.terminal.shell.selected == "zsh") home.programs.zsh.package;
+    settings.terminal.shell.package = mkIf (config.settings.terminal.shell.selected == "zsh") pkg;
 
   };
 }

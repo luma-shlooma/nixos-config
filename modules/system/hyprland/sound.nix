@@ -11,7 +11,7 @@ in
   config = mkIf (cfg.enable && (cfg.selected == "hyprland")) {
 
     # The home-manager config
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       # Add sound binds and mic monitoring script
       wayland.windowManager.hyprland.settings =

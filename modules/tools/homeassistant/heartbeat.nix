@@ -4,7 +4,7 @@ let
   # The configured user
   user = config.settings.system.user;
   # Home-manager config
-  home = config."home-manager".users.${user};
+  home = config.home-manager.users.${user};
   # This module's config options
   cfg = config.modules.homeAssistant;
 in
@@ -19,7 +19,7 @@ in
     modules.homeManager.enable = true;
     
     # The home-manager config
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       # Run the script as a user-level service
       systemd.user.services.hass-heartbeat = 

@@ -13,7 +13,7 @@ in
   config = mkIf (cfg.enable && (theme == "default")) {
     
     # home-manager config theming
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       # Theme nixvim
       programs.nixvim = {

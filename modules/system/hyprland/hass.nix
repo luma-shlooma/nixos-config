@@ -4,7 +4,7 @@ let
   # The configured user
   user = config.settings.system.user;
   # Home-manager config
-  home = config."home-manager".users.${user};
+  home = config.home-manager.users.${user};
   # Controlled by the shared window-manager settings
   cfg = config.settings.windowManager;
   ha = config.modules.homeAssistant;
@@ -14,7 +14,7 @@ in
   config = mkIf (cfg.enable && (cfg.selected == "hyprland") && ha.enable) {
 
     # The home-manager config
-    home-manager.users."${user}" =
+    home-manager.users.${user} =
     let
       # Vars
       vars = home.home.sessionVariables;

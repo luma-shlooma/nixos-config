@@ -18,7 +18,7 @@ in
     ];
     
     # home-manager config theming
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       # Theme noctalia
       programs.noctalia.settings = {

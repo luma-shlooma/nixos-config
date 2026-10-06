@@ -16,7 +16,7 @@ in
     modules.ddcutil.enable = true;
 
     # The home-manager config
-    home-manager.users."${user}" = 
+    home-manager.users.${user} = 
     let
       # Monitor logic
       monitors = {

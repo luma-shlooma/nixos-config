@@ -4,7 +4,7 @@ let
   # Configured user
   user = config.settings.system.user;
   # Home-manager config
-  home = config."home-manager".users.${user};
+  home = config.home-manager.users.${user};
   # Theme options
   theme = config.settings.theme.selected;
   # colours = config.settings.theme.colours;
@@ -15,7 +15,7 @@ in
   config = mkIf (cfg.enable && (theme == "default")) {
     
     # home-manager config theming
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       # Theme zsh
       programs.zsh = {

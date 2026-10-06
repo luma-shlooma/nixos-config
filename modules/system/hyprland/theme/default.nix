@@ -16,7 +16,7 @@ in
   config = mkIf (cfg.enable && (cfg.selected == "hyprland") && (theme == "default")) {
     
     # home-manager config theming
-    home-manager.users."${user}" = {
+    home-manager.users.${user} = {
 
       ### STYLE
       wayland.windowManager.hyprland = {
