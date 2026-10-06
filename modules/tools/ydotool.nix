@@ -18,7 +18,7 @@ in
       enable = true;
     };
 
-    users.users."${user}".extraGroups = [ "ydotool" ];
+    users.users.${user}.extraGroups = [ "ydotool" ];
 
   };
 }

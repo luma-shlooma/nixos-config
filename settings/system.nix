@@ -17,7 +17,21 @@ in
       default = "";
       description = "The Linux user. The config does not support multiple users.";
     };
+    homeDir = mkOption {
+      type = types.str;
+      default = "";
+      description = "The user home directory for the user. Auto-generated based on user.";
+    };
+    configDir = mkOption {
+      type = types.str;
+      default = "";
+      description = "The user config directory for the user. Auto-generated based on user.";
+    };
   };
+
+  # Set home & config directory based on user
+  config.settings.system.homeDir = "/home/${cfg.user}";
+  config.settings.system.configDir = "${cfg.homeDir}/.config";
 
   # Assertions on new options
   config.assertions = [

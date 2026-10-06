@@ -3,8 +3,6 @@ with lib;
 let
   # The configured user
   user = config.settings.system.user;
-  # Home-manager config
-  home = config.home-manager.users.${user};
   # This module's config options
   cfg = config.modules.zsh;
   pkg = pkgs.zsh;
@@ -31,7 +29,7 @@ in
           autosuggestion.enable = true;
           syntaxHighlighting.enable = true;
           # Use new dot directory
-          dotDir = "${home.xdg.configHome}/zsh";
+          dotDir = "${config.settings.system.configDir}/zsh";
           initContent = ''
             function y() {
               local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

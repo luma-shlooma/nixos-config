@@ -25,7 +25,7 @@ in
 
       programs.firefox = {
         enable = true;
-        configPath = "${config.xdg.configHome}/mozilla/firefox";
+        configPath = "${config.settings.system.configDir}/mozilla/firefox";
         betterfox = {
           enable = true;
           profiles.default = {

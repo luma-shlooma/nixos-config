@@ -19,7 +19,7 @@ in
   config = mkIf (!cfg.disable) {
 
     # Common user account
-    users.users."${user}" = {
+    users.users.${user} = {
       isNormalUser = true;
       description = "${user}";
       # TODO: Perhaps make these conditional on modules

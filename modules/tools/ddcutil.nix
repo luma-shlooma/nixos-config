@@ -16,7 +16,7 @@ in
     # Enable i2c support
     hardware.i2c.enable = true;
     # Allow user i2c control
-    users.users."${user}".extraGroups = [ "i2c" ];
+    users.users.${user}.extraGroups = [ "i2c" ];
     environment.systemPackages = with pkgs; [
       ddcutil # CLI
       ddcui   # GUI

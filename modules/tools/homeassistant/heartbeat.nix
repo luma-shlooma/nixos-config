@@ -3,8 +3,6 @@ with lib;
 let
   # The configured user
   user = config.settings.system.user;
-  # Home-manager config
-  home = config.home-manager.users.${user};
   # This module's config options
   cfg = config.modules.homeAssistant;
 in
@@ -36,8 +34,6 @@ in
             sleep 60
           done
         '';
-        # Access session variables set in configuration.nix
-        vars = home.home.sessionVariables;
       in
       {
         Unit.Description = "Home Assistant PC Heartbeat Service";
@@ -47,8 +43,8 @@ in
         Service.RestartSec = "10s";
         Service.Environment = [
           "PATH=/run/current-system/sw/bin"
-          "HASS_SERVER=${vars.HASS_SERVER}"
-          "HASS_TOKEN=${vars.HASS_TOKEN}"
+          "HASS_SERVER=${cfg.server}"
+          "HASS_TOKEN=${cfg.token}"
         ];
         Install.WantedBy = [ "default.target" ];
       };

@@ -3,6 +3,8 @@ with lib;
 let
   # The configured user
   user = config.settings.system.user;
+  # Home directory
+  home = config.settings.system.homeDir;
   # This module's config options
   cfg = config.modules.homeManager;
 in
@@ -26,7 +28,7 @@ in
       backupFileExtension = "backup";
       extraSpecialArgs = { inherit host inputs; };
       # Import the host-specific base home-manager config
-      users."${user}" = {
+      users.${user} = {
 
         # Import the host configuration
         imports = [
@@ -36,7 +38,7 @@ in
         # Common config
 
         home.username = "${user}";
-        home.homeDirectory = "/home/${user}";
+        home.homeDirectory = "${home}";
         # Let Home Manager install and manage itself.
         programs.home-manager.enable = true;
 

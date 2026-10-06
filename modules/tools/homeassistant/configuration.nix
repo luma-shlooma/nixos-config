@@ -8,7 +8,20 @@ let
 in
 {
   # Options
-  options.modules.homeAssistant.enable = mkEnableOption "Home Assistant CLI";
+  options.modules.homeAssistant = {
+    enable = mkEnableOption "Home Assistant CLI";
+    server = mkOption {
+      type = types.str;
+      default = "";
+      description = "HTTP URL of the running home-assistant server.";
+      example = "http://homeassistant.lan:8123";
+    };
+    token = mkOption {
+      type = types.str;
+      default = "";
+      description = "Secret token to access the home-assistant server.";
+    };
+  };
 
   # Config
   config = mkIf cfg.enable {
@@ -23,10 +36,9 @@ in
       home.packages = with pkgs; [ home-assistant-cli ];
 
       # Set env vars
-      # TODO: Make secret
       home.sessionVariables = {
-        "HASS_SERVER" = "http://homeassistant.lan:8123";
-        "HASS_TOKEN"  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJiYTQwYjQzZGM2YzA0Zjg4Yjg5Y2I0OGI0YTlhMzE4NSIsImlhdCI6MTc2MDc4NjIwMCwiZXhwIjoyMDc2MTQ2MjAwfQ.IqcDN1rT2KNnc4tQlAq6Ja_TP4xpYs-W6Q2TGxhtW7w";
+        "HASS_SERVER" = "${cfg.server}";
+        "HASS_TOKEN"  = "${cfg.token}";
       };
 
     };

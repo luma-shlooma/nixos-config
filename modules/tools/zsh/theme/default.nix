@@ -3,8 +3,8 @@ with lib;
 let
   # Configured user
   user = config.settings.system.user;
-  # Home-manager config
-  home = config.home-manager.users.${user};
+  # Home directory
+  home = config.settings.system.homeDir;
   # Theme options
   theme = config.settings.theme.selected;
   # colours = config.settings.theme.colours;
@@ -24,7 +24,7 @@ in
         oh-my-zsh = {
           theme = "pi";
           # TODO: Include pi theme in config - currently requires manual download
-          custom = "${home.home.homeDirectory}/.oh-my-zsh/custom";
+          custom = "${home}/.oh-my-zsh/custom";
         };
       };
 
