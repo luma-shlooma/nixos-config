@@ -30,7 +30,7 @@ in
       # Hint electron apps
       NIXOS_OZONE_WL = "1";
       # Config dir
-      XDG_CONFIG_HOME = "$HOME/.config";
+      XDG_CONFIG_HOME = "${config.settings.system.configDir}";
     };
 
     # Set session if greeter is enabled
