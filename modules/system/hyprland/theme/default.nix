@@ -63,16 +63,20 @@ in
 
       ### HAVE APPS USE DARK THEME / MODE
       # GTK settings
-      gtk = {
-        enable = true;
-        colorScheme = "dark";
+      gtk = 
+      let
         theme = {
           name = "Adwaita-dark";
           package = pkgs.gnome-themes-extra;
           # name = "Orchis";
           # package = (pkgs.orchis-theme.override { tweaks = ["black"]; });
         };
-        gtk4.theme = config.gtk.theme;
+      in
+        {
+        enable = true;
+        colorScheme = "dark";
+        theme = theme;
+        gtk4.theme = theme;
       };
       dconf.settings = {
         "org/gnome/desktop/interface" = {
