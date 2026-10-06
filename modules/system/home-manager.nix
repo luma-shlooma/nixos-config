@@ -12,13 +12,13 @@ in
   # Options
   options.modules.homeManager.enable = mkEnableOption "Home Manager";
 
+  # Import home-manager
+  imports = [
+    inputs.home-manager.nixosModules.default
+  ];
+
   # Config
   config = mkIf cfg.enable {
-
-    # Import home-manager
-    imports = [
-      inputs.home-manager.nixosModules.default
-    ];
 
     # Uses XDG
     modules.xdg.enable = true;
