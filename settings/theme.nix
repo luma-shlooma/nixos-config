@@ -9,7 +9,7 @@ with lib;
       description = "The theme to use across all themed apps.";
     };
     colours = mkOption {
-      type = types.attrOf types.str;
+      type = types.attrsOf types.str;
       default = {};
       description = "An attribute set of colour names to colour values in hex. Set automatically by theme and can be used in themed apps. The colour names and attribute set structure can differ between themes.";
     };
