@@ -1,4 +1,4 @@
-##!/usr/bin/env bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 ## Defaults
@@ -240,4 +240,4 @@ else
     done
     printf "\n"
     choose "y" "Do you want to delete these? [Y/n]: "
-fi! /usr/bin/env nix-shell
+fi
