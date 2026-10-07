@@ -22,7 +22,7 @@ in
     # Enable niri
     programs.niri = {
       enable = true;
-      package = pkgs.niri-unstable;
+      package = pkgs.niri;
     };
 
     # Set session if greeter is enabled
