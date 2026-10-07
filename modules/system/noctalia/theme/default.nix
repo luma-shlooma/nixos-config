@@ -126,6 +126,12 @@ in
         wallpaper = {
           enabled = false;
         };
+
+        # https://docs.noctalia.dev/noctalia/configuration/shell/?section=lock-screen#lock-screen
+        lockscreen = {
+          blurred_desktop = true;
+          transition_duration = 500;
+        };
       };
 
     };

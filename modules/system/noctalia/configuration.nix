@@ -116,6 +116,13 @@ in
           desktop_widgets = {
             enabled = false;
           };
+
+          # https://docs.noctalia.dev/noctalia/configuration/shell/?section=lock-screen#lock-screen
+          lockscreen = {
+            enabled = true;
+            lock_before_suspend = true;
+            blurred_desktop = true;
+          };
         });
       };
 
