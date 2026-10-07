@@ -37,7 +37,7 @@
     # Niri scrollable-tiling Wayland compositor
     niri = {
       url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Declarative Flatpak management
