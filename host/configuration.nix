@@ -71,6 +71,7 @@
 
   # Bootloader config
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 16;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable polkit
