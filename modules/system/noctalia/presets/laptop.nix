@@ -20,7 +20,7 @@ in
 
       # Then laptop preset overrides
       programs.noctalia.settings = {
-        # https://docs.noctalia.dev/v5/bar/
+        # https://docs.noctalia.dev/noctalia/bar/
         bar = {
           main = {
             enabled = false;
@@ -34,20 +34,22 @@ in
           };
         };
 
-        # https://docs.noctalia.dev/v5/configuration/shell/#osd
+        # https://docs.noctalia.dev/noctalia/configuration/shell/#osd
         osd = {
           position = "bottom_center";
           orientation = "horizontal";
         };
         
-        # https://docs.noctalia.dev/v5/services/notifications/
+        # https://docs.noctalia.dev/noctalia/services/notifications/
         notification = {
           monitors = [ "eDP-1" ];
         };
 
-        # TODO: Lockscreen on eDP-1 only?
+        # https://docs.noctalia.dev/noctalia/configuration/shell/?section=lock-screen#lock-screen
         lockscreen = {
           enabled = true;
+          lock_before_suspend = true;
+          blurred_desktop = true;
           monitors = [ "eDP-1" ];
         };
       };

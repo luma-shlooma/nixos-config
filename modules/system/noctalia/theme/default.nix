@@ -29,7 +29,7 @@ in
           community_palette = "Monochrome";
         };
 
-        # https://docs.noctalia.dev/v5/configuration/shell/
+        # https://docs.noctalia.dev/noctalia/configuration/shell/
         shell = {
           ui_scale = 1.0;
           font_family = "JetBrainsMono Nerd Font Mono";
@@ -65,7 +65,7 @@ in
           };
         };
         
-        # https://docs.noctalia.dev/v5/bar/
+        # https://docs.noctalia.dev/noctalia/bar/
         bar = {
           main = {
             thickness = 34;
@@ -94,7 +94,7 @@ in
           };
         };
 
-        # https://docs.noctalia.dev/v5/bar/widgets/
+        # https://docs.noctalia.dev/noctalia/bar/widgets/
         widget = {
           workspaces = {
             type = "workspaces";
@@ -117,12 +117,12 @@ in
           };
         };
         
-        # https://docs.noctalia.dev/v5/desktop/widgets/
+        # https://docs.noctalia.dev/noctalia/desktop/widgets/
         desktop_widgets = {
           enabled = false;
         };
 
-        # https://docs.noctalia.dev/v5/desktop/wallpaper/
+        # https://docs.noctalia.dev/noctalia/desktop/wallpaper/
         wallpaper = {
           enabled = false;
         };

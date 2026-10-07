@@ -31,7 +31,7 @@ in
       programs.noctalia = {
         enable = true;
         settings = (funcs.mkAllDefault true {
-          # https://docs.noctalia.dev/v5/configuration/shell/
+          # https://docs.noctalia.dev/noctalia/configuration/shell/
           shell = {
             lang = "en";
             offline_mode = false;
@@ -87,7 +87,7 @@ in
             };
           };
           
-          # https://docs.noctalia.dev/v5/bar/
+          # https://docs.noctalia.dev/noctalia/bar/
           bar = {
             order = [ "main" ];
 
@@ -100,7 +100,7 @@ in
             };
           };
 
-          # https://docs.noctalia.dev/v5/bar/widgets/
+          # https://docs.noctalia.dev/noctalia/bar/widgets/
           widget = {
             small-gap = {
               type = "spacer";
@@ -112,7 +112,7 @@ in
             };
           };
           
-          # https://docs.noctalia.dev/v5/desktop/widgets/
+          # https://docs.noctalia.dev/noctalia/desktop/widgets/
           desktop_widgets = {
             enabled = false;
           };

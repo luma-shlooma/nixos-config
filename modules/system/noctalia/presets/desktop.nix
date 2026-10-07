@@ -20,7 +20,7 @@ in
 
       # Then desktop preset overrides
       programs.noctalia.settings = {
-        # https://docs.noctalia.dev/v5/bar/
+        # https://docs.noctalia.dev/noctalia/bar/
         bar = {
           main = {
             position = "top";
@@ -30,7 +30,7 @@ in
           };
         };
 
-        # https://docs.noctalia.dev/v5/configuration/shell/#osd
+        # https://docs.noctalia.dev/noctalia/configuration/shell/#osd
         osd = {
           position = "center_right";
           orientation = "vertical";
