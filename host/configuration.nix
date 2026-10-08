@@ -50,6 +50,8 @@
     obsidian.enable = true;
     thunar.enable = true;
     vlc.enable = true;
+    # Hardware
+    fingerprint.enable = false; # Disable to avoid long auth issues
     # System
     bluetooth.enable = true;
     homeManager.enable = true;
