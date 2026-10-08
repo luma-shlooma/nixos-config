@@ -42,7 +42,6 @@ in
             password_style = "default";
             avatar_path = "~/Pictures/avatar.png";
             settings_show_advanced = true;
-            middle_click_opens_widget_settings = true;
             show_location = false;
             clipboard_enabled = true;
             clipboard_history_max_entries = 100;
@@ -57,16 +56,12 @@ in
             };
 
             panel = {
-              launcher_placement = "centered";
-              clipboard_placement = "centered";
+              clipboard_position = "center";
               control_center_placement = "attached";
               wallpaper_placement = "attached";
               session_placement = "attached";
               open_near_click_control_center = false;
               open_near_click_launcher = false;
-              launcher_categories = true;
-              launcher_show_icons = true;
-              launcher_compact = false;
               open_near_click_clipboard = false;
               open_near_click_wallpaper = false;
               open_near_click_session = false;
@@ -120,6 +115,7 @@ in
           # https://docs.noctalia.dev/noctalia/configuration/shell/?section=lock-screen#lock-screen
           lockscreen = {
             enabled = true;
+            fingerprint = false; # Fix long auth times
             lock_before_suspend = true;
             blurred_desktop = true;
           };

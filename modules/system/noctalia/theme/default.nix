@@ -31,7 +31,6 @@ in
 
         # https://docs.noctalia.dev/noctalia/configuration/shell/
         shell = {
-          ui_scale = 1.0;
           font_family = "JetBrainsMono Nerd Font Mono";
           time_format = "{:%H:%M}";
           date_format = "%A, %x";
@@ -99,6 +98,8 @@ in
           workspaces = {
             type = "workspaces";
             display = "none";
+            show_labels = false;
+            show_icons = false;
           };
           network = {
             type = "network";
