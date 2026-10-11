@@ -95,6 +95,17 @@ in
             };
           };
 
+          # https://docs.noctalia.dev/noctalia/configuration/shell/#osd
+          osd = {
+            position = "top_center";
+            position_vertical = "center_right";
+            orientation = "vertical";
+            kinds = {
+              media = false;
+              privacy = false;
+            };
+          };
+
           # https://docs.noctalia.dev/noctalia/bar/widgets/
           widget = {
             small-gap = {

@@ -37,7 +37,9 @@ in
         # https://docs.noctalia.dev/noctalia/configuration/shell/#osd
         osd = {
           position = "bottom_center";
+          position_vertical = "center_right";
           orientation = "horizontal";
+          monitors = [ "eDP-1" ];
         };
         
         # https://docs.noctalia.dev/noctalia/services/notifications/
