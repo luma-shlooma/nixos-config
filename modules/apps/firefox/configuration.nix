@@ -38,11 +38,11 @@ in
           extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
             bitwarden
             darkreader
-            enhancer-for-youtube
             istilldontcareaboutcookies
             return-youtube-dislikes
             sponsorblock
             ublock-origin
+            youtube-enhancer-vc
           ];
           # Other Settings
           settings = {
