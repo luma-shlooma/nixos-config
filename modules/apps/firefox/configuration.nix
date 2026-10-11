@@ -37,12 +37,12 @@ in
           # Extensions
           extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
             bitwarden
-            cookie-autodelete
-            istilldontcareaboutcookies
-            ublock-origin
             darkreader
+            enhancer-for-youtube
+            istilldontcareaboutcookies
             return-youtube-dislikes
             sponsorblock
+            ublock-origin
           ];
           # Other Settings
           settings = {
