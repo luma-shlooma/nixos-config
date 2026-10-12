@@ -5,7 +5,8 @@ let
   user = config.settings.system.user;
   # Theme options
   theme = config.settings.theme.selected;
-  # colours = config.settings.theme.colours;
+  colours = config.settings.theme.colours;
+  hash = col: "#${col}";
   # This module's config options
   cfg = config.modules.kitty;
 in
@@ -25,7 +26,30 @@ in
         font = {
           name = "JetBrainsMono Nerd Font";
           package = pkgs.nerd-fonts.jetbrains-mono;
-          size = 8;
+          size = 12;
+        };
+        settings = {
+          # Colours
+          color0 = hash colours.black;
+          color1 = hash colours.red;
+          color2 = hash colours.green;
+          color3 = hash colours.yellow;
+          color4 = hash colours.blue;
+          color5 = hash colours.magenta;
+          color6 = hash colours.cyan;
+          color7 = hash colours.white;
+          # Light
+          color8  = hash colours.light-black;
+          color9  = hash colours.light-red;
+          color10 = hash colours.light-green;
+          color11 = hash colours.light-yellow;
+          color12 = hash colours.light-blue;
+          color13 = hash colours.light-magenta;
+          color14 = hash colours.light-cyan;
+          color15 = hash colours.light-white;
+          # Elements
+          foreground = hash colours.white;
+          background = hash colours.black;
         };
       };
 
