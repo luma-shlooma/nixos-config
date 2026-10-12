@@ -26,7 +26,7 @@ in
         font = {
           name = "JetBrainsMono Nerd Font";
           package = pkgs.nerd-fonts.jetbrains-mono;
-          size = 12;
+          size = 11;
         };
         settings = {
           # Colours
@@ -50,6 +50,10 @@ in
           # Elements
           foreground = hash colours.white;
           background = hash colours.black;
+          selection_foreground = "none";
+          selection_background = "none";
+          cursor = "none";
+          cursor_text_color = "none";
         };
       };
 

@@ -24,6 +24,10 @@ in
       programs.kitty = {
         enable = true;
         package = pkg;
+        settings = {
+          # Cursor
+          cursor_shape = "block";
+        };
       };
 
     };
