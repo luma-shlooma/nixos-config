@@ -27,6 +27,11 @@ in
         settings = {
           # Cursor
           cursor_shape = "block";
+          shell_integration = "no_cursor";
+          # Remove close confirmation
+          confirm_os_window_close = 0;
+          # Remove bell audio
+          enable_audio_bell = false;
         };
       };
 

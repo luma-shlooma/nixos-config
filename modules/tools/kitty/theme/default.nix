@@ -53,7 +53,6 @@ in
           selection_foreground = "none";
           selection_background = "none";
           cursor = "none";
-          cursor_text_color = "none";
         };
       };
 
