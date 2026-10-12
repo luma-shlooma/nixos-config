@@ -27,7 +27,8 @@ in
         settings = {
           # Cursor
           cursor_shape = "block";
-          shell_integration = "no_cursor";
+          cursor_shape_unfocused = "hollow";
+          shell_integration = "no-cursor";
           # Remove close confirmation
           confirm_os_window_close = 0;
           # Remove bell audio
