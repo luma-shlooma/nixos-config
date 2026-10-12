@@ -9,7 +9,7 @@ in
   options.settings.terminal = {
     app = {
       selected = mkOption {
-        type = types.enum [ "alacritty" ];
+        type = types.enum [ "alacritty" "kitty" ];
         default = "alacritty";
         description = "The prefered terminal. The strings match executable names.";
       };
@@ -42,6 +42,7 @@ in
   # Enable corresponding modules if preferred
   # Terminals
   config.modules.alacritty.enable = mkIf (cfg.app.selected == "alacritty") true;
+  config.modules.kitty.enable = mkIf (cfg.app.selected == "kitty") true;
   # Shells
   # NOTE: bash always enabled
   config.modules.zsh.enable = mkIf (cfg.shell.selected == "zsh") true;
