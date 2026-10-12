@@ -19,7 +19,6 @@ in
     environment.systemPackages = with pkgs; [
       # TODO: Separate some of these out if they are not "core"
       # Minimals
-      kitty
       wget
       file
       gnumake
@@ -37,6 +36,9 @@ in
       # Fun
       cmatrix
       gtypist
+    ] ++ optionals (!config.modules.kitty.enable) [
+      # Add kitty if not managed by module
+      kitty
     ];
   };
 }
