@@ -53,7 +53,7 @@ in
           selection_foreground = "none";
           selection_background = "none";
           cursor = "none";
-          text_composition_strategy = "platform 1.7 0";
+          text_composition_strategy = "1.7 0";
         };
       };
 
