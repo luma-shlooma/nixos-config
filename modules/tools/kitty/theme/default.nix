@@ -48,12 +48,13 @@ in
           color14 = hash colours.light-cyan;
           color15 = hash colours.light-white;
           # Elements
+          dim_opacity = 0.7;
           foreground = hash colours.white;
           background = hash colours.black;
           selection_foreground = "none";
           selection_background = "none";
           cursor = "none";
-          text_composition_strategy = "1.7 0";
+          text_composition_strategy = "2.0 0";
         };
       };
 
