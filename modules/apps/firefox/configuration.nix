@@ -39,6 +39,7 @@ in
             bitwarden
             darkreader
             istilldontcareaboutcookies
+            read-aloud
             return-youtube-dislikes
             sponsorblock
             ublock-origin
