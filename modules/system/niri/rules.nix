@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, ... }:
+{ config, lib, ... }:
 with lib;
 let
   # The configured user
@@ -16,15 +16,12 @@ in
     # The home-manager config
     home-manager.users.${user} = {
 
-      # Configure in home-manager
-      programs.niri.settings._children = [
+      # All window rules
+      programs.niri.settings.window-rules = [
         {
-          # All window rules
-          window-rule._children = [
-            # Increase kitty terminal width
-            { match._props = { app-id = "kitty"; at-startup = true; }; }
-            { default-column-width._props = { fixed = 800; }; }
-          ];
+          # Increase kitty terminal width
+          matches = [ { app-id = "kitty"; } ];
+          default-column-width.fixed = 800;
         }
       ];
 
