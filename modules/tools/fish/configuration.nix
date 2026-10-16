@@ -34,6 +34,9 @@ function y
 	command rm -f -- "$tmp"
 end
         '';
+        plugins = [
+          { name = "z"; src = pkgs.fishPlugins.z.src; }
+        ];
       };
 
     };

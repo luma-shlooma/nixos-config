@@ -19,11 +19,9 @@ in
 
       # Theme fish
       programs.fish = {
-        # Uses default alacritty colours
-        # Theme set through oh-my-fish
+        # Set prompt using plugin
         plugins = [
           {
-            # Theme "pie"
             name = "pie";
             src = pkgs.fetchFromGitHub {
               owner = "smolijar";
