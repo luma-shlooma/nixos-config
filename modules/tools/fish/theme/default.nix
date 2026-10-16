@@ -28,10 +28,10 @@ in
           { name = "pure"; src = prompt; }
         ];
         # Enable theme by sourcing it
-        interactiveShellInit = strings.concatStrings (strings.intersperse "\n" ([
+        interactiveShellInit = ''
           "source ${prompt}/functions/fish_prompt.fish"
           "source ${prompt}/functions/fish_title.fish"
-        ]));
+        '';
       };
 
     };
