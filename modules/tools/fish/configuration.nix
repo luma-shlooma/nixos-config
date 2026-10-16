@@ -27,7 +27,6 @@ in
         interactiveShellInit = ''
           set fish_greeting
         '';
-        };
         plugins = [
           { name = "z"; src = pkgs.fishPlugins.z.src; }
           { name = "done"; src = pkgs.fishPlugins.done.src; }
