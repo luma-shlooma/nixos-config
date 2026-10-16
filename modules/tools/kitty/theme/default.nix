@@ -39,7 +39,7 @@ in
           color6 = hash colours.cyan;
           color7 = hash colours.white;
           # Light
-          color8  = hash colours.light-black;
+          color8  = hash colours.grey; # Lighter than light-black
           color9  = hash colours.light-red;
           color10 = hash colours.light-green;
           color11 = hash colours.light-yellow;
