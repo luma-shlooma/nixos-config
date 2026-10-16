@@ -30,7 +30,7 @@
     # Terminal
     terminal = {
       app.selected = "kitty";
-      shell.selected = "zsh";
+      shell.selected = "fish";
     };
     # Theme
     theme = {
