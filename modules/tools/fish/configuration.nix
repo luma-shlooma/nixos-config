@@ -24,19 +24,20 @@ in
       programs.fish = {
         enable = true;
         package = pkg;
-        shellInit = ''
-function y
-	set tmp (mktemp -t "yazi-cwd.XXXXXX")
-	command yazi $argv --cwd-file="$tmp"
-	if read -z cwd < "$tmp"; and [ "$cwd" != "$PWD" ]; and test -d "$cwd"
-		builtin cd -- "$cwd"
-	end
-	command rm -f -- "$tmp"
-end
-        '';
+        functions = {
+          # Yazi navigator
+          "y".body = ''
+            set tmp (mktemp -t "yazi-cwd.XXXXXX")
+            command yazi $argv --cwd-file="$tmp"
+            if read -z cwd < "$tmp"; and [ "$cwd" != "$PWD" ]; and test -d "$cwd"
+              builtin cd -- "$cwd"
+            end
+            command rm -f -- "$tmp"
+          '';
+        };
         plugins = [
           { name = "z"; src = pkgs.fishPlugins.z.src; }
-          { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+          { name = "done"; src = pkgs.fishPlugins.done.src; }
         ];
       };
 
