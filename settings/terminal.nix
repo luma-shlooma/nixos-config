@@ -44,8 +44,9 @@ in
   config.modules.alacritty.enable = mkIf (cfg.app.selected == "alacritty") true;
   config.modules.kitty.enable = mkIf (cfg.app.selected == "kitty") true;
   # Shells
-  # NOTE: bash always enabled
+  # NOTE: bash always enabled in core
   config.modules.zsh.enable = mkIf (cfg.shell.selected == "zsh") true;
+  config.modules.fish.enable = mkIf (cfg.shell.selected == "fish") true;
 
   # Generate run commands
   config.settings.terminal.app.launch = "${cfg.app.package}/bin/${cfg.app.selected}";
