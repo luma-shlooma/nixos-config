@@ -9,10 +9,10 @@ let
   cfg = config.modules.fish;
   # Prompt src
   prompt = pkgs.fetchFromGitHub {
-    owner = "smolijar";
-    repo = "theme-pie";
-    rev = "cae447f3f2318449dde9341b807fc59813a305d9";
-    hash = "sha256-xb9ssEkSVB58LZ7AmwavqAXy4LJ5GT0+LdIz5QgiFiw=";
+    owner = "pure-fish";
+    repo = "pure";
+    rev = "39ef70d91421322d1f90828d1838f19891f7772c";
+    hash = "sha256-H+PZZCP2ZHOLJ+IhFXeq2J/AsNk1cO4p0wcwJjN2Fr0=";
   };
 in
 {
@@ -25,13 +25,12 @@ in
       programs.fish = {
         # Install prompt using plugins
         plugins = [
-          { name = "pie"; src = prompt; }
+          { name = "pure"; src = prompt; }
         ];
         # Enable theme by sourcing it
         interactiveShellInit = strings.concatStrings (strings.intersperse "\n" ([
-          "source ${prompt}/fish_prompt.fish"
-          "source ${prompt}/fish_right_prompt.fish"
-          "source ${prompt}/fish_title.fish"
+          "source ${prompt}/functions/fish_prompt.fish"
+          "source ${prompt}/functions/fish_title.fish"
         ]));
       };
 
