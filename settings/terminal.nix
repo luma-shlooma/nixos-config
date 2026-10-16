@@ -24,7 +24,7 @@ in
     };
     shell = {
       selected = mkOption {
-        type = types.enum [ "bash" "zsh" ];
+        type = types.enum [ "bash" "zsh" "fish" ];
         default = "bash";
         description = "The prefered shell. The strings match executable names.";
       };

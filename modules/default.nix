@@ -57,6 +57,7 @@
     ./tools/ddcutil.nix
     ./tools/docker.nix
     ./tools/easyeffects.nix
+    ./tools/fish
     ./tools/homeassistant
     ./tools/k3s.nix
     ./tools/kanshi
