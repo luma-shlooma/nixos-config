@@ -29,8 +29,8 @@ in
         ];
         # Enable theme by sourcing it
         interactiveShellInit = ''
-          "source ${prompt}/functions/fish_prompt.fish"
-          "source ${prompt}/functions/fish_title.fish"
+          source ${prompt}/functions/fish_prompt.fish
+          source ${prompt}/functions/fish_title.fish
         '';
       };
 
