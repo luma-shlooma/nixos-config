@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 with lib;
 let
   # The configured user
@@ -12,13 +12,7 @@ in
   config = mkIf (cfg.enable && (cfg.selected == "hyprland") && ha.enable) {
 
     # The home-manager config
-    home-manager.users.${user} =
-    let
-      # Command to toggle lamp
-      # Should all hass commands be an option set?
-      toggle-lamp = "\"$(${pkgs.home-assistant-cli}/bin/hass-cli service call switch.toggle --arguments entity_id=switch.lamp)\"";
-    in
-    {
+    home-manager.users.${user} = {
       # Add script to keybinds
       wayland.windowManager.hyprland.settings = {
         env = [
@@ -28,7 +22,8 @@ in
         ];
         bind = [
           # Home assistant binding is hass-cli is configured
-          "SUPER, l, exec, ${toggle-lamp}"
+          "SUPER, l, exec, ${ha.scripts.toggleLamp}"
+          "SUPER_SHIFT, l, exec, ${ha.scripts.toggleManual}"
         ];
       };
 
