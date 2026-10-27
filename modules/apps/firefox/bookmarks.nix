@@ -57,6 +57,7 @@ in
               (mkFolder "Media" [
                 (mkBookmark "IMDb" "https://imdb.com")
                 (mkBookmark "Reddit" "https://reddit.com")
+                (mkBookmark "Spotify" "https://spotify.com")
                 (mkBookmark "Stremio" "https://web.stremio.com")
                 (mkBookmark "Twitch" "https://twitch.tv")
                 (mkBookmark "Youtube" "https://youtube.com")
