@@ -14,14 +14,14 @@ in
   options.modules.homeAssistant.scripts = {
     # Toggle lamp
     toggleLamp = mkOption {
-      type = types.nullOr types.str;
-      default =  mkIf ha.enable (mkScript "ha-toggle-lamp" "switch.lamp" "switch.toggle");
+      type = types.str;
+      default =  if ha.enable then (mkScript "ha-toggle-lamp" "switch.lamp" "switch.toggle") else "";
       readOnly = true;
     };
     # Toggle manual
     toggleManual = mkOption {
-      type = types.nullOr types.str;
-      default = mkIf ha.enable (mkScript "ha-toggle-manual" "input_boolean.manual" "input_boolean.toggle");
+      type = types.str;
+      default = if ha.enable then (mkScript "ha-toggle-manual" "input_boolean.manual" "input_boolean.toggle") else "";
       readOnly = true;
     };
   };
