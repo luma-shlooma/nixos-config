@@ -28,9 +28,18 @@ in
             position = "top";
             start = [ "session" "control-center" "small-gap" "network" "bluetooth" "volume" "big-gap" "media" ];
             center = [ "workspaces" ];
-            end = (optionals ha.enable [ "pozzoo/hassio:status" ]) ++ [ "audio_visualizer" "big-gap" "clock" "clipboard" "notifications" ];
+            end = [ "audio_visualizer" "big-gap" ] ++ (optionals ha.enable [ "pozzoo/hassio:status" ]) ++ [ "clock" "clipboard" "notifications" ];
           };
         };
+
+        # https://docs.noctalia.dev/noctalia/control-center/shortcuts/
+        control_center.shortcuts = [
+          "wifi" "bluetooth"
+        ] ++ (optionals ha.enable [
+          "pozzoo/hassio:ha_toggle_1" "pozzoo/hassio:ha_toggle_2"
+        ]) ++ [
+          "media"
+        ];
 
         # https://docs.noctalia.dev/noctalia/configuration/shell/#osd
         osd = {
@@ -43,8 +52,16 @@ in
 
         # https://docs.noctalia.dev/noctalia/plugins/
         plugins.enabled = [
-          "pozzoo/hassio" # Home Assistant widgets
+          "pozzoo/hassio" # Home Assistant widgets+
         ];
+
+        # https://noctalia.dev/plugins/community/hassio
+        plugin_settings."pozzoo/hassio" = {
+          ha_url = "${ha.server}";
+          ha_token = "${ha.token}";
+          shortcut_entity_1 = "switch.lamp";
+          shortcut_entity_2 = "input_boolean.manual";
+        };
 
       };
 
