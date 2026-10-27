@@ -39,7 +39,7 @@ in
           orientation = "vertical";
         };
 
-      } ++ optionalAttrs ha.enable {
+      } // optionalAttrs ha.enable {
 
         # https://docs.noctalia.dev/noctalia/plugins/
         plugins.enabled = [
