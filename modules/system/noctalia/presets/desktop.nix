@@ -5,6 +5,8 @@ let
   user = config.settings.system.user;
   # Form factor of host
   form = config.settings.hardware.form;
+  # Home Assistant module
+  ha = config.modules.homeAssistant;
   # This module's config options
   cfg = config.modules.noctalia;
 in
@@ -26,7 +28,7 @@ in
             position = "top";
             start = [ "session" "control-center" "small-gap" "network" "bluetooth" "volume" "big-gap" "media" ];
             center = [ "workspaces" ];
-            end = [ "audio_visualizer" "big-gap" "clock" "clipboard" "notifications" ];
+            end = (optionals ha.enable [ "pozzoo/hassio:status" ]) ++ [ "audio_visualizer" "big-gap" "clock" "clipboard" "notifications" ];
           };
         };
 
@@ -36,6 +38,14 @@ in
           position_vertical = "center_right";
           orientation = "vertical";
         };
+
+      } ++ optionalAttrs ha.enable {
+
+        # https://docs.noctalia.dev/noctalia/plugins/
+        plugins.enabled = [
+          "pozzoo/hassio" # Home Assistant widgets
+        ];
+
       };
 
     };
