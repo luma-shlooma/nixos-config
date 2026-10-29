@@ -28,7 +28,7 @@ in
             position = "top";
             start = [ "session" "control-center" "small-gap" "network" "bluetooth" "volume" "big-gap" "media" ];
             center = [ "workspaces" ];
-            end = [ "audio_visualizer" "big-gap" ] ++ (optionals ha.enable [ "pozzoo/hassio:status" ]) ++ [ "clock" "clipboard" "notifications" ];
+            end = [ "audio_visualizer" "big-gap" "clock" ] ++ (optionals ha.enable [ "pozzoo/hassio:status" ]) ++ [ "clipboard" "notifications" ];
           };
         };
 
