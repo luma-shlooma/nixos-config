@@ -29,8 +29,8 @@
     };
     # Terminal
     terminal = {
-      app.selected = "alacritty";
-      shell.selected = "zsh";
+      app.selected = "kitty";
+      shell.selected = "fish";
     };
     # Theme
     theme = {
