@@ -7,7 +7,7 @@ let
   cfg = config.settings.windowManager;
   # Lua generators
   lua = generators.mkLuaInline;
-  exec = cmd: lua "hl.exec_cmd(\"${cmd}\")";
+  exec = cmd: lua "function()\n  hl.exec_cmd(\"${cmd}\")\nend";
   startup = cmd: { _args = [ "hyprland.start" (exec cmd) ]; };
 in
 {
