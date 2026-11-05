@@ -5,6 +5,11 @@ let
   user = config.settings.system.user;
   # Controlled by the shared window-manager settings
   cfg = config.settings.windowManager;
+  # lua generators
+  bind = args: { _args = args; };
+  locked = { locked = true; };
+  mkdsp = dsp_name: param: lua "hl.dsp.${dsp_name}(${builtins.toString param})";
+  exec = cmd: mkdsp "exec_cmd" "\"${cmd}\"";
 in
 {
   # Config
@@ -30,15 +35,13 @@ in
         '';
       in
       {
-        bind = [
+        bind = builtins.map bind [
           # Audio (pipewire)
-          "SUPER, m, exec, ${mic_monitoring}/bin/toggle"
-        ];
-        bindl = [ # Works while locked
-          "SUPER, Space, exec, playerctl play-pause"
-          "SUPER, Alt_L, exec, playerctl previous"
-          "SUPER, Alt_R, exec, playerctl next"
-          "SUPER, code:108, exec, playerctl next" # Weird keyboard
+          [ "SUPER + M" (exec "${mic_monitoring}/bin/toggle") ]
+          [ "SUPER + Space" (exec "playerctl play-pause") locked ]
+          [ "SUPER + Alt_L" (exec "playerctl previous") locked ]
+          [ "SUPER + Alt_R" (exec "playerctl next") locked ]
+          [ "SUPER + code:108" (exec "playerctl next") locked ] # Weird keyboard
         ];
       };
 

@@ -7,6 +7,10 @@ let
   home = config.settings.system.homeDir;
   # Controlled by the shared window-manager settings
   cfg = config.settings.windowManager;
+  # lua generators
+  bind = args: { _args = args; };
+  mkdsp = dsp_name: param: lua "hl.dsp.${dsp_name}(${builtins.toString param})";
+  exec = cmd: mkdsp "exec_cmd" "\"${cmd}\"";
 in
 {
   # Config
@@ -18,10 +22,11 @@ in
       # Script to open editor in next free workspace
       # Only a separate script since `hyprshot` wants a single command
       # Could probably purpose this for other stuff too...
-      editimg = pkgs.writeShellScriptBin "editimg" ''
-        #!/usr/bin/env bash
-        hyprctl dispatch -- exec "[workspace empty]" xdg-open "$@"
-       '';
+      # NOTE: Removing SUPER+S and use of this as it just got easy to miss-input
+      # editimg = pkgs.writeShellScriptBin "editimg" ''
+      #   #!/usr/bin/env bash
+      #   hyprctl dispatch -- exec "[workspace empty]" xdg-open "$@"
+      #  '';
        # Where to save screenshots
        screenshots = "${home}/Pictures/Screenshots";
     in
@@ -35,15 +40,13 @@ in
 
       # Set screenshot keybinds
       wayland.windowManager.hyprland.settings = {
-        bind = [
-          # Win+S : Capture full screen w/ editor (best for games)
-          "SUPER, s, exec, [workspace +1] hyprshot -o ${screenshots} --mode active --mode output -- ${editimg}/bin/editimg"
+        bind = builtins.map bind [
           # Win+Ctrl+S : Capture window
-          "SUPER_CTRL, s, exec, hyprshot -o ${screenshots} --mode window"
+          [ "SUPER + CTRL + S" (exec "hyprshot -o ${screenshots} --mode window") ]
           # Win+Shift+S : Capture region
-          "SUPER_SHIFT, s, exec, hyprshot -o ${screenshots} --mode region"
+          [ "SUPER + SHIFT + S" (exec "hyprshot -o ${screenshots} --mode region") ]
           # Win+Ctrl+Shift+S : Colour picker
-          "SUPER_CTRL_SHIFT, s, exec, hyprpicker -an"
+          [ "SUPER + CTRL + SHIFT + S" (exec "hyprpicker -an") ]
         ];
       };
 

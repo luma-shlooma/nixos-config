@@ -7,6 +7,9 @@ let
   cfg = config.settings.windowManager;
   preset = config.settings.hardware.monitorPreset;
   kanshi = config.modules.kanshi;
+  # lua generators
+  mkdsp = dsp_name: param: lua "hl.dsp.${dsp_name}(${builtins.toString param})";
+  exec = cmd: mkdsp "exec_cmd" "\"${cmd}\"";
 in
 {
   # Config
@@ -21,48 +24,50 @@ in
       # Monitor logic
       monitors = {
         main = {
-          id = "DP-1";
+          output = "DP-1";
           mode = "highrr";
           pos = "auto-center-left";
         };
         tv = {
-          id = "HDMI-A-1";
+          output = "HDMI-A-1";
           mode = "highres";
           pos = "auto-center-right";
         };
       };
-      # Funcs turn monitor descriptions to hyprland assignment values
-      enable  = {id, mode, pos}: "${id}, ${mode}, ${pos}, 1";
-      disable = {id, mode, pos}: "${id}, disable";
-      mirror  = monitor: mirror_id: "${(enable monitor)}, mirror, ${mirror_id}";
+      # Shorthand for enable/disable
+      enable  = { disabled = false; };
+      disable = { disabled = true; };
       # Options available to select from
       op_monitor = "Monitor";
       op_tv      = "TV";
       op_extend  = "Extend";
       op_mirror  = "Mirror";
       options = "${op_monitor}\n${op_tv}\n${op_extend}\n${op_mirror}";
+      # hyprctl command
+      # TODO: Should use reference to exact pkg
+      hyprctl_mon = output: enable: "hyprctl -r eval hl.monitor({ output=\"${output}\", disabled=${if enable then "false" else "true"} })";
+      hyprctl_mir = output: mirror: "hyprctl -r eval hl.monitor({ output=\"${output}\", disabled=false, mirror=\"${mirror}\" })";
       # Script to make and action selection
       reconfigure = pkgs.writeShellScriptBin "monitors" ''
         #!/usr/bin/env bash
         set -e
-
         CHOSEN=$(${config.settings.launcher.dmenu options "Select Monitor Configuration"})
         case "$CHOSEN" in
           "${op_monitor}")
-            hyprctl -r keyword monitor "${(enable monitors.main)}"
-            hyprctl -r keyword monitor "${(disable monitors.tv)}"
+            ${hyprctl_mon monitors.main.output true}
+            ${hyprctl_mon monitors.tv.output false}
             ;;
           "${op_tv}")
-            hyprctl -r keyword monitor "${(disable monitors.main)}"
-            hyprctl -r keyword monitor "${(enable monitors.tv)}"
+            ${hyprctl_mon monitors.main.output false}
+            ${hyprctl_mon monitors.tv.output true}
             ;;
           "${op_extend}")
-            hyprctl -r keyword monitor "${(enable monitors.main)}"
-            hyprctl -r keyword monitor "${(enable monitors.tv)}"
+            ${hyprctl_mon monitors.main.output true}
+            ${hyprctl_mon monitors.tv.output true}
             ;;
           "${op_mirror}")
-            hyprctl -r keyword monitor "${(enable monitors.main)}"
-            hyprctl -r keyword monitor "${(mirror monitors.tv monitors.main.id)}"
+            ${hyprctl_mon monitors.main.output true}
+            ${hyprctl_mir monitors.tv.output monitors.main.output}
             ;;
         esac
       '';
@@ -76,12 +81,11 @@ in
         settings = {
           # Default setup
           monitor = [
-            (enable monitors.main)
-            (disable monitors.tv)
+            (monitors.main // enable)
+            (monitors.tv // disable)
           ];
-          bind = [
-            "SUPER, p, exec, ${reconfigure}/bin/monitors"
-          ];
+          # Add keybind to prompt on SUPER+P
+          bind._args = [ "SUPER + P" (exec "${reconfigure}/bin/monitors") ];
         };
       };
 

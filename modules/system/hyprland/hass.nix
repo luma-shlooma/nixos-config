@@ -6,6 +6,8 @@ let
   # Controlled by the shared window-manager settings
   cfg = config.settings.windowManager;
   ha = config.modules.homeAssistant;
+  # Lua generators
+  args = args: { _args = args; };
 in
 {
   # Config
@@ -17,14 +19,10 @@ in
       wayland.windowManager.hyprland.settings = {
         env = [
           # Copy over the required env vars
-          "HASS_SERVER, ${ha.server}"
-          "HASS_TOKEN, ${ha.token}"
+          args [ "HASS_SERVER" "${ha.server}" ]
+          args [ "HASS_TOKEN" "${ha.token}" ]
         ];
-        bind = [
-          # Home assistant binding is hass-cli is configured
-          "SUPER, l, exec, ${ha.scripts.toggleLamp}"
-          "SUPER_SHIFT, l, exec, ${ha.scripts.toggleManual}"
-        ];
+        # Bindings moved to bindings.nix
       };
 
     };

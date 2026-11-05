@@ -5,6 +5,10 @@ let
   user = config.settings.system.user;
   # Controlled by the shared window-manager settings
   cfg = config.settings.windowManager;
+  # Lua generators
+  lua = generators.mkLuaInLine;
+  exec = cmd: lua "hl.exec_cmd(\"${cmd}\")";
+  startup = cmd: { _args = [ "hyprland.start" (exec cmd) ]; };
 in
 {
   # Config
@@ -14,7 +18,7 @@ in
     home-manager.users.${user} = {
 
       # Map start-up commands to format
-      wayland.windowManager.hyprland.settings."exec-once" = cfg.onStartUp;
+      wayland.windowManager.hyprland.settings.on = builtins.map startup cfg.onStartUp;
 
     };
 

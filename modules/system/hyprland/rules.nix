@@ -14,36 +14,29 @@ in
     home-manager.users.${user} = {
 
       # Set window rules
-      wayland.windowManager.hyprland = {
-        settings = {
-          windowrule = [
-            ## Video
-            "match:title Picture-in-Picture, content video"
-            
-            # PiP
-            "match:title Picture-in-Picture, tag +pip"
-            # Static
-            "match:title Picture-in-Picture, float on"
-            "match:title Picture-in-Picture, size 25% 25%"
-            "match:title Picture-in-Picture, move 100%-w-20 50%"
-            "match:title Picture-in-Picture, pin on"
-            # Dynamic
-            "match:tag pip, keep_aspect_ratio on"
-            "match:tag pin, border_size 0"
-            "match:tag pin, no_follow_mouse on"
-
-            ## Games
-            "match:class steam_app_.+, content game"
-
-            # Steam
-            "match:class steam_app_.+, tag +game"
-            # Static
-            "match:class steam_app_.+, fullscreen on"
-            # Dynamic
-            # "match:class steam_app_.+, stay_focused on"
-          ];
-        };
-      };
+      wayland.windowManager.hyprland.settings.window_rule = [
+        # PiP
+        { match.title = "Picture-in-Picture";
+          # Static
+          content = "video";
+          float = true;
+          pin = true;
+          size = "monitor_w*0.25 monitor_h*0.25";
+          move = "monitor_w-window_w-20 monitor_h*0.5";
+          # Dynamic
+          keep_aspect_ratio = true;
+          border_size = 0;
+          no_follow_mouse = true;
+        }
+        ## Steam
+        { match.class = "steam_app_.+";
+          # Static
+          content = "game";
+          fullscreen = true;
+          # Dynamic
+          # stay_focused = true;
+        }
+      ];
 
     };
 

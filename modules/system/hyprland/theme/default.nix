@@ -24,44 +24,44 @@ in
     home-manager.users.${user} = {
 
       ### STYLE
-      wayland.windowManager.hyprland = {
-        settings = {
-          general = {
-            # These are mostly default values
-            border_size = 1;
-            gaps_in = 4;
-            gaps_out = 8;
-            "col.inactive_border" = rgb colours.black;
-            "col.active_border" = rgb colours.white;
+      wayland.windowManager.hyprland.settings.config = {
+        general = {
+          # These are mostly default values
+          border_size = 1;
+          gaps_in = 4;
+          gaps_out = 8;
+          col = {
+            active_border = rgb colours.white;
+            inactive_border = rgb colours.black;
           };
-          decoration = {
-            rounding = 4;
-            rounding_power = 4.0;
-            active_opacity = "1.0";
-            inactive_opacity = "1.0";
-            fullscreen_opacity = "1.0";
-            dim_inactive = false;
-            dim_special = "0.2";
-            blur.enabled = false;
-            shadow.enabled = false;
-          };
-          animations = {
-            enabled = true;
-            workspace_wraparound = false;
-          };
-          # Generally, these make the default animations faster
-          animation = [
-            "windows, 1, 2, default"
-            "workspaces, 1, 2, default"
-          ];
-          misc = {
-            disable_hyprland_logo = true;
-            disable_splash_rendering = true;
-            font_family = "JetBrains Mono";
-            animate_manual_resizes = true;
-            animate_mouse_windowdragging = true;
-            background_color = rgb colours.true-black;
-          };
+        };
+        decoration = {
+          active_opacity = 1.0;
+          blur.enabled = false;
+          dim_inactive = false;
+          dim_special = 0.2;
+          fullscreen_opacity = 1.0;
+          inactive_opacity = 1.0;
+          rounding = 4;
+          rounding_power = 4.0;
+          shadow.enabled = false;
+        };
+        animations = {
+          enabled = true;
+          workspace_wraparound = false;
+        };
+        # Make the default animations faster
+        animation = [
+          { leaf = "windows"; enabled = true; speed = 1; }
+          { leaf = "workspaces"; enabled = true; speed = 1; }
+        ];
+        misc = {
+          animate_manual_resizes = true;
+          animate_mouse_windowdragging = true;
+          background_color = rgb colours.true-black;
+          disable_hyprland_logo = true;
+          disable_splash_rendering = true;
+          font_family = "JetBrains Mono";
         };
       };
       ###
