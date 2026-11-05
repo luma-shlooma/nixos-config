@@ -78,8 +78,8 @@ in
         animation = [
           { leaf = "windows"; enabled = true; speed = 2; bezier = "easeInOut"; }
           { leaf = "workspaces"; enabled = true; speed = 3; bezier = "easeOut"; }
-          { leaf = "fade"; enabled = true; speed = 2; }
-          { leaf = "border"; enabled = true; speed = 1; }
+          { leaf = "fade"; enabled = true; bezier = "easeIn"; speed = 2; }
+          { leaf = "border"; enabled = true; bezier = "easeInOut"; speed = 1; }
         ];
       };
       ###
