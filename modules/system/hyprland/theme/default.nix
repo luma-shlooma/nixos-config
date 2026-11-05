@@ -65,7 +65,7 @@ in
         # Describe a simple bezier (it seems to demand one)
         curve = [{ _args = [
           "default"
-          { type = "bezier"; points = lua "{ {0.87 0}, {0.13 1} }"; }
+          { type = "bezier"; points = lua "{ {0.87, 0}, {0.13, 1} }"; }
         ];}];
         # Make the default animations faster
         animation = [
