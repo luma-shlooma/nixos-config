@@ -86,7 +86,7 @@ in
             (monitors.tv // disable)
           ];
           # Add keybind to prompt on SUPER+P
-          bind._args = [ "SUPER + P" (exec "${reconfigure}/bin/monitors") ];
+          bind = [ { _args = [ "SUPER + P" (exec "${reconfigure}/bin/monitors") ]; } ];
         };
       };
 
