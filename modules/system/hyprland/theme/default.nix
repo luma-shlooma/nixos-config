@@ -62,8 +62,8 @@ in
         };
         # Make the default animations faster
         animation = [
-          { leaf = "windows"; enabled = true; speed = 1; style = "slide"; }
-          { leaf = "workspaces"; enabled = true; speed = 1; style = "slide"; }
+          { leaf = "windows"; enabled = true; speed = 1; curve = "default"; style = "slide"; }
+          { leaf = "workspaces"; enabled = true; speed = 1; curve = "default"; style = "slide"; }
         ];
       };
       ###
