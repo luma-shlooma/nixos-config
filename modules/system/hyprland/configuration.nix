@@ -14,7 +14,8 @@ in
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;
-      portalPackage = pkgs.xdg-desktop-portal-hyprland;
+      # Following no longer needed
+      # portalPackage = pkgs.xdg-desktop-portal-hyprland;
     };
 
     # extraPackages
