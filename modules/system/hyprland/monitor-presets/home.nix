@@ -46,8 +46,8 @@ in
       options = "${op_monitor}\n${op_tv}\n${op_extend}\n${op_mirror}";
       # hyprctl command
       # TODO: Should use reference to exact pkg
-      hyprctl_mon = output: enable: "hyprctl -r eval hl.monitor({ output=\"${output}\", disabled=${if enable then "false" else "true"} })";
-      hyprctl_mir = output: mirror: "hyprctl -r eval hl.monitor({ output=\"${output}\", disabled=false, mirror=\"${mirror}\" })";
+      hyprctl_mon = output: enable: "\'hyprctl -r eval hl.monitor({ output=\"${output}\", disabled=${if enable then "false" else "true"} })\'";
+      hyprctl_mir = output: mirror: "\'hyprctl -r eval hl.monitor({ output=\"${output}\", disabled=false, mirror=\"${mirror}\" })\'";
       # Script to make and action selection
       reconfigure = pkgs.writeShellScriptBin "monitors" ''
         #!/usr/bin/env bash
