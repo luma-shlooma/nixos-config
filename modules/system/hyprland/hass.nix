@@ -19,8 +19,8 @@ in
       wayland.windowManager.hyprland.settings = {
         env = [
           # Copy over the required env vars
-          args [ "HASS_SERVER" "${ha.server}" ]
-          args [ "HASS_TOKEN" "${ha.token}" ]
+          (args [ "HASS_SERVER" "${ha.server}" ])
+          (args [ "HASS_TOKEN" "${ha.token}" ])
         ];
         # Bindings moved to bindings.nix
       };
