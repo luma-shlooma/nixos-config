@@ -13,6 +13,7 @@ let
   cfg = config.settings.windowManager;
   # Lua generators
   lua = generators.mkLuaInline;
+  args = args: { _args = args; };
 in
 {
   config = mkIf (cfg.enable && (cfg.selected == "hyprland") && (theme == "default")) {
@@ -62,25 +63,23 @@ in
             font_family = "JetBrains Mono";
           };
         };
-        # Describe a simple bezier (it seems to demand one)
+        # Describe curves
         curve = [
-          { 
-            _args = [
+          (args [
               "easeInOut"
               { type = "bezier"; points = lua "{ {0.87, 0}, {0.13, 1} }"; }
-            ];
-          }
-          {
-            _args = [
+          ])
+          (args [
               "easeOut"
               { type = "bezier"; points = lua "{ {0.16, 1}, {0.3, 1} }"; }
-            ];
-          }
+          ])
         ];
         # Make the default animations faster
         animation = [
-          { leaf = "windows"; enabled = true; speed = 2; bezier = "easeInOut"; style = "slide"; }
-          { leaf = "workspaces"; enabled = true; speed = 2; bezier = "easeOut"; style = "slide"; }
+          { leaf = "windows"; enabled = true; speed = 2; bezier = "easeInOut"; }
+          { leaf = "workspaces"; enabled = true; speed = 3; bezier = "easeOut"; }
+          { leaf = "fade"; enabled = true; speed = 2; }
+          { leaf = "border"; enabled = true; speed = 1; }
         ];
       };
       ###
