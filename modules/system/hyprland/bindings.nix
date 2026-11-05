@@ -53,8 +53,8 @@ in
             [ "SUPER + SHIFT + code:20" (dsp.move_ws "special:scratchpad") ] # the `-` key
             [ "SUPER + code:20" (mkDsp "workspace.toggle_special" "scratchpad") ]
             # Workspace - focus + move to
-          ] ++ map (ws: [ "SUPER + ${builtins.toString ws}" (dsp.focus_ws ws) ]) (range 0 9)
-            ++ map (ws: [ "SUPER + SHIFT + ${builtins.toString ws}" (dsp.move_ws ws) ]) (range 0 9)
+          ] ++ map (ws: [ "SUPER + ${builtins.toString ws}" (dsp.focus_ws ws) ]) (range 1 9)
+            ++ map (ws: [ "SUPER + SHIFT + ${builtins.toString ws}" (dsp.move_ws ws) ]) (range 1 9)
             ++ [
             # Windows
             [ "SUPER + SHIFT + Space" dsp.float ]
