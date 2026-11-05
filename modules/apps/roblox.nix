@@ -14,7 +14,7 @@ in
     # Install Sober via flatpak
     modules.flatpak = {
       enable = true;
-      packages.flathub = [ "com.vinegarhq.Sober" ];
+      packages.flathub = [ "org.vinegarhq.Sober" ];
     };
 
   };
