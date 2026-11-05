@@ -8,6 +8,7 @@ let
   # Controlled by the shared window-manager settings
   cfg = config.settings.windowManager;
   # lua generators
+  lua = generators.mkLuaInline;
   bind = args: { _args = args; };
   mkdsp = dsp_name: param: lua "hl.dsp.${dsp_name}(${builtins.toString param})";
   exec = cmd: mkdsp "exec_cmd" "\"${cmd}\"";
