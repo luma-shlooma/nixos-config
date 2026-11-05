@@ -6,7 +6,7 @@ let
   # Controlled by the shared window-manager settings
   cfg = config.settings.windowManager;
   # Lua generators
-  lua = generators.mkLuaInLine;
+  lua = generators.mkLuaInline;
   exec = cmd: lua "hl.exec_cmd(\"${cmd}\")";
   startup = cmd: { _args = [ "hyprland.start" (exec cmd) ]; };
 in

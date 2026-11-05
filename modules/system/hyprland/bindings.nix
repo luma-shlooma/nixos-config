@@ -13,7 +13,7 @@ let
   bind = args: { _args = args; };
   mouse = { mouse = true; };
   click = { click = true; };
-  lua = generators.mkLuaInLine;
+  lua = generators.mkLuaInline;
   mkDsp = dsp_name: param: lua "hl.dsp.${dsp_name}(${builtins.toString param})";
   dsp = {
     # Dispatchers, using mostly defaults
