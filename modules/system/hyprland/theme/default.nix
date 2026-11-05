@@ -52,8 +52,8 @@ in
         };
         # Make the default animations faster
         animation = [
-          { leaf = "windows"; enabled = true; speed = 1; }
-          { leaf = "workspaces"; enabled = true; speed = 1; }
+          { leaf = "windows"; enabled = true; speed = 10; style = "slide"; }
+          { leaf = "workspaces"; enabled = true; speed = 1; style = "slide"; }
         ];
         misc = {
           animate_manual_resizes = true;
