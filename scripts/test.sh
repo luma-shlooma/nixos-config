@@ -36,6 +36,7 @@ if [ "$branch" = "main" ]; then
 
   echo ":: Checking out $target..."
   git checkout "$target"
+  git rebase main
 
   run_test
 else
