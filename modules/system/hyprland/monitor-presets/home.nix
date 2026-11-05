@@ -8,6 +8,7 @@ let
   preset = config.settings.hardware.monitorPreset;
   kanshi = config.modules.kanshi;
   # lua generators
+  lua = generators.mkLuaInline;
   mkDsp = dsp_name: param: lua "hl.dsp.${dsp_name}(${builtins.toString param})";
   exec = cmd: mkDsp "exec_cmd" "\"${cmd}\"";
 in
