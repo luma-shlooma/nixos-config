@@ -93,7 +93,7 @@ in
         x11.enable = true;
         gtk.enable = true;
       };
-      wayland.windowManager.hyprland.settings.cursor = {
+      wayland.windowManager.hyprland.settings.config.cursor = {
         sync_gsettings_theme = true;
       };
 
