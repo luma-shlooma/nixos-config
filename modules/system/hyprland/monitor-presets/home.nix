@@ -27,12 +27,12 @@ in
         main = {
           output = "DP-1";
           mode = "highrr";
-          pos = "auto-center-left";
+          position = "auto-center-left";
         };
         tv = {
           output = "HDMI-A-1";
           mode = "highres";
-          pos = "auto-center-right";
+          position = "auto-center-right";
         };
       };
       # Shorthand for enable/disable
