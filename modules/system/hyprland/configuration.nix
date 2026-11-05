@@ -46,7 +46,7 @@ in
       # General config
       wayland.windowManager.hyprland = {
         enable = true;
-        configType = "hyprlang";
+        configType = "lua";
         settings = {
           # UK keyboard
           input = {
