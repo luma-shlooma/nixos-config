@@ -5,6 +5,7 @@ let
   user = config.settings.system.user;
   # Controlled by the shared window-manager settings
   cfg = config.settings.windowManager;
+  terminal = config.settings.terminal;
 in
 {
   # Config
@@ -16,7 +17,7 @@ in
       # Set window rules
       wayland.windowManager.hyprland.settings.window_rule = [
         # Terminal
-        { match.class = config.modules.terminal.app.selected;
+        { match.class = terminal.app.selected;
           fullscreen = false;
         }
         # PiP
