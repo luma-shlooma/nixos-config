@@ -15,6 +15,10 @@ in
 
       # Set window rules
       wayland.windowManager.hyprland.settings.window_rule = [
+        # Terminal
+        { match.class = config.modules.terminal.app.selected;
+          fullscreen = false;
+        }
         # PiP
         { match.title = "Picture-in-Picture";
           # Static
