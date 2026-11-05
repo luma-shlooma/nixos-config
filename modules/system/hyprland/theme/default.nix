@@ -63,12 +63,12 @@ in
         # Describe a simple bezier (it seems to demand one)
         curve = [{ _args = [
           "default"
-          { type = "bezier"; points = "{ {0.87 0}, {0.13 1} }"; }
+          { type = "bezier"; points = generator.mkLuaInline "{ {0.87 0}, {0.13 1} }"; }
         ];}];
         # Make the default animations faster
         animation = [
-          { leaf = "windows"; enabled = true; speed = 1; curve = "default"; style = "slide"; }
-          { leaf = "workspaces"; enabled = true; speed = 1; curve = "default"; style = "slide"; }
+          { leaf = "windows"; enabled = true; speed = 1; bezier = "default"; style = "slide"; }
+          { leaf = "workspaces"; enabled = true; speed = 1; bezier = "default"; style = "slide"; }
         ];
       };
       ###
