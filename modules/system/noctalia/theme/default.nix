@@ -69,7 +69,7 @@ in
           main = {
             thickness = 34;
             background_opacity = 1.0;
-            border = "outline";
+            border = "outline_variant";
             border_width = 0.0;
             shadow = true;
             contact_shadow = false;
