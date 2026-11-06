@@ -3,6 +3,8 @@ with lib;
 let
   # The configured user
   user = config.settings.system.user;
+  # Terminal
+  terminal = config.settings.terminal;
   # This module's config options
   cfg = config.modules.fish;
   pkg = pkgs.fish;
@@ -31,6 +33,10 @@ in
           { name = "z"; src = pkgs.fishPlugins.z.src; }
           { name = "done"; src = pkgs.fishPlugins.done.src; }
         ];
+        shellAliases = mkIf (terminal.app.selected == "kitty") {
+          # Fix terminfo on ssh in kitty
+          ssh = "kitten ssh";
+        };
       };
 
     };
