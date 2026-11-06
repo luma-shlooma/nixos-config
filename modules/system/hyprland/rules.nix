@@ -18,7 +18,9 @@ in
       wayland.windowManager.hyprland.settings.window_rule = [
         # Terminal
         { match.class = terminal.app.selected;
+          # Fix kitty opening maximised
           fullscreen = false;
+          fullscreen_state = 0;
         }
         # PiP
         { match.title = "Picture-in-Picture";
