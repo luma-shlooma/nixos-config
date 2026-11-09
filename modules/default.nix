@@ -67,6 +67,7 @@
     ./tools/mpris.nix
     ./tools/mullvad.nix
     ./tools/neovim
+    ./tools/tcpdump.nix
     ./tools/wine.nix
     ./tools/wireguard.nix
     ./tools/wireshark.nix
