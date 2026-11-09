@@ -66,6 +66,7 @@
     lxc.enable = true;
     mullvad.enable = true;
     neovim.enable = true;
+    tcpdump.enable = true;
     wireshark.enable = true;
     yazi.enable = true;
   };
