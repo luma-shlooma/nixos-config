@@ -87,7 +87,7 @@ in
             font_weight = "regular";
 
             capsule = false;
-            capsule_fill = "surface_variant";
+            capsule_fill = "surface_container";
             capsule_radius = 8.0;
             capsule_opacity = 1.0;
           };
