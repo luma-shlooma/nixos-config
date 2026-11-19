@@ -67,6 +67,7 @@
     mullvad.enable = true;
     neovim.enable = true;
     tcpdump.enable = true;
+    u2f.enable = true;
     wireshark.enable = true;
     yazi.enable = true;
   };
