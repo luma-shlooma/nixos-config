@@ -34,7 +34,7 @@ in
           font_family = "JetBrainsMono Nerd Font Mono";
           time_format = "{:%H:%M}";
           date_format = "%A, %x";
-          app_icon_colorize = true;
+          colorize_icons = true;
           app_icon_color = "on_surface";
 
           animation = {
@@ -84,7 +84,7 @@ in
             padding = 14;
             widget_spacing = 6;
             scale = 1.0;
-            font_weight = "regular";
+            font_weight = 500;
 
             capsule = false;
             capsule_fill = "surface_container";
