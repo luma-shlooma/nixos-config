@@ -60,9 +60,9 @@
     sound.enable = true;
     # Tools
     alacritty.enable = true;
-    amazonQ.enable = true;
     antigravity.enable = true;
     docker.enable = true;
+    kiro.enable = true;
     lxc.enable = true;
     mullvad.enable = true;
     neovim.enable = true;
