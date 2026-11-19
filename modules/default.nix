@@ -61,6 +61,7 @@
     ./tools/homeassistant
     ./tools/k3s.nix
     ./tools/kanshi
+    ./tools/kiro.nix
     ./tools/kitty
     ./tools/logiops.nix
     ./tools/lxc.nix
