@@ -69,6 +69,7 @@
     ./tools/mullvad.nix
     ./tools/neovim
     ./tools/tcpdump.nix
+    ./tools/u2f.nix
     ./tools/wine.nix
     ./tools/wireguard.nix
     ./tools/wireshark.nix
