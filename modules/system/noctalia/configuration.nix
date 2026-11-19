@@ -38,7 +38,7 @@ in
             telemetry_enabled = false;
             setup_wizard_enabled = false;
             niri_overview_type_to_launch_enabled = false;
-            polkit_agent = false;
+            polkit_agent = config.modules.u2f.enable;
             password_style = "default";
             avatar_path = "~/Pictures/avatar.png";
             settings_show_advanced = true;
@@ -126,6 +126,7 @@ in
           # https://docs.noctalia.dev/noctalia/configuration/shell/?section=lock-screen#lock-screen
           lockscreen = {
             enabled = true;
+            allow_empty_password = config.modules.u2f.enable;
             fingerprint = false; # Fix long auth times
             lock_before_suspend = true;
             blurred_desktop = true;
