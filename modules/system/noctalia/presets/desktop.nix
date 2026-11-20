@@ -23,13 +23,18 @@ in
       # Then desktop preset overrides
       programs.noctalia.settings = {
         # https://docs.noctalia.dev/noctalia/bar/
-        bar = {
-          main = {
-            position = "top";
-            start = [ "session" "control-center" "small-gap" "network" "bluetooth" "volume" "big-gap" "media" ];
-            center = [ "workspaces" ];
-            end = [ "audio_visualizer" "big-gap" "clock" ] ++ (optionals ha.enable [ "pozzoo/hassio:status" ]) ++ [ "clipboard" "notifications" ];
-          };
+        bar = 
+          let
+            # Config that may be applied to a specific output or globally
+            config = {
+              enabled = true;
+              position = "top";
+              start = [ "session" "control-center" "small-gap" "network" "bluetooth" "volume" "big-gap" "media" ];
+              center = [ "workspaces" ];
+              end = [ "audio_visualizer" "big-gap" "clock" ] ++ (optionals ha.enable [ "pozzoo/hassio:status" ]) ++ [ "clipboard" "notifications" ];
+            };
+          in {
+          main = if (primary == null) then config else { monitors.${primary} = config; };
         };
 
         # https://docs.noctalia.dev/noctalia/control-center/shortcuts/

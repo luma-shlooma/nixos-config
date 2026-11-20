@@ -3,6 +3,8 @@ with lib;
 let
   # The configured user
   user = config.settings.system.user;
+  # The primary output
+  primary = config.settings.hardware.outputs.primary;
   # This module's config options
   cfg = config.settings.greeter;
 in
@@ -16,26 +18,31 @@ in
   # Config
   config = mkIf (cfg.enable && (cfg.selected == "noctalia-greeter")) {
 
-    # NOTE: Likely outdated a bit...
-    #       I see there is a services.displayManager.noctalia-greeter option now
-    # NOTE: Also, doesn't use cfg.onBoot
-    programs.noctalia-greeter = {
+    services.displayManager.noctalia-greeter = {
       enable = true;
-      # Optional configuration
       greeter-args = "";
+      passwordless-sync-users = [ user ];
       settings = {
-        session.default = "${cfg.session}";
-        user.default = "${user}";
-        # TODO: Provide monitor name
-        # output.name = "${monitor}";
-        keyboard.layout = "gb";
-        cursor = {
-          theme = "phinger-cursors-light";
-          package = pkgs.phinger-cursors;
-        };
+        # Default session and user
+        session.default = cfg.session;
+        user.default = user;
+        # Copy most of appearance from noctalia
+        # TODO: Make themed off settings
         appearance = {
           scheme = "Synced";
+          password_style = "default";
           hide_logo = true;
+          scheme_selector_position = "hidden";
+          theme_mode = "dark";
+          wallpaper.fill_color = "#000000";
+          output.name = mkIf (primary != null) primary;
+          # TODO
+          cursor = {};
+          keyboard.layout = "gb";
+          auth = {
+            allow_empty_password = config.modules.u2f.enable;
+            request_timeout = 5;
+          };
         };
       };
     };

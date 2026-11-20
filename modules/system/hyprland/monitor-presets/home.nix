@@ -5,7 +5,8 @@ let
   user = config.settings.system.user;
   # Controlled by the shared window-manager settings
   cfg = config.settings.windowManager;
-  preset = config.settings.hardware.monitorPreset;
+  device = config.settings.hardware.device;
+  outputs = config.settings.hardware.outputs.all;
   kanshi = config.modules.kanshi;
   # lua generators
   lua = generators.mkLuaInline;
@@ -14,7 +15,7 @@ let
 in
 {
   # Config
-  config = mkIf (cfg.enable && (cfg.selected == "hyprland") && (preset == "home") && !kanshi.enable) {
+  config = mkIf (cfg.enable && (cfg.selected == "hyprland") && (device == "home-pc") && !kanshi.enable) {
 
     # Enable ddcutil (I forget exactly how this is used)
     modules.ddcutil.enable = true;
@@ -25,12 +26,12 @@ in
       # Monitor logic
       monitors = {
         main = {
-          output = "DP-1";
+          output = outputs.monitor;
           mode = "highrr";
           position = "auto-center-left";
         };
         tv = {
-          output = "HDMI-A-1";
+          output = outputs.tv;
           mode = "highres";
           position = "auto-center-right";
         };

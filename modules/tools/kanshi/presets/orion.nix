@@ -5,12 +5,11 @@ let
   user = config.settings.system.user;
   # This module's config options
   cfg = config.modules.kanshi;
-  preset = config.settings.hardware.monitorPreset;
 in
 {
 
   # Config
-  config = mkIf (cfg.enable && (preset == "orion")) {
+  config = mkIf (cfg.enable && (cfg.preset == "orion")) {
 
     # Require home-manager to be enabled
     modules.homeManager.enable = true;

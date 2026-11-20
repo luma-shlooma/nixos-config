@@ -5,6 +5,7 @@ let
   user = config.settings.system.user;
   # Form factor of host
   form = config.settings.hardware.form;
+  primary = config.settings.hardware.outputs.primary;
   # This module's config options
   cfg = config.modules.noctalia;
 in
@@ -21,17 +22,18 @@ in
       # Then laptop preset overrides
       programs.noctalia.settings = {
         # https://docs.noctalia.dev/noctalia/bar/
-        bar = {
-          main = {
-            enabled = false;
-            monitor.eDP-1 = {
+        bar =
+          let
+            # Config that may be applied to a specific output or globally
+            config = {
               enabled = true;
               position = "bottom";
               start = [ "session" "control-center" "spacer" "network" "bluetooth" "volume" "brightness" ];
               center = [ "workspaces" ];
               end = [ "battery" "clock" ];
             };
-          };
+          in {
+          main = if (primary == null) then config else { monitors.${primary} = config; };
         };
 
         # https://docs.noctalia.dev/noctalia/configuration/shell/#osd
@@ -39,18 +41,8 @@ in
           position = "bottom_center";
           position_vertical = "center_right";
           orientation = "horizontal";
-          monitors = [ "eDP-1" ];
-        };
-        
-        # https://docs.noctalia.dev/noctalia/services/notifications/
-        notification = {
-          monitors = [ "eDP-1" ];
         };
 
-        # https://docs.noctalia.dev/noctalia/configuration/shell/?section=lock-screen#lock-screen
-        lockscreen = {
-          monitors = [ "eDP-1" ];
-        };
       };
 
     };

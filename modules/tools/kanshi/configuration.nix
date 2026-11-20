@@ -5,6 +5,8 @@ let
   user = config.settings.system.user;
   # This module's config options
   cfg = config.modules.kanshi;
+  # Specific hardware device
+  device = config.settings.hardware.device;
 in
 {
   # Options
@@ -12,8 +14,8 @@ in
     enable = mkEnableOption "Kanshi";
     preset = mkOption {
       type = types.nullOr (types.enum [ "orion" ]);
-      default = null;
-      description = "Which kanshi settings preset to enable. This will be hardware-dependant.";
+      default = if (device == "thinkpad-t14") then "orion" else null;
+      description = "Which kanshi settings preset to enable.";
     };
   };
 

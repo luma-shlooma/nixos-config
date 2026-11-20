@@ -5,12 +5,12 @@ let
   user = config.settings.system.user;
   # Controlled by the shared window-manager settings
   wm = config.settings.windowManager;
-  preset = config.settings.hardware.monitorPreset;
+  device = config.settings.hardware.device;
   kanshi = config.modules.kanshi;
 in
 {
   # Config
-  config = mkIf (wm.enable && !kanshi.enable && (wm.selected == "niri") && (preset == "orion")) {
+  config = mkIf (wm.enable && !kanshi.enable && (wm.selected == "niri") && (device == "thinkpad-t14")) {
     
     # The home-manager config
     home-manager.users.${user} = {

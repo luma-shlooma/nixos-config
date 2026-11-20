@@ -83,15 +83,21 @@ in
           };
           
           # https://docs.noctalia.dev/noctalia/bar/
-          bar = {
+          bar = 
+            let
+              # Config that may be applied to a specific output or globally
+              config = {
+                enabled = true;
+                auto_hide = false;
+                layer = "top";
+                position = "top";
+                reserve_space = true;
+              };
+            in {
             order = [ "main" ];
-
-            main = {
-              position = "top";
-              enabled = true;
-              auto_hide = false;
-              reserve_space = true;
-              layer = "top";
+            main = if (primary == null) then config else {
+              enabled = false;
+              monitors.${primary} = config;
             };
           };
 
@@ -131,6 +137,19 @@ in
             lock_before_suspend = true;
             blurred_desktop = true;
           };
+
+        # If a primary output is given, restrict some features to there
+        } // optionalAttrs (primary != null) {
+
+          # https://docs.noctalia.dev/noctalia/configuration/shell/#osd
+          osd.monitors = [ primary ];
+          
+          # https://docs.noctalia.dev/noctalia/services/notifications/
+          notification.monitors = [ primary ];
+
+          # https://docs.noctalia.dev/noctalia/configuration/shell/?section=lock-screen#lock-screen
+          lockscreen.monitors = [ primary ];
+
         });
       };
 
