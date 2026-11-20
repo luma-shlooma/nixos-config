@@ -3,6 +3,8 @@ with lib;
 let
   # The configured user
   user = config.settings.system.user;
+  # The primary hardware output
+  primary = config.settings.hardware.outputs.primary;
   # This module's config options
   cfg = config.modules.noctalia;
 in
