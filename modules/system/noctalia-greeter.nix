@@ -32,7 +32,7 @@ in
           scheme = "Synced";
           password_style = "default";
           hide_logo = true;
-          scheme_selector_position = "hidden";
+          # scheme_selector_position = "hidden";
           theme_mode = "dark";
           wallpaper.fill_color = "#000000";
         };
@@ -40,10 +40,7 @@ in
         # TODO
         cursor = {};
         keyboard.layout = "gb";
-        auth = {
-          allow_empty_password = config.modules.u2f.enable;
-          request_timeout = 5;
-        };
+        auth.allow_empty_password = config.modules.u2f.enable;
       };
     };
 
