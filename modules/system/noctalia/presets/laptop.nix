@@ -33,7 +33,7 @@ in
               end = [ "battery" "clock" ];
             };
           in {
-          main = if (primary == null) then config else { monitors.${primary} = config; };
+          main = if (primary == null) then config else { monitor.${primary} = config; };
         };
 
         # https://docs.noctalia.dev/noctalia/configuration/shell/#osd

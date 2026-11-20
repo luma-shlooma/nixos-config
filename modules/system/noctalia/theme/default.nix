@@ -34,8 +34,6 @@ in
           font_family = "JetBrainsMono Nerd Font Mono";
           time_format = "{:%H:%M}";
           date_format = "%A, %x";
-          colorize_icons = true;
-          app_icon_color = "on_surface";
 
           animation = {
             enabled = true;

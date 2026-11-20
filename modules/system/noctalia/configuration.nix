@@ -99,7 +99,7 @@ in
             order = [ "main" ];
             main = if (primary == null) then config else {
               enabled = false;
-              monitors.${primary} = config;
+              monitor.${primary} = config;
             };
           };
 

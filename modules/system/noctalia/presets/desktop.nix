@@ -34,7 +34,7 @@ in
               end = [ "audio_visualizer" "big-gap" "clock" ] ++ (optionals ha.enable [ "pozzoo/hassio:status" ]) ++ [ "clipboard" "notifications" ];
             };
           in {
-          main = if (primary == null) then config else { monitors.${primary} = config; };
+          main = if (primary == null) then config else { monitor.${primary} = config; };
         };
 
         # https://docs.noctalia.dev/noctalia/control-center/shortcuts/
