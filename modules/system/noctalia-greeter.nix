@@ -35,14 +35,14 @@ in
           scheme_selector_position = "hidden";
           theme_mode = "dark";
           wallpaper.fill_color = "#000000";
-          output.name = mkIf (primary != null) primary;
-          # TODO
-          cursor = {};
-          keyboard.layout = "gb";
-          auth = {
-            allow_empty_password = config.modules.u2f.enable;
-            request_timeout = 5;
-          };
+        };
+        output.name = mkIf (primary != null) primary;
+        # TODO
+        cursor = {};
+        keyboard.layout = "gb";
+        auth = {
+          allow_empty_password = config.modules.u2f.enable;
+          request_timeout = 5;
         };
       };
     };
