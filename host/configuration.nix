@@ -9,13 +9,13 @@
     # Greeter
     greeter = {
       enable = true;
-      selected = "tuigreet";
+      selected = "noctalia-greeter";
       onBoot = true;
     };
     # Hardware
     hardware = {
       device = "thinkpad-t14";
-      monitorPreset = "orion";
+      # The rest is decided by device
     };
     # Launcher
     launcher = {
