@@ -89,7 +89,7 @@ in
             bar = 
               let
                 # Config that may be applied to a specific output or globally
-                config = {
+                config = mkDefault {
                   enabled = true;
                   auto_hide = false;
                   layer = "top";
