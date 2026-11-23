@@ -139,10 +139,10 @@ in
               fingerprint = false; # Fix long auth times
               lock_before_suspend = true;
             };
+          }
 
           # If a primary output is given, restrict some features to there
-          }
-          (optionalAttrs (primary != null) {
+          (mkIf (primary != null) {
 
             # https://docs.noctalia.dev/noctalia/configuration/shell/#osd
             osd.monitors = [ primary ];

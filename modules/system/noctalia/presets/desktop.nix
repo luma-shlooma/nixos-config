@@ -54,8 +54,8 @@ in
             orientation = "vertical";
           };
         }
-        (optionalAttrs ha.enable {
-
+        # Home assistant additions
+        (mkIf ha.enable {
           # https://docs.noctalia.dev/noctalia/plugins/
           plugins.enabled = [
             "pozzoo/hassio" # Home Assistant widgets+
