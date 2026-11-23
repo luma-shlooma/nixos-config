@@ -21,54 +21,55 @@ in
     home-manager.users.${user} = {
 
       # Then desktop preset overrides
-      programs.noctalia.settings = {
-        # https://docs.noctalia.dev/noctalia/bar/
-        bar = 
-          let
-            # Config that may be applied to a specific output or globally
-            config = {
-              enabled = true;
-              position = "top";
-              start = [ "session" "control-center" "small-gap" "network" "bluetooth" "volume" "big-gap" "media" ];
-              center = [ "workspaces" ];
-              end = [ "audio_visualizer" "big-gap" "clock" ] ++ (optionals ha.enable [ "pozzoo/hassio:status" ]) ++ [ "clipboard" "notifications" ];
-            };
-          in {
-          main = if (primary == null) then config else { monitor.${primary} = config; };
-        };
+      programs.noctalia.settings = mkMerge [
+        {
+          # https://docs.noctalia.dev/noctalia/bar/
+          bar = 
+            let
+              # Config that may be applied to a specific output or globally
+              config = {
+                enabled = true;
+                position = "top";
+                start = [ "session" "control-center" "small-gap" "network" "bluetooth" "volume" "big-gap" "media" ];
+                center = [ "workspaces" ];
+                end = [ "audio_visualizer" "big-gap" "clock" ] ++ (optionals ha.enable [ "pozzoo/hassio:status" ]) ++ [ "clipboard" "notifications" ];
+              };
+            in {
+            main = if (primary == null) then config else { monitor.${primary} = config; };
+          };
 
-        # https://docs.noctalia.dev/noctalia/control-center/shortcuts/
-        control_center.shortcuts = [
-          "wifi" "bluetooth"
-        ] ++ (optionals ha.enable [
-          "pozzoo/hassio:ha_toggle_1" "pozzoo/hassio:ha_toggle_2"
-        ]) ++ [
-          "media"
-        ];
+          # https://docs.noctalia.dev/noctalia/control-center/shortcuts/
+          control_center.shortcuts = [
+            "wifi" "bluetooth"
+          ] ++ (optionals ha.enable [
+            "pozzoo/hassio:ha_toggle_1" "pozzoo/hassio:ha_toggle_2"
+          ]) ++ [
+            "media"
+          ];
 
-        # https://docs.noctalia.dev/noctalia/configuration/shell/#osd
-        osd = {
-          position = "top_center";
-          position_vertical = "center_right";
-          orientation = "vertical";
-        };
+          # https://docs.noctalia.dev/noctalia/configuration/shell/#osd
+          osd = {
+            position = "top_center";
+            position_vertical = "center_right";
+            orientation = "vertical";
+          };
+        }
+        (optionalAttrs ha.enable {
 
-      } // optionalAttrs ha.enable {
+          # https://docs.noctalia.dev/noctalia/plugins/
+          plugins.enabled = [
+            "pozzoo/hassio" # Home Assistant widgets+
+          ];
 
-        # https://docs.noctalia.dev/noctalia/plugins/
-        plugins.enabled = [
-          "pozzoo/hassio" # Home Assistant widgets+
-        ];
-
-        # https://noctalia.dev/plugins/community/hassio
-        plugin_settings."pozzoo/hassio" = {
-          ha_url = "${ha.server}";
-          ha_token = "${ha.token}";
-          shortcut_entity_1 = "switch.lamp";
-          shortcut_entity_2 = "input_boolean.manual";
-        };
-
-      };
+          # https://noctalia.dev/plugins/community/hassio
+          plugin_settings."pozzoo/hassio" = {
+            ha_url = "${ha.server}";
+            ha_token = "${ha.token}";
+            shortcut_entity_1 = "switch.lamp";
+            shortcut_entity_2 = "input_boolean.manual";
+          };
+        })
+      ];
 
     };
   };
