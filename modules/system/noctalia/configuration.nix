@@ -1,4 +1,4 @@
-{ config, funcs, inputs, lib, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 with lib;
 let
   # The configured user
@@ -32,7 +32,7 @@ in
 
       programs.noctalia = {
         enable = true;
-        settings = funcs.mkAllDefault true (mkMerge [
+        settings = mkMerge [
           {
             # https://docs.noctalia.dev/noctalia/configuration/shell/
             shell = {
@@ -154,7 +154,7 @@ in
             lockscreen.monitors = [ primary ];
 
           })
-        ]);
+        ];
       };
 
     };
